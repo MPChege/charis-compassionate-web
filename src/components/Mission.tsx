@@ -18,10 +18,10 @@ const Mission = () => {
               We believe that every elderly person deserves respect, understanding, and quality care that enhances their wellbeing and preserves their dignity.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button asChild className="btn-primary">
+              <Button asChild variant="highlighted" className="shadow-md">
                 <Link to="/about">Learn More</Link>
               </Button>
-              <Button asChild variant="outline" className="border-charis-blue hover:bg-charis-blue/10">
+              <Button asChild variant="outline" className="border-charis-blue-dark text-charis-blue-dark hover:bg-charis-blue-dark/10 hover:border-charis-blue-dark">
                 <Link to="/get-involved">Get Involved</Link>
               </Button>
             </div>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { AccessibilityToggle } from "./AccessibilityToggle";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,19 +35,33 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={`text-base font-medium transition-colors duration-300 hover:text-charis-blue-dark ${
-                  isActive(link.path) 
-                    ? "text-charis-blue-dark border-b-2 border-charis-blue-dark" 
-                    : "text-gray-600"
-                }`}
-              >
-                {link.name}
-              </Link>
+              link.name === "Get Involved" ? (
+                <Button 
+                  key={link.name}
+                  asChild
+                  variant="highlighted"
+                  size="sm"
+                  className="transform hover:scale-105 transition-all duration-300"
+                >
+                  <Link to={link.path}>
+                    {link.name}
+                  </Link>
+                </Button>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={`text-base font-medium transition-colors duration-300 hover:text-charis-blue-dark ${
+                    isActive(link.path) 
+                      ? "text-charis-blue-dark border-b-2 border-charis-blue-dark" 
+                      : "text-gray-600"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
             <AccessibilityToggle />
           </div>
@@ -66,18 +81,32 @@ const Navbar = () => {
           <div className="md:hidden mt-4 animate-fade-in">
             <div className="flex flex-col space-y-4 pb-4">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className={`text-base font-medium p-2 rounded-md transition-colors duration-300 ${
-                    isActive(link.path)
-                      ? "bg-charis-blue-light text-charis-blue-dark"
-                      : "text-gray-600 hover:bg-gray-100"
-                  }`}
-                  onClick={closeMenu}
-                >
-                  {link.name}
-                </Link>
+                link.name === "Get Involved" ? (
+                  <Button 
+                    key={link.name} 
+                    asChild 
+                    variant="highlighted" 
+                    className="w-full justify-start"
+                    onClick={closeMenu}
+                  >
+                    <Link to={link.path}>
+                      {link.name}
+                    </Link>
+                  </Button>
+                ) : (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    className={`text-base font-medium p-2 rounded-md transition-colors duration-300 ${
+                      isActive(link.path)
+                        ? "bg-charis-blue-light text-charis-blue-dark"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }`}
+                    onClick={closeMenu}
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
               <div className="pt-2">
                 <AccessibilityToggle />
