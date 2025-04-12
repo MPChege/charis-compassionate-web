@@ -125,54 +125,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Section (Optional, can be omitted if not needed) */}
-      <section className="py-16 bg-charis-neutral-light">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Our Team</h2>
-            <p className="max-w-3xl mx-auto text-gray-700">
-              Meet the dedicated professionals behind Charis Eagle Springs.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Dr. Elizabeth Wangari",
-                role: "Founder & Executive Director",
-                bio: "With over 20 years in geriatric psychiatry, Dr. Wangari leads our organization with passion and expertise.",
-                image: "https://randomuser.me/api/portraits/women/76.jpg"
-              },
-              {
-                name: "John Mwangi",
-                role: "Director of Community Programs",
-                bio: "John brings extensive experience in community organizing and elderly care program development.",
-                image: "https://randomuser.me/api/portraits/men/32.jpg"
-              },
-              {
-                name: "Catherine Odhiambo",
-                role: "Head of Training & Education",
-                bio: "A former nurse specialized in dementia care, Catherine develops our caregiver training programs.",
-                image: "https://randomuser.me/api/portraits/women/65.jpg"
-              }
-            ].map((member, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden">
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-charis-blue-dark">{member.name}</h3>
-                  <p className="text-charis-green-dark font-medium mb-3">{member.role}</p>
-                  <p className="text-gray-700">{member.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <Footer />
     </>
   );

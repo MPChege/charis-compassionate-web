@@ -28,7 +28,7 @@ const Mission = () => {
           </div>
           <div className="rounded-2xl overflow-hidden shadow-lg animate-zoom-in">
             <img 
-              src="https://images.unsplash.com/photo-1532635241-17e820acc59f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1015&q=80" 
+              src="https://images.unsplash.com/photo-1573056019137-d8646a64a351?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1015&q=80" 
               alt="Elderly person with caregiver" 
               className="w-full h-full object-cover"
             />

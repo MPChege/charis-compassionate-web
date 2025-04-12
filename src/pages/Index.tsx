@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Mission from "@/components/Mission";
 import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
+import HeroSlider from "@/components/HeroSlider";
 import { ArrowRight, Heart, Calendar } from "lucide-react";
 
 const Index = () => {
@@ -13,36 +14,8 @@ const Index = () => {
     <>
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-charis-blue to-charis-purple pt-20 pb-24 md:pt-28 md:pb-32">
-        <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="text-white animate-fade-in">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Compassionate Care for Our Elderly
-              </h1>
-              <p className="text-xl mb-8 text-white/90">
-                Raising awareness about mental health issues affecting the elderly and promoting dignified, respectful care.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button asChild size="lg" className="bg-white text-charis-blue-dark hover:bg-charis-green-light hover:text-charis-blue-dark">
-                  <Link to="/get-involved">Get Involved</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="text-white border-white hover:bg-white/10">
-                  <Link to="/awareness-hub">Learn More</Link>
-                </Button>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-xl border-4 border-white/30 animate-zoom-in">
-              <img 
-                src="https://images.unsplash.com/photo-1581579438747-104c53d7fbc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                alt="Elderly woman smiling with caregiver" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Slider Section */}
+      <HeroSlider />
 
       {/* Stats Section */}
       <section className="py-16 bg-white">
