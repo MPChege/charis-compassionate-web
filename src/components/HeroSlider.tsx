@@ -7,19 +7,19 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const slides = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1581579438747-104c53d7fbc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    image: "https://i.pinimg.com/736x/a5/2d/61/a52d61c409fa066a8b94e43e50469334.jpg",
     title: "Compassionate Care for Our Elderly",
     description: "Raising awareness about mental health issues affecting the elderly and promoting dignified, respectful care."
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1569399078436-869a2c1c576a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    image: "https://i.pinimg.com/736x/20/fc/7c/20fc7c6771ecde7bc935b2725b577713.jpg",
     title: "Supporting Elderly Mental Health",
     description: "Providing resources and education for families, caregivers, and communities."
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    image: "https://i.pinimg.com/736x/32/ab/05/32ab0541e0bf9c20d377c8fa5f3dc4ff.jpg",
     title: "Building Stronger Communities",
     description: "Creating networks of support for the elderly and their caregivers."
   }
