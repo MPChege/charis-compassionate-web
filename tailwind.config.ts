@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,13 +62,38 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+                // Custom colors for Charis Eagle Springs
+                charis: {
+                    blue: {
+                        light: '#D3E4FD', // Soft blue
+                        DEFAULT: '#93B7E0', // Medium blue
+                        dark: '#5A86B8', // Darker blue
+                    },
+                    green: {
+                        light: '#F2FCE2', // Soft green
+                        DEFAULT: '#B8D8A0', // Medium green
+                        dark: '#7EA767', // Darker green
+                    },
+                    purple: {
+                        light: '#E5DEFF', // Soft purple
+                        DEFAULT: '#BEB4E0', // Medium purple
+                    },
+                    neutral: {
+                        DEFAULT: '#8E9196', // Neutral gray
+                        light: '#F5F7F9', // Light gray background
+                    }
+                }
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+            fontFamily: {
+                'heading': ['Nunito', 'sans-serif'],
+                'body': ['Inter', 'sans-serif'],
+            },
 			keyframes: {
 				'accordion-down': {
 					from: {
@@ -84,11 +110,33 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+                'fade-in': {
+                    '0%': {
+                        opacity: '0',
+                        transform: 'translateY(10px)'
+                    },
+                    '100%': {
+                        opacity: '1',
+                        transform: 'translateY(0)'
+                    }
+                },
+                'zoom-in': {
+                    '0%': {
+                        opacity: '0',
+                        transform: 'scale(0.95)'
+                    },
+                    '100%': {
+                        opacity: '1',
+                        transform: 'scale(1)'
+                    }
+                }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+                'fade-in': 'fade-in 0.5s ease-out forwards',
+                'zoom-in': 'zoom-in 0.5s ease-out forwards'
 			}
 		}
 	},
