@@ -56,10 +56,10 @@ const HeroSlider = () => {
               {slides[currentSlide].description}
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg" className="bg-white text-charis-blue-dark hover:bg-charis-green-light hover:text-charis-blue-dark">
+              <Button asChild size="lg" className="bg-charis-blue text-white hover:bg-charis-blue-dark font-semibold shadow-lg border-2 border-white">
                 <Link to="/get-involved">Get Involved</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="text-white border-white hover:bg-white/10">
+              <Button asChild size="lg" className="bg-white text-charis-blue-dark hover:bg-charis-green-light hover:text-charis-blue-dark font-semibold shadow-lg">
                 <Link to="/awareness-hub">Learn More</Link>
               </Button>
             </div>
