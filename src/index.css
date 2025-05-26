@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -110,11 +110,11 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-charis-blue px-6 py-3 text-white rounded-md hover:bg-charis-blue-dark transition-colors duration-300 font-medium text-base md:text-lg;
+    @apply bg-gradient-to-r from-charis-blue to-charis-blue-dark px-8 py-4 text-white rounded-xl hover:from-charis-blue-dark hover:to-charis-blue transition-all duration-300 font-semibold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105;
   }
 
   .btn-secondary {
-    @apply bg-charis-green px-6 py-3 text-foreground rounded-md hover:bg-charis-green-dark transition-colors duration-300 font-medium text-base md:text-lg;
+    @apply bg-gradient-to-r from-charis-green to-charis-green-dark px-8 py-4 text-white rounded-xl hover:from-charis-green-dark hover:to-charis-green transition-all duration-300 font-semibold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105;
   }
 
   .container-custom {
@@ -122,10 +122,102 @@
   }
 
   .card-custom {
-    @apply bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300;
+    @apply bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all duration-500 transform hover:scale-105 border border-gray-100;
   }
 
   .section-padding {
-    @apply py-12 md:py-20;
+    @apply py-16 md:py-24;
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-charis-blue-dark via-charis-blue to-charis-purple;
+  }
+
+  /* Enhanced animations */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .glow {
+    box-shadow: 0 0 20px rgba(93, 183, 224, 0.3);
+  }
+
+  .glow:hover {
+    box-shadow: 0 0 30px rgba(93, 183, 224, 0.5);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #93B7E0, #BEB4E0);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #5A86B8, #93B7E0);
+}
+
+/* Enhanced focus styles */
+*:focus {
+  outline: 2px solid #93B7E0;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input, textarea, select {
+  transition: all 0.3s ease;
+}
+
+/* Enhanced button hover effects */
+button:hover, .btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Loading animation */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
   }
 }
