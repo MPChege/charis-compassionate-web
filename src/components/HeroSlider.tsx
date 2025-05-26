@@ -59,7 +59,7 @@ const HeroSlider = () => {
               <Button asChild size="lg" className="bg-white text-charis-blue-dark hover:bg-charis-green-light hover:text-charis-blue-dark">
                 <Link to="/get-involved">Get Involved</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="text-white border-white hover:bg-white/10">
+              <Button asChild variant="outline" size="lg" className="text-charis-blue-dark bg-white border-white hover:bg-charis-green-light hover:text-charis-blue-dark">
                 <Link to="/awareness-hub">Learn More</Link>
               </Button>
             </div>
