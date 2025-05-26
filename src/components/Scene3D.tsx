@@ -9,9 +9,11 @@ function AnimatedSphere({ position, color }: { position: [number, number, number
   const meshRef = useRef<THREE.Mesh>(null!)
   
   useFrame((state, delta) => {
-    meshRef.current.rotation.x += delta * 0.5
-    meshRef.current.rotation.y += delta * 0.3
-    meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime) * 0.3
+    if (meshRef.current) {
+      meshRef.current.rotation.x += delta * 0.5
+      meshRef.current.rotation.y += delta * 0.3
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime) * 0.3
+    }
   })
 
   return (
@@ -25,9 +27,11 @@ function AnimatedBox({ position, color }: { position: [number, number, number], 
   const meshRef = useRef<THREE.Mesh>(null!)
   
   useFrame((state, delta) => {
-    meshRef.current.rotation.x += delta * 0.3
-    meshRef.current.rotation.z += delta * 0.2
-    meshRef.current.position.y = position[1] + Math.cos(state.clock.elapsedTime * 0.8) * 0.2
+    if (meshRef.current) {
+      meshRef.current.rotation.x += delta * 0.3
+      meshRef.current.rotation.z += delta * 0.2
+      meshRef.current.position.y = position[1] + Math.cos(state.clock.elapsedTime * 0.8) * 0.2
+    }
   })
 
   return (
@@ -41,9 +45,11 @@ function AnimatedTorus({ position, color }: { position: [number, number, number]
   const meshRef = useRef<THREE.Mesh>(null!)
   
   useFrame((state, delta) => {
-    meshRef.current.rotation.x += delta * 0.2
-    meshRef.current.rotation.y += delta * 0.4
-    meshRef.current.position.x = position[0] + Math.sin(state.clock.elapsedTime * 0.5) * 0.3
+    if (meshRef.current) {
+      meshRef.current.rotation.x += delta * 0.2
+      meshRef.current.rotation.y += delta * 0.4
+      meshRef.current.position.x = position[0] + Math.sin(state.clock.elapsedTime * 0.5) * 0.3
+    }
   })
 
   return (
