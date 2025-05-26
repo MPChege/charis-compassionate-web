@@ -28,10 +28,12 @@ const Navbar = () => {
       <div className="container-custom py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2" onClick={closeMenu}>
-            <span className="font-heading font-bold text-2xl text-charis-blue-dark">
-              Charis <span className="text-charis-green-dark">Eagle Springs</span>
-            </span>
+          <Link to="/" className="flex items-center" onClick={closeMenu}>
+            <img 
+              src="/lovable-uploads/8549d152-f026-49a1-ba31-48a45e41b700.png" 
+              alt="Charis Eagle Springs" 
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
