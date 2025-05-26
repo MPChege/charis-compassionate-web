@@ -63,25 +63,31 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-                // Custom colors for Charis Eagle Springs
+                // Updated colors based on logo theme - rich browns, golds, and warm tones
                 charis: {
-                    blue: {
-                        light: '#D3E4FD', // Soft blue
-                        DEFAULT: '#93B7E0', // Medium blue
-                        dark: '#5A86B8', // Darker blue
+                    brown: {
+                        light: '#F5E6D3', // Light cream/beige
+                        DEFAULT: '#8B4513', // Rich brown from logo
+                        dark: '#654321', // Darker brown
                     },
-                    green: {
-                        light: '#F2FCE2', // Soft green
-                        DEFAULT: '#B8D8A0', // Medium green
-                        dark: '#7EA767', // Darker green
+                    gold: {
+                        light: '#FFF8DC', // Light gold/cream
+                        DEFAULT: '#DAA520', // Golden yellow from logo
+                        dark: '#B8860B', // Darker gold
                     },
-                    purple: {
-                        light: '#E5DEFF', // Soft purple
-                        DEFAULT: '#BEB4E0', // Medium purple
+                    copper: {
+                        light: '#FFEEE6', // Light copper
+                        DEFAULT: '#CD853F', // Copper/bronze tone
+                        dark: '#A0522D', // Darker copper
                     },
-                    neutral: {
-                        DEFAULT: '#8E9196', // Neutral gray
-                        light: '#F5F7F9', // Light gray background
+                    cream: {
+                        light: '#FFFEF7', // Very light cream
+                        DEFAULT: '#F5F5DC', // Beige/cream
+                        dark: '#DDD8C0', // Darker cream
+                    },
+                    accent: {
+                        red: '#8B0000', // Deep red accent
+                        orange: '#FF8C00', // Orange accent
                     }
                 }
 			},
@@ -130,13 +136,31 @@ export default {
                         opacity: '1',
                         transform: 'scale(1)'
                     }
+                },
+                'float': {
+                    '0%, 100%': {
+                        transform: 'translateY(0px)'
+                    },
+                    '50%': {
+                        transform: 'translateY(-20px)'
+                    }
+                },
+                'rotate': {
+                    '0%': {
+                        transform: 'rotateY(0deg)'
+                    },
+                    '100%': {
+                        transform: 'rotateY(360deg)'
+                    }
                 }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
                 'fade-in': 'fade-in 0.5s ease-out forwards',
-                'zoom-in': 'zoom-in 0.5s ease-out forwards'
+                'zoom-in': 'zoom-in 0.5s ease-out forwards',
+                'float': 'float 6s ease-in-out infinite',
+                'rotate': 'rotate 20s linear infinite'
 			}
 		}
 	},
