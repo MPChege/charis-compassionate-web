@@ -12,16 +12,16 @@ const Mission = () => {
               Our Mission
             </h2>
             <p className="text-lg mb-6">
-              At Charis Eagle Springs, we believe aging should be a journey of dignity, creativity, and connection. We provide safe, engaging spaces where elderly Kenyans can express themselves artistically, share their wisdom, and stay mentally and emotionally connected to their communities.
+              At Charis Eagle Springs, we are dedicated to raising awareness about mental health issues affecting the elderly and promoting compassionate, dignified care for our senior citizens.
             </p>
             <p className="text-lg mb-8">
-              Founded by Margaret Njagi, Charis Eagle Springs is more than an initiative—it is a movement to restore visibility, honor, and joy in aging.
+              We believe that every elderly person deserves respect, understanding, and quality care that enhances their wellbeing and preserves their dignity.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button asChild className="bg-charis-blue hover:bg-charis-blue-dark text-white shadow-md">
+              <Button asChild variant="highlighted" className="shadow-md">
                 <Link to="/about">Learn More</Link>
               </Button>
-              <Button asChild className="bg-charis-green hover:bg-charis-green-dark text-charis-blue-dark border-charis-blue-dark">
+              <Button asChild variant="outline" className="border-charis-blue-dark text-charis-blue-dark hover:bg-charis-blue-dark/10 hover:border-charis-blue-dark">
                 <Link to="/get-involved">Get Involved</Link>
               </Button>
             </div>
@@ -29,7 +29,7 @@ const Mission = () => {
           <div className="rounded-2xl overflow-hidden shadow-lg animate-zoom-in">
             <img 
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgsuIv5j-qDUVK7UzY60reSqYfQeCu3laidA&s" 
-              alt="Elderly person engaging in creative activities" 
+              alt="Elderly person with caregiver" 
               className="w-full h-full object-cover"
             />
           </div>

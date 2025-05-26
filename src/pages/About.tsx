@@ -1,9 +1,7 @@
 
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Heart, Users, Lightbulb, Shield } from "lucide-react";
+import { Heart, Star, Zap, Users } from "lucide-react";
 
 const About = () => {
   return (
@@ -11,44 +9,37 @@ const About = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-charis-blue to-charis-purple pt-20 pb-16 text-white">
+      <section className="bg-charis-blue-light pt-20 pb-16">
         <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Charis Eagle Springs: Upholding Dignity Across Aging
-            </h1>
-            <p className="text-xl mb-8">
-              Charis Eagle Springs is a community-centered non-profit organization based in Nairobi, Kenya, passionately dedicated to enhancing the mental well-being of the elderly through theatre, arts, and meaningful social engagement.
-            </p>
-            <p className="text-lg mb-8">
-              Our mission is to celebrate the stories, talents, and unique experiences of elderly individuals by empowering them through creative expression and providing them with the support they need to thrive in their golden years.
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-6">About Us</h1>
+            <p className="text-xl text-gray-700">
+              Learn about our mission, vision, and the story behind Charis Eagle Springs.
             </p>
           </div>
         </div>
       </section>
 
       {/* Our Story Section */}
-      <section className="section-padding bg-white">
+      <section className="py-16 bg-white">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-charis-blue-dark mb-6">
-                Our Story
-              </h2>
-              <p className="text-lg mb-6">
-                At Charis Eagle Springs, we believe aging should be a journey of dignity, creativity, and connection. We provide safe, engaging spaces where elderly Kenyans can express themselves artistically, share their wisdom, and stay mentally and emotionally connected to their communities.
+              <h2 className="text-3xl font-bold text-charis-blue-dark mb-6">Our Story</h2>
+              <p className="mb-4">
+                Charis Eagle Springs was founded in 2018 by a group of healthcare professionals and community leaders who recognized the growing need for specialized mental health support for the elderly population.
               </p>
-              <p className="text-lg mb-8">
-                Founded by <strong>Margaret Njagi</strong>, Charis Eagle Springs is more than an initiative—it is a movement to restore visibility, honor, and joy in aging.
+              <p className="mb-4">
+                Our founders witnessed firsthand the challenges faced by elderly individuals dealing with dementia, depression, and anxiety, as well as the struggles of their caregivers and family members.
               </p>
-              <Button asChild variant="highlighted" size="lg">
-                <Link to="/get-involved">Get Involved</Link>
-              </Button>
+              <p>
+                What began as a small community initiative has grown into a comprehensive organization dedicated to raising awareness, providing resources, and advocating for better mental health care for our elderly citizens.
+              </p>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
+            <div className="rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgsuIv5j-qDUVK7UzY60reSqYfQeCu3laidA&s" 
-                alt="Elderly person engaging in creative activities" 
+                src="https://images.unsplash.com/photo-1531983412531-1f49a365ffed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                alt="Elderly people in a community setting" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -56,87 +47,80 @@ const About = () => {
         </div>
       </section>
 
-      {/* Mission & Vision Section */}
-      <section className="section-padding bg-charis-neutral-light">
+      {/* Mission & Vision */}
+      <section className="py-16 bg-charis-neutral-light">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-12">
-            <div className="card-custom">
-              <h3 className="text-2xl font-bold text-charis-blue-dark mb-4">Mission</h3>
-              <p className="text-lg">
-                To promote the mental well-being of the elderly through theatre and the arts.
+            <div className="bg-white p-8 rounded-xl shadow-md">
+              <div className="h-14 w-14 rounded-full bg-charis-blue-light flex items-center justify-center mb-6">
+                <Heart className="h-8 w-8 text-charis-blue-dark" />
+              </div>
+              <h2 className="text-2xl font-bold text-charis-blue-dark mb-4">Our Mission</h2>
+              <p className="mb-3">
+                To raise awareness about mental health issues affecting the elderly and promote compassionate, dignified care for senior citizens.
+              </p>
+              <p>
+                We strive to educate communities, empower caregivers, and advocate for better policies and resources to support elderly mental health.
               </p>
             </div>
-            <div className="card-custom">
-              <h3 className="text-2xl font-bold text-charis-blue-dark mb-4">Vision</h3>
-              <p className="text-lg">
-                A society where elderly individuals are celebrated for their contributions, empowered by creative expression, and supported with the resources they need to thrive.
+            
+            <div className="bg-white p-8 rounded-xl shadow-md">
+              <div className="h-14 w-14 rounded-full bg-charis-green-light flex items-center justify-center mb-6">
+                <Star className="h-8 w-8 text-charis-green-dark" />
+              </div>
+              <h2 className="text-2xl font-bold text-charis-blue-dark mb-4">Our Vision</h2>
+              <p className="mb-3">
+                A society where elderly individuals receive the mental health support they need, where caregivers are equipped with proper resources, and where communities understand and value the dignity of their senior members.
+              </p>
+              <p>
+                We envision a world where aging with mental health challenges doesn't lead to isolation or diminished quality of life.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Core Values Section */}
-      <section className="section-padding bg-white">
+      {/* Core Values */}
+      <section className="py-16 bg-white">
         <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-charis-blue-dark text-center mb-12">
-            Core Values
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="bg-charis-blue-light rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-charis-blue-dark" />
-              </div>
-              <h3 className="text-xl font-bold text-charis-blue-dark mb-3">Respect</h3>
-              <p className="text-gray-700">
-                Honoring the dignity and individuality of every elderly person.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-charis-green-light rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-charis-blue-dark" />
-              </div>
-              <h3 className="text-xl font-bold text-charis-blue-dark mb-3">Community</h3>
-              <p className="text-gray-700">
-                Building meaningful connections across all generations.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-charis-purple-light rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Lightbulb className="w-8 h-8 text-charis-blue-dark" />
-              </div>
-              <h3 className="text-xl font-bold text-charis-blue-dark mb-3">Empowerment</h3>
-              <p className="text-gray-700">
-                Encouraging confidence and self-expression through creative outlets.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-charis-blue-light rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8 text-charis-blue-dark" />
-              </div>
-              <h3 className="text-xl font-bold text-charis-blue-dark mb-3">Integrity</h3>
-              <p className="text-gray-700">
-                Upholding transparency and ethical practice in everything we do.
-              </p>
-            </div>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Our Core Values</h2>
+            <p className="max-w-3xl mx-auto text-gray-700">
+              The principles that guide our work and define our organization's character.
+            </p>
           </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="bg-charis-blue-dark text-white py-16">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Join Our Mission</h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Be part of the movement to restore dignity, honor, and joy in aging through creative expression and community support.
-          </p>
-          <div className="flex flex-wrap justify-center gap-6">
-            <Button asChild variant="highlighted" size="lg">
-              <Link to="/get-involved">Get Involved</Link>
-            </Button>
-            <Button asChild size="lg" className="bg-white text-charis-blue-dark hover:bg-gray-100 font-semibold">
-              <Link to="/programs">View Programs</Link>
-            </Button>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: Heart,
+                title: "Compassion",
+                description: "We approach our work with empathy and genuine care for the elderly and their families."
+              },
+              {
+                icon: Users,
+                title: "Respect",
+                description: "We honor the dignity and worth of every elderly person regardless of their mental health status."
+              },
+              {
+                icon: Star,
+                title: "Excellence",
+                description: "We strive for the highest standards in our programs, resources, and advocacy efforts."
+              },
+              {
+                icon: Zap,
+                title: "Empowerment",
+                description: "We equip caregivers and communities with knowledge and tools to provide better support."
+              }
+            ].map((value, index) => (
+              <div key={index} className="bg-charis-neutral-light p-6 rounded-lg">
+                <div className="h-12 w-12 rounded-full bg-charis-blue-light flex items-center justify-center mb-4">
+                  <value.icon className="h-6 w-6 text-charis-blue-dark" />
+                </div>
+                <h3 className="text-xl font-semibold text-charis-blue-dark mb-2">{value.title}</h3>
+                <p className="text-gray-700">{value.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
