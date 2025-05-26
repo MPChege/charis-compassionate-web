@@ -1,6 +1,6 @@
 
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Sphere, Box, Torus } from '@react-three/drei'
+import { OrbitControls } from '@react-three/drei'
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -17,9 +17,10 @@ function AnimatedSphere({ position, color }: { position: [number, number, number
   })
 
   return (
-    <Sphere ref={meshRef} position={position} args={[0.8, 32, 32]}>
+    <mesh ref={meshRef} position={position}>
+      <sphereGeometry args={[0.8, 32, 32]} />
       <meshStandardMaterial color={color} metalness={0.6} roughness={0.2} />
-    </Sphere>
+    </mesh>
   )
 }
 
@@ -35,9 +36,10 @@ function AnimatedBox({ position, color }: { position: [number, number, number], 
   })
 
   return (
-    <Box ref={meshRef} position={position} args={[1, 1, 1]}>
+    <mesh ref={meshRef} position={position}>
+      <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color={color} metalness={0.4} roughness={0.3} />
-    </Box>
+    </mesh>
   )
 }
 
@@ -53,9 +55,10 @@ function AnimatedTorus({ position, color }: { position: [number, number, number]
   })
 
   return (
-    <Torus ref={meshRef} position={position} args={[0.6, 0.2, 16, 100]}>
+    <mesh ref={meshRef} position={position}>
+      <torusGeometry args={[0.6, 0.2, 16, 100]} />
       <meshStandardMaterial color={color} metalness={0.7} roughness={0.1} />
-    </Torus>
+    </mesh>
   )
 }
 
