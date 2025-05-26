@@ -36,7 +36,7 @@ const Index = () => {
                   Learn More
                 </Link>
               </Button>
-              <Button asChild size="lg" className="bg-charis-green hover:bg-charis-green-dark text-charis-blue-dark">
+              <Button asChild variant="highlighted" size="lg">
                 <Link to="/programs">
                   Join Our Programs
                 </Link>
@@ -83,13 +83,13 @@ const Index = () => {
             Join us in our mission to celebrate and empower elderly individuals through creative expression and community support.
           </p>
           <div className="flex flex-wrap justify-center gap-6">
-            <Button asChild size="lg" className="bg-charis-green hover:bg-charis-green-dark text-charis-blue-dark">
+            <Button asChild variant="highlighted" size="lg">
               <Link to="/get-involved">
                 <Heart className="mr-2 h-5 w-5" />
                 Get Involved
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-charis-blue-dark flex items-center">
+            <Button asChild size="lg" className="bg-white text-charis-blue-dark hover:bg-gray-100 font-semibold">
               <Link to="/programs">
                 <Calendar className="mr-2 h-5 w-5" />
                 Join Our Programs
