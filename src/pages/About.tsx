@@ -1,7 +1,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Heart, Star, Zap, Users } from "lucide-react";
+import { Heart, Star, Users, Shield } from "lucide-react";
 
 const About = () => {
   return (
@@ -27,13 +27,13 @@ const About = () => {
             <div>
               <h2 className="text-3xl font-bold text-charis-blue-dark mb-6">Our Story</h2>
               <p className="mb-4">
-                Charis Eagle Springs was founded in 2018 by a group of healthcare professionals and community leaders who recognized the growing need for specialized mental health support for the elderly population.
+                At Charis Eagle Springs, we believe aging should be a journey of dignity, creativity, and connection. We provide safe, engaging spaces where elderly Kenyans can express themselves artistically, share their wisdom, and stay mentally and emotionally connected to their communities.
               </p>
               <p className="mb-4">
-                Our founders witnessed firsthand the challenges faced by elderly individuals dealing with dementia, depression, and anxiety, as well as the struggles of their caregivers and family members.
+                Founded by Margaret Njagi, Charis Eagle Springs is more than an initiative—it is a movement to restore visibility, honor, and joy in aging.
               </p>
               <p>
-                What began as a small community initiative has grown into a comprehensive organization dedicated to raising awareness, providing resources, and advocating for better mental health care for our elderly citizens.
+                We are dedicated to creating meaningful opportunities for elderly individuals to thrive through creative expression and community engagement.
               </p>
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg">
@@ -56,11 +56,8 @@ const About = () => {
                 <Heart className="h-8 w-8 text-charis-blue-dark" />
               </div>
               <h2 className="text-2xl font-bold text-charis-blue-dark mb-4">Our Mission</h2>
-              <p className="mb-3">
-                To raise awareness about mental health issues affecting the elderly and promote compassionate, dignified care for senior citizens.
-              </p>
               <p>
-                We strive to educate communities, empower caregivers, and advocate for better policies and resources to support elderly mental health.
+                To promote the mental well-being of the elderly through theatre and the arts.
               </p>
             </div>
             
@@ -69,11 +66,8 @@ const About = () => {
                 <Star className="h-8 w-8 text-charis-green-dark" />
               </div>
               <h2 className="text-2xl font-bold text-charis-blue-dark mb-4">Our Vision</h2>
-              <p className="mb-3">
-                A society where elderly individuals receive the mental health support they need, where caregivers are equipped with proper resources, and where communities understand and value the dignity of their senior members.
-              </p>
               <p>
-                We envision a world where aging with mental health challenges doesn't lead to isolation or diminished quality of life.
+                A society where elderly individuals are celebrated for their contributions, empowered by creative expression, and supported with the resources they need to thrive.
               </p>
             </div>
           </div>
@@ -93,24 +87,24 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                icon: Heart,
-                title: "Compassion",
-                description: "We approach our work with empathy and genuine care for the elderly and their families."
+                icon: Shield,
+                title: "Respect",
+                description: "Honoring the dignity and individuality of every elderly person."
               },
               {
                 icon: Users,
-                title: "Respect",
-                description: "We honor the dignity and worth of every elderly person regardless of their mental health status."
+                title: "Community",
+                description: "Building meaningful connections across all generations."
               },
               {
                 icon: Star,
-                title: "Excellence",
-                description: "We strive for the highest standards in our programs, resources, and advocacy efforts."
+                title: "Empowerment",
+                description: "Encouraging confidence and self-expression through creative outlets."
               },
               {
-                icon: Zap,
-                title: "Empowerment",
-                description: "We equip caregivers and communities with knowledge and tools to provide better support."
+                icon: Heart,
+                title: "Integrity",
+                description: "Upholding transparency and ethical practice in everything we do."
               }
             ].map((value, index) => (
               <div key={index} className="bg-charis-neutral-light p-6 rounded-lg">

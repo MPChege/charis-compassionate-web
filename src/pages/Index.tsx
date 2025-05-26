@@ -17,19 +17,48 @@ const Index = () => {
       {/* Hero Slider Section */}
       <HeroSlider />
 
-      {/* Stats Section */}
+      {/* Main Content Section */}
       <section className="py-16 bg-white">
         <div className="container-custom">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-8">
+              Charis Eagle Springs: Upholding Dignity Across Aging
+            </h1>
+            <p className="text-xl mb-6 text-gray-700">
+              Charis Eagle Springs is a community-centered non-profit organization based in Nairobi, Kenya, passionately dedicated to enhancing the mental well-being of the elderly through theatre, arts, and meaningful social engagement.
+            </p>
+            <p className="text-lg mb-8 text-gray-700">
+              Our mission is to celebrate the stories, talents, and unique experiences of elderly individuals by empowering them through creative expression and providing them with the support they need to thrive in their golden years.
+            </p>
+            <div className="flex flex-wrap justify-center gap-6">
+              <Button asChild size="lg" className="bg-charis-blue hover:bg-charis-blue-dark text-white">
+                <Link to="/about">
+                  Learn More
+                </Link>
+              </Button>
+              <Button asChild size="lg" className="bg-charis-green hover:bg-charis-green-dark text-charis-blue-dark">
+                <Link to="/programs">
+                  Join Our Programs
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-charis-neutral-light">
+        <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6 rounded-xl bg-charis-blue-light/50 hover:bg-charis-blue-light transition-colors">
+            <div className="text-center p-6 rounded-xl bg-white hover:shadow-lg transition-shadow">
               <h3 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-2">50+</h3>
-              <p className="text-gray-700">Community Workshops</p>
+              <p className="text-gray-700">Theatre Workshops</p>
             </div>
-            <div className="text-center p-6 rounded-xl bg-charis-green-light/50 hover:bg-charis-green-light transition-colors">
+            <div className="text-center p-6 rounded-xl bg-white hover:shadow-lg transition-shadow">
               <h3 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-2">1,000+</h3>
-              <p className="text-gray-700">Caregivers Trained</p>
+              <p className="text-gray-700">Elderly Participants</p>
             </div>
-            <div className="text-center p-6 rounded-xl bg-charis-purple-light/50 hover:bg-charis-purple-light transition-colors">
+            <div className="text-center p-6 rounded-xl bg-white hover:shadow-lg transition-shadow">
               <h3 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-2">5,000+</h3>
               <p className="text-gray-700">Lives Impacted</p>
             </div>
@@ -51,16 +80,16 @@ const Index = () => {
         <div className="container-custom text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Make a Difference?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Join us in our mission to improve the lives of elderly individuals by supporting compassionate care and mental health awareness.
+            Join us in our mission to celebrate and empower elderly individuals through creative expression and community support.
           </p>
           <div className="flex flex-wrap justify-center gap-6">
-            <Button asChild size="lg" variant="highlighted" className="flex items-center">
+            <Button asChild size="lg" className="bg-charis-green hover:bg-charis-green-dark text-charis-blue-dark">
               <Link to="/get-involved">
                 <Heart className="mr-2 h-5 w-5" />
-                Donate Now
+                Get Involved
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="text-white border-white hover:bg-white/20 flex items-center">
+            <Button asChild variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-charis-blue-dark flex items-center">
               <Link to="/programs">
                 <Calendar className="mr-2 h-5 w-5" />
                 Join Our Programs

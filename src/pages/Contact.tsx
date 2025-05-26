@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Mail, Phone, MapPin, Send, Facebook, Instagram, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Facebook, Instagram, Twitter, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -71,6 +71,12 @@ const Contact = () => {
             <div>
               <h2 className="text-3xl font-bold text-charis-blue-dark mb-8">Get in Touch</h2>
               
+              {/* Founder Information */}
+              <div className="mb-8 p-6 bg-charis-neutral-light rounded-xl">
+                <h3 className="text-2xl font-bold text-charis-blue-dark mb-2">Margaret Njagi</h3>
+                <p className="text-lg text-gray-700 mb-4">Founder & CEO</p>
+              </div>
+              
               <div className="space-y-6">
                 <Card className="bg-charis-neutral-light border-none hover:bg-charis-blue-light/30 transition-colors">
                   <CardContent className="flex items-start p-6">
@@ -78,8 +84,8 @@ const Contact = () => {
                       <MapPin className="h-6 w-6 text-charis-blue-dark" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-xl text-charis-blue-dark mb-2">Our Location</h3>
-                      <p className="text-gray-700">123 Compassion Way</p>
+                      <h3 className="font-semibold text-xl text-charis-blue-dark mb-2">Our Address</h3>
+                      <p className="text-gray-700">P.O. Box 62362-00200</p>
                       <p className="text-gray-700">Nairobi, Kenya</p>
                     </div>
                   </CardContent>
@@ -92,7 +98,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-xl text-charis-blue-dark mb-2">Phone</h3>
-                      <p className="text-gray-700">+254 123 456 789</p>
+                      <p className="text-gray-700">+254 722 679 107</p>
                       <p className="text-gray-500 text-sm">Monday - Friday, 9am - 5pm</p>
                     </div>
                   </CardContent>
@@ -105,8 +111,28 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-xl text-charis-blue-dark mb-2">Email</h3>
-                      <p className="text-gray-700">info@chariseaglesprings.org</p>
+                      <p className="text-gray-700">shironjagi@gmail.com</p>
                       <p className="text-gray-500 text-sm">We'll respond as soon as possible</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-charis-neutral-light border-none hover:bg-charis-blue-light/30 transition-colors">
+                  <CardContent className="flex items-start p-6">
+                    <div className="h-12 w-12 rounded-full bg-charis-blue-light flex items-center justify-center mr-6">
+                      <Globe className="h-6 w-6 text-charis-blue-dark" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-xl text-charis-blue-dark mb-2">Website</h3>
+                      <a 
+                        href="http://www.commage.org" 
+                        target="_blank" 
+                        rel="noreferrer"
+                        className="text-charis-blue hover:text-charis-blue-dark"
+                      >
+                        www.commage.org
+                      </a>
+                      <p className="text-gray-500 text-sm">Africa Chapter – Kenya</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -121,7 +147,7 @@ const Contact = () => {
                     href="https://facebook.com" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="h-12 w-12 rounded-full bg-charis-blue flex items-center justify-center text-white hover:bg-charis-blue-dark transition-colors"
+                    className="h-12 w-12 rounded-full bg-charis-blue hover:bg-charis-blue-dark flex items-center justify-center text-white transition-colors"
                     aria-label="Facebook"
                   >
                     <Facebook size={20} />
@@ -130,7 +156,7 @@ const Contact = () => {
                     href="https://instagram.com" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="h-12 w-12 rounded-full bg-charis-blue flex items-center justify-center text-white hover:bg-charis-blue-dark transition-colors"
+                    className="h-12 w-12 rounded-full bg-charis-blue hover:bg-charis-blue-dark flex items-center justify-center text-white transition-colors"
                     aria-label="Instagram"
                   >
                     <Instagram size={20} />
@@ -139,7 +165,7 @@ const Contact = () => {
                     href="https://twitter.com" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="h-12 w-12 rounded-full bg-charis-blue flex items-center justify-center text-white hover:bg-charis-blue-dark transition-colors"
+                    className="h-12 w-12 rounded-full bg-charis-blue hover:bg-charis-blue-dark flex items-center justify-center text-white transition-colors"
                     aria-label="Twitter"
                   >
                     <Twitter size={20} />
@@ -236,7 +262,7 @@ const Contact = () => {
                       required
                     />
                   </div>
-                  <Button type="submit" className="w-full bg-charis-blue hover:bg-charis-blue-dark">
+                  <Button type="submit" className="w-full bg-charis-blue hover:bg-charis-blue-dark text-white">
                     <Send className="mr-2 h-5 w-5" />
                     Send Message
                   </Button>
@@ -247,7 +273,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* FAQ (Optional) */}
+      {/* FAQ Section */}
       <section className="py-16 bg-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center mb-12">
@@ -261,19 +287,19 @@ const Contact = () => {
             {[
               {
                 question: "How can I volunteer with Charis Eagle Springs?",
-                answer: "You can volunteer by filling out the form on our Get Involved page, or by contacting us directly via email or phone. We have various volunteer opportunities available depending on your skills and interests."
+                answer: "You can volunteer by filling out the form on our Get Involved page, or by contacting us directly via email or phone. We have various volunteer opportunities in theatre workshops, support groups, and community outreach."
               },
               {
-                question: "Are donations to Charis Eagle Springs tax-deductible?",
-                answer: "Yes, Charis Eagle Springs is a registered non-profit organization, and all donations are tax-deductible to the extent allowed by law. We provide receipts for all donations for tax purposes."
+                question: "Do you accept donations?",
+                answer: "Yes, we welcome donations to support our programs and initiatives. All contributions help us provide better services to elderly individuals in our community."
               },
               {
-                question: "Do you offer training for family caregivers?",
-                answer: "Yes, we regularly conduct training sessions for family caregivers of elderly individuals with mental health challenges. Check our Awareness Hub page for upcoming training sessions and workshops."
+                question: "Can elderly individuals with no theatre experience join?",
+                answer: "Absolutely! Our programs are designed for all skill levels. We believe everyone has stories to tell and talents to share, regardless of previous experience."
               },
               {
-                question: "How can my organization partner with Charis Eagle Springs?",
-                answer: "We welcome partnerships with organizations that share our mission of improving elderly mental health care. Please contact us through our website or by email to discuss potential collaboration opportunities."
+                question: "How can organizations partner with Charis Eagle Springs?",
+                answer: "We welcome partnerships with organizations that share our mission. Please contact Margaret Njagi directly to discuss potential collaboration opportunities."
               }
             ].map((faq, index) => (
               <div key={index} className="bg-charis-neutral-light rounded-lg p-6">
