@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -56,10 +55,10 @@ const HeroSlider = () => {
               {slides[currentSlide].description}
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg" className="bg-charis-blue text-white hover:bg-charis-blue-dark font-semibold shadow-lg border-2 border-white">
+              <Button asChild variant="highlighted" size="lg">
                 <Link to="/get-involved">Get Involved</Link>
               </Button>
-              <Button asChild size="lg" className="bg-white text-charis-blue-dark hover:bg-charis-green-light hover:text-charis-blue-dark font-semibold shadow-lg">
+              <Button asChild size="lg" className="bg-white text-charis-blue-dark hover:bg-gray-100 font-semibold shadow-lg border-2 border-charis-blue-dark">
                 <Link to="/awareness-hub">Learn More</Link>
               </Button>
             </div>
