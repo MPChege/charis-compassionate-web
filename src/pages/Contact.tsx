@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,28 +8,30 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
-
 const Contact = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: ""
   });
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
+    const {
+      name,
+      value
+    } = e.target;
+    setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    
+
     // Reset the form
     setFormData({
       name: "",
@@ -43,12 +44,10 @@ const Contact = () => {
     toast({
       title: "Message Sent!",
       description: "Thank you for contacting us. We'll respond as soon as possible.",
-      variant: "default",
+      variant: "default"
     });
   };
-
-  return (
-    <>
+  return <>
       <Navbar />
       
       {/* Enhanced Hero Section */}
@@ -151,23 +150,14 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-xl text-charis-blue-dark mb-2">Email</h3>
-                      <p className="text-gray-700">shironjagi@gmail.com</p>
+                      <p className="text-gray-700">info@chriseaglesprings.org</p>
                       <p className="text-gray-500 text-sm">We'll respond as soon as possible</p>
                     </div>
                   </CardContent>
                 </Card>
 
                 <Card className="bg-charis-neutral-light border-none hover:bg-charis-blue-light/30 transition-colors">
-                  <CardContent className="flex items-start p-6">
-                    <div className="h-12 w-12 rounded-full bg-charis-blue-light flex items-center justify-center mr-6">
-                      <User className="h-6 w-6 text-charis-blue-dark" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-xl text-charis-blue-dark mb-2">CEO & Founder</h3>
-                      <p className="text-gray-700">Margaret Njagi</p>
-                      <p className="text-gray-500 text-sm">Leading our mission with passion and dedication</p>
-                    </div>
-                  </CardContent>
+                  
                 </Card>
               </div>
 
@@ -176,36 +166,14 @@ const Contact = () => {
               <div>
                 <h3 className="font-semibold text-xl text-charis-blue-dark mb-4">Connect With Us</h3>
                 <div className="flex space-x-4">
-                  <a 
-                    href="https://facebook.com" 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="h-12 w-12 rounded-full bg-charis-blue flex items-center justify-center text-white hover:bg-charis-blue-dark transition-colors"
-                    aria-label="Facebook"
-                  >
+                  <a href="https://facebook.com" target="_blank" rel="noreferrer" className="h-12 w-12 rounded-full bg-charis-blue flex items-center justify-center text-white hover:bg-charis-blue-dark transition-colors" aria-label="Facebook">
                     <Facebook size={20} />
                   </a>
-                  <a 
-                    href="https://instagram.com" 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="h-12 w-12 rounded-full bg-charis-blue flex items-center justify-center text-white hover:bg-charis-blue-dark transition-colors"
-                    aria-label="Instagram"
-                  >
+                  <a href="https://instagram.com" target="_blank" rel="noreferrer" className="h-12 w-12 rounded-full bg-charis-blue flex items-center justify-center text-white hover:bg-charis-blue-dark transition-colors" aria-label="Instagram">
                     <Instagram size={20} />
                   </a>
-                  <a 
-                    href="https://x.com" 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="h-12 w-12 rounded-full bg-charis-blue flex items-center justify-center text-white hover:bg-charis-blue-dark transition-colors"
-                    aria-label="X (formerly Twitter)"
-                  >
-                    <img 
-                      src="/lovable-uploads/c5b2be7f-c9d2-401e-8b03-2b8f54fe800c.png" 
-                      alt="X" 
-                      className="w-5 h-5"
-                    />
+                  <a href="https://x.com" target="_blank" rel="noreferrer" className="h-12 w-12 rounded-full bg-charis-blue flex items-center justify-center text-white hover:bg-charis-blue-dark transition-colors" aria-label="X (formerly Twitter)">
+                    <img src="/lovable-uploads/c5b2be7f-c9d2-401e-8b03-2b8f54fe800c.png" alt="X" className="w-5 h-5" />
                   </a>
                 </div>
               </div>
@@ -213,17 +181,9 @@ const Contact = () => {
 
             {/* Google Map */}
             <div className="h-full min-h-[400px] rounded-xl overflow-hidden shadow-lg">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.35853792106!2d36.68258066316405!3d-1.3028617916137266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1650222190172!5m2!1sen!2sus" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Charis Eagle Springs Location"
-                className="rounded-xl"
-              ></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.35853792106!2d36.68258066316405!3d-1.3028617916137266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1650222190172!5m2!1sen!2sus" width="100%" height="100%" style={{
+              border: 0
+            }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Charis Eagle Springs Location" className="rounded-xl"></iframe>
             </div>
           </div>
         </div>
@@ -248,56 +208,26 @@ const Contact = () => {
                       <label htmlFor="name" className="text-sm font-medium text-gray-700">
                         Your Name
                       </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Enter your full name"
-                        required
-                      />
+                      <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Enter your full name" required />
                     </div>
                     <div className="space-y-2">
                       <label htmlFor="email" className="text-sm font-medium text-gray-700">
                         Email Address
                       </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="Enter your email"
-                        required
-                      />
+                      <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" required />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="subject" className="text-sm font-medium text-gray-700">
                       Subject
                     </label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      placeholder="What is your message about?"
-                      required
-                    />
+                    <Input id="subject" name="subject" value={formData.subject} onChange={handleChange} placeholder="What is your message about?" required />
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="message" className="text-sm font-medium text-gray-700">
                       Message
                     </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Write your message here..."
-                      rows={6}
-                      required
-                    />
+                    <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Write your message here..." rows={6} required />
                   </div>
                   <Button type="submit" className="w-full bg-charis-blue hover:bg-charis-blue-dark">
                     <Send className="mr-2 h-5 w-5" />
@@ -321,36 +251,27 @@ const Contact = () => {
           </div>
 
           <div className="max-w-3xl mx-auto space-y-6">
-            {[
-              {
-                question: "How can I volunteer with Charis Eagle Springs?",
-                answer: "You can volunteer by filling out the form on our Get Involved page, or by contacting us directly via email or phone. We have various volunteer opportunities available depending on your skills and interests."
-              },
-              {
-                question: "Are donations to Charis Eagle Springs tax-deductible?",
-                answer: "Yes, Charis Eagle Springs is a registered non-profit organization, and all donations are tax-deductible to the extent allowed by law. We provide receipts for all donations for tax purposes."
-              },
-              {
-                question: "Do you offer training for family caregivers?",
-                answer: "Yes, we regularly conduct training sessions for family caregivers of elderly individuals with mental health challenges. Check our Awareness Hub page for upcoming training sessions and workshops."
-              },
-              {
-                question: "How can my organization partner with Charis Eagle Springs?",
-                answer: "We welcome partnerships with organizations that share our mission of improving elderly mental health care. Please contact us through our website or by email to discuss potential collaboration opportunities."
-              }
-            ].map((faq, index) => (
-              <div key={index} className="bg-charis-neutral-light rounded-lg p-6">
+            {[{
+            question: "How can I volunteer with Charis Eagle Springs?",
+            answer: "You can volunteer by filling out the form on our Get Involved page, or by contacting us directly via email or phone. We have various volunteer opportunities available depending on your skills and interests."
+          }, {
+            question: "Are donations to Charis Eagle Springs tax-deductible?",
+            answer: "Yes, Charis Eagle Springs is a registered non-profit organization, and all donations are tax-deductible to the extent allowed by law. We provide receipts for all donations for tax purposes."
+          }, {
+            question: "Do you offer training for family caregivers?",
+            answer: "Yes, we regularly conduct training sessions for family caregivers of elderly individuals with mental health challenges. Check our Awareness Hub page for upcoming training sessions and workshops."
+          }, {
+            question: "How can my organization partner with Charis Eagle Springs?",
+            answer: "We welcome partnerships with organizations that share our mission of improving elderly mental health care. Please contact us through our website or by email to discuss potential collaboration opportunities."
+          }].map((faq, index) => <div key={index} className="bg-charis-neutral-light rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-charis-blue-dark mb-2">{faq.question}</h3>
                 <p className="text-gray-700">{faq.answer}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
 
       <Footer />
-    </>
-  );
+    </>;
 };
-
 export default Contact;
