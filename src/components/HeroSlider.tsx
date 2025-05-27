@@ -8,26 +8,27 @@ const slides = [
   {
     id: 1,
     image: "/lovable-uploads/4b610869-b25a-4fac-bbd5-a76fc765b517.png",
-    title: "Compassionate Care for Our Elderly",
-    description: "Raising awareness about mental health issues affecting the elderly and promoting dignified, respectful care."
+    title: "Charis Eagle Springs",
+    subtitle: "Upholding Dignity Across Aging",
+    description: "Promoting mental well-being of the elderly through theatre and the arts."
   },
   {
     id: 2,
     image: "/lovable-uploads/a3eabbcc-f8ac-4805-a8a2-a318cd803e6e.png",
-    title: "Supporting Elderly Mental Health",
-    description: "Providing resources and education for families, caregivers, and communities."
+    title: "Theatre Workshops",
+    description: "Encouraging drama and storytelling for self-expression and confidence-building among our elderly community."
   },
   {
     id: 3,
     image: "/lovable-uploads/f38fe72c-5c15-4c17-9e2f-aeda7abdb70a.png",
-    title: "Building Stronger Communities",
-    description: "Creating networks of support for the elderly and their caregivers."
+    title: "Community Performances",
+    description: "Showcasing elderly talents, offering a platform for storytelling and recognition within our community."
   },
   {
     id: 4,
     image: "/lovable-uploads/edbba8da-699b-4792-9129-417439bd312c.png",
-    title: "Empowering Through Connection",
-    description: "Fostering meaningful relationships and social connections within our community to combat isolation and promote wellbeing."
+    title: "Building Connections",
+    description: "Reducing social isolation through vibrant community engagement and fostering intergenerational relationships."
   }
 ];
 
@@ -78,9 +79,14 @@ const HeroSlider = () => {
         <div className={`max-w-4xl mx-auto transition-all duration-1000 delay-300 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
-          <h1 className="font-heading text-white mb-8 leading-tight drop-shadow-lg">
+          <h1 className="font-heading text-white mb-4 leading-tight drop-shadow-lg">
             {slides[currentSlide].title}
           </h1>
+          {slides[currentSlide].subtitle && (
+            <h2 className="text-2xl md:text-3xl font-light text-white/90 mb-6 drop-shadow-md">
+              {slides[currentSlide].subtitle}
+            </h2>
+          )}
           <p className="text-xl md:text-2xl font-light text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
             {slides[currentSlide].description}
           </p>
@@ -94,9 +100,9 @@ const HeroSlider = () => {
               </Link>
             </Button>
             <Button asChild className="group relative overflow-hidden border-2 border-white text-white bg-transparent hover:bg-white hover:text-black px-8 py-4 text-sm font-medium transition-all duration-500 transform hover:scale-105 hover:shadow-xl">
-              <Link to="/awareness-hub" className="flex items-center relative z-10">
+              <Link to="/programs" className="flex items-center relative z-10">
                 <Users className="mr-2 h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
-                Learn More
+                Our Programs
                 <div className="absolute inset-0 bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out -z-10"></div>
               </Link>
             </Button>

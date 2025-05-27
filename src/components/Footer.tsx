@@ -10,8 +10,8 @@ const Footer = () => {
           {/* Column 1: About */}
           <div>
             <h3 className="text-xl font-semibold mb-4">Charis Eagle Springs</h3>
-            <p className="text-white/80">
-              Promoting compassionate care and raising awareness about elderly mental health.
+            <p className="text-white/80 mb-4">
+              Promoting mental well-being of the elderly through theatre and the arts. Upholding dignity across aging.
             </p>
             <div className="flex space-x-4 mt-6">
               <a 
@@ -50,8 +50,8 @@ const Footer = () => {
             <ul className="space-y-3">
               {[
                 { name: "About Us", path: "/about" },
-                { name: "Awareness Hub", path: "/awareness-hub" },
-                { name: "Programs", path: "/programs" },
+                { name: "Theatre Workshops", path: "/programs" },
+                { name: "Community Performances", path: "/programs" },
                 { name: "Get Involved", path: "/get-involved" },
                 { name: "Contact", path: "/contact" },
               ].map((link) => (
@@ -67,15 +67,15 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: Resources */}
+          {/* Column 3: Programs */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Resources</h3>
+            <h3 className="text-xl font-semibold mb-4">Our Programs</h3>
             <ul className="space-y-3">
               {[
-                { name: "Dementia Care Guide", path: "/awareness-hub" },
-                { name: "Mental Health Support", path: "/awareness-hub" },
-                { name: "Caregiver Resources", path: "/awareness-hub" },
-                { name: "Community Programs", path: "/programs" },
+                { name: "Theatre Workshops", path: "/programs" },
+                { name: "Community Performances", path: "/programs" },
+                { name: "Peer Support Groups", path: "/programs" },
+                { name: "Awareness Campaigns", path: "/awareness-hub" },
               ].map((resource, index) => (
                 <li key={index}>
                   <Link 
@@ -96,25 +96,25 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin size={20} className="mr-2 mt-1 flex-shrink-0 text-charis-green-light" />
                 <span className="text-white/80">
-                  123 Compassion Way, Nairobi, Kenya
+                  P.O. Box 62362-00200, Nairobi, Kenya
                 </span>
               </li>
               <li className="flex items-center">
                 <PhoneCall size={20} className="mr-2 flex-shrink-0 text-charis-green-light" />
                 <a 
-                  href="tel:+254123456789" 
+                  href="tel:+254722679107" 
                   className="text-white/80 hover:text-white transition-colors"
                 >
-                  +254 123 456 789
+                  +254 722 679 107
                 </a>
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="mr-2 flex-shrink-0 text-charis-green-light" />
                 <a 
-                  href="mailto:info@chariseaglesprings.org" 
+                  href="mailto:shironjagi@gmail.com" 
                   className="text-white/80 hover:text-white transition-colors"
                 >
-                  info@chariseaglesprings.org
+                  shironjagi@gmail.com
                 </a>
               </li>
             </ul>

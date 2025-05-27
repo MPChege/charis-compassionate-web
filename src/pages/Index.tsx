@@ -8,7 +8,7 @@ import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
 import HeroSlider from "@/components/HeroSlider";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { ArrowRight, Heart, Calendar } from "lucide-react";
+import { ArrowRight, Heart, Calendar, Star, Users, Zap } from "lucide-react";
 
 const StatsSection = () => {
   const { elementRef, isVisible } = useScrollAnimation(0.3);
@@ -31,14 +31,14 @@ const StatsSection = () => {
             Our Impact
           </span>
           <h2 className="font-heading text-black">
-            Making a Difference
+            Making a Difference Through Arts
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {[
-            { number: "50+", label: "Community Workshops", delay: "delay-200" },
-            { number: "1,000+", label: "Caregivers Trained", delay: "delay-400" },
-            { number: "5,000+", label: "Lives Impacted", delay: "delay-600" },
+            { number: "200+", label: "Elderly Participants", delay: "delay-200" },
+            { number: "50+", label: "Theatre Workshops", delay: "delay-400" },
+            { number: "25+", label: "Community Performances", delay: "delay-600" },
           ].map((stat, index) => (
             <div 
               key={index}
@@ -53,6 +53,65 @@ const StatsSection = () => {
                 <p className="text-lg font-light text-gray-600">
                   {stat.label}
                 </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CoreValuesSection = () => {
+  const { elementRef, isVisible } = useScrollAnimation(0.3);
+
+  const values = [
+    {
+      icon: Heart,
+      title: "Respect",
+      description: "Honoring dignity and individuality of every elderly person"
+    },
+    {
+      icon: Users,
+      title: "Community",
+      description: "Encouraging connections and belonging through shared experiences"
+    },
+    {
+      icon: Zap,
+      title: "Empowerment",
+      description: "Promoting self-expression and confidence through the arts"
+    },
+    {
+      icon: Star,
+      title: "Integrity",
+      description: "Ensuring transparency and ethical practices in all our work"
+    }
+  ];
+
+  return (
+    <section ref={elementRef} className="section-padding bg-white">
+      <div className="container-custom">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-charis-blue-dark mb-4">Our Core Values</h2>
+          <p className="max-w-3xl mx-auto text-gray-700">
+            The principles that guide our work and define our commitment to elderly mental wellness through the arts.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {values.map((value, index) => (
+            <div 
+              key={index} 
+              className={`text-center transition-all duration-1000 delay-${(index + 1) * 200} ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              <div className="bg-charis-neutral-light p-8 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
+                <div className="h-16 w-16 rounded-full bg-charis-blue-light flex items-center justify-center mb-6 mx-auto">
+                  <value.icon className="h-8 w-8 text-charis-blue-dark" />
+                </div>
+                <h3 className="text-xl font-semibold text-charis-blue-dark mb-4">{value.title}</h3>
+                <p className="text-gray-700 leading-relaxed">{value.description}</p>
               </div>
             </div>
           ))}
@@ -86,23 +145,23 @@ const CallToAction = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
           <h2 className="font-heading text-white mb-8 drop-shadow-lg">
-            Ready to Make a Difference?
+            Join Us in Promoting Elderly Mental Wellness
           </h2>
           <p className="text-xl font-light text-white/90 mb-12 leading-relaxed drop-shadow-md">
-            Join us in our mission to improve the lives of elderly individuals by supporting compassionate care and mental health awareness.
+            Help us create a society where elderly individuals are celebrated, empowered, and supported through the transformative power of theatre and arts.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <Button asChild className="bg-white text-black hover:bg-gray-100 px-8 py-4 text-sm font-medium transition-all duration-300 group shadow-lg">
               <Link to="/get-involved" className="flex items-center">
                 <Heart className="mr-2 h-4 w-4" />
-                Donate Now
+                Support Our Mission
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
             <Button asChild className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 text-sm font-medium transition-all duration-300 group bg-transparent shadow-lg">
               <Link to="/programs" className="flex items-center">
                 <Calendar className="mr-2 h-4 w-4" />
-                Join Our Programs
+                Explore Programs
               </Link>
             </Button>
           </div>
@@ -120,6 +179,7 @@ const Index = () => {
       <StatsSection />
       <Mission />
       <Services />
+      <CoreValuesSection />
       <Testimonials />
       <CallToAction />
       <Footer />

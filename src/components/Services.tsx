@@ -1,31 +1,31 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Brain, Heart, Users, Landmark, BookOpen } from "lucide-react";
+import { Theater, Users, Heart, Megaphone, BookOpen } from "lucide-react";
 
 const servicesData = [
   {
-    title: "Dementia Awareness",
-    description: "Educational resources and support for understanding and managing dementia and Alzheimer's disease.",
-    icon: Brain,
+    title: "Theatre Workshops",
+    description: "Encouraging drama and storytelling for self-expression and confidence-building among our elderly community members.",
+    icon: Theater,
   },
   {
-    title: "Mental Health Support",
-    description: "Programs focused on elderly depression, anxiety, and other mental health challenges.",
-    icon: Heart,
-  },
-  {
-    title: "Caregiver Training",
-    description: "Training programs for professional and family caregivers to provide compassionate, effective care.",
+    title: "Community Performances",
+    description: "Showcasing elderly talents, offering a platform for storytelling and recognition within our vibrant community.",
     icon: Users,
   },
   {
-    title: "Advocacy",
-    description: "Advocating for better policies and resources for elderly mental health services.",
-    icon: Landmark,
+    title: "Peer Support Groups",
+    description: "Facilitating emotional support and peer interaction through guided activities and meaningful connections.",
+    icon: Heart,
   },
   {
-    title: "Community Education",
-    description: "Workshops and resources to help communities better understand and support their elderly members.",
+    title: "Awareness Campaigns",
+    description: "Educating the community on mental health needs of the elderly and the value of creative engagement in aging.",
+    icon: Megaphone,
+  },
+  {
+    title: "Arts Programs",
+    description: "Providing accessible artistic programs for mental wellness and fostering intergenerational relationships.",
     icon: BookOpen,
   },
 ];
@@ -35,9 +35,9 @@ const Services = () => {
     <section className="section-padding bg-charis-neutral-light">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-charis-blue-dark mb-4">What We Do</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-charis-blue-dark mb-4">Our Programs & Activities</h2>
           <p className="max-w-3xl mx-auto text-gray-700">
-            Our programs and initiatives aim to improve the quality of life for elderly individuals by addressing their mental health needs and fostering supportive communities.
+            Our comprehensive programs aim to promote mental well-being of the elderly through theatre, arts, and community engagement while reducing social isolation.
           </p>
         </div>
 

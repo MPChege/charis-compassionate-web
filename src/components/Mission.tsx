@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { ArrowRight, Heart, Users } from "lucide-react";
+import { ArrowRight, Heart, Users, Star } from "lucide-react";
 
 const Mission = () => {
   const { elementRef, isVisible } = useScrollAnimation(0.3);
@@ -16,19 +16,36 @@ const Mission = () => {
           }`}>
             <div className="mb-8">
               <span className="text-sm font-light tracking-widest text-gray-500 uppercase">
-                Our Purpose
+                About Us
               </span>
             </div>
             <h2 className="font-heading text-black mb-8">
-              Our Mission
+              Our Mission & Vision
             </h2>
-            <div className="space-y-6 text-gray-700">
-              <p className="text-lg font-light leading-relaxed">
-                At Charis Eagle Springs, we are dedicated to raising awareness about mental health issues affecting the elderly and promoting compassionate, dignified care for our senior citizens.
-              </p>
-              <p className="text-lg font-light leading-relaxed">
-                We believe that every elderly person deserves respect, understanding, and quality care that enhances their wellbeing and preserves their dignity.
-              </p>
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-xl font-semibold text-black mb-4 flex items-center">
+                  <Heart className="mr-2 h-5 w-5 text-charis-blue-dark" />
+                  Mission
+                </h3>
+                <p className="text-lg font-light leading-relaxed text-gray-700">
+                  To promote the mental well-being of the elderly through theatre and arts.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-black mb-4 flex items-center">
+                  <Star className="mr-2 h-5 w-5 text-charis-green-dark" />
+                  Vision
+                </h3>
+                <p className="text-lg font-light leading-relaxed text-gray-700">
+                  A society where elderly individuals are celebrated, empowered, and supported to thrive in their golden years.
+                </p>
+              </div>
+              <div>
+                <p className="text-lg font-light leading-relaxed text-gray-700">
+                  Charis Eagle Springs is a Nairobi-based non-profit organization dedicated to enhancing the mental well-being of the elderly through artistic engagement such as theatre and storytelling. We strive to support elderly Kenyans in maintaining their dignity and sharing their unique voices with the community.
+                </p>
+              </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 mt-12">
               <Button asChild className="group relative overflow-hidden bg-black text-white hover:bg-white hover:text-black border-2 border-black px-8 py-4 transition-all duration-500 transform hover:scale-105 hover:shadow-xl">
