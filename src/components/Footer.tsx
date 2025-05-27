@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter, Mail, PhoneCall, MapPin } from "lucide-react";
+import { Facebook, Instagram, Mail, PhoneCall, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -33,13 +33,17 @@ const Footer = () => {
                 <Instagram size={20} />
               </a>
               <a 
-                href="https://twitter.com" 
+                href="https://x.com" 
                 target="_blank" 
                 rel="noreferrer"
                 className="hover:text-charis-green-light transition-colors"
-                aria-label="Twitter"
+                aria-label="X (formerly Twitter)"
               >
-                <Twitter size={20} />
+                <img 
+                  src="/lovable-uploads/c5b2be7f-c9d2-401e-8b03-2b8f54fe800c.png" 
+                  alt="X" 
+                  className="w-5 h-5 filter brightness-0 invert hover:brightness-100 hover:invert-0 hover:contrast-100 transition-all"
+                />
               </a>
             </div>
           </div>

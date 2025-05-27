@@ -1,7 +1,8 @@
+
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Mail, Phone, MapPin, Send, Facebook, Instagram, Twitter, MessageCircle, Globe, Headphones, User } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Facebook, Instagram, MessageCircle, Globe, Headphones, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -194,13 +195,17 @@ const Contact = () => {
                     <Instagram size={20} />
                   </a>
                   <a 
-                    href="https://twitter.com" 
+                    href="https://x.com" 
                     target="_blank" 
                     rel="noreferrer"
                     className="h-12 w-12 rounded-full bg-charis-blue flex items-center justify-center text-white hover:bg-charis-blue-dark transition-colors"
-                    aria-label="Twitter"
+                    aria-label="X (formerly Twitter)"
                   >
-                    <Twitter size={20} />
+                    <img 
+                      src="/lovable-uploads/c5b2be7f-c9d2-401e-8b03-2b8f54fe800c.png" 
+                      alt="X" 
+                      className="w-5 h-5"
+                    />
                   </a>
                 </div>
               </div>
