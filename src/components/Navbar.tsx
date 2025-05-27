@@ -40,14 +40,13 @@ const Navbar = () => {
     }`}>
       <div className="container-custom py-6">
         <div className="flex justify-between items-center">
-          {/* Logo with transparent background */}
+          {/* Logo with new image */}
           <Link to="/" className="flex items-center group" onClick={closeMenu}>
-            <div className="relative overflow-hidden p-2 rounded-full bg-white/90 backdrop-blur-sm shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:scale-105">
+            <div className="relative overflow-hidden transition-all duration-300 group-hover:scale-105">
               <img 
-                src="/lovable-uploads/8549d152-f026-49a1-ba31-48a45e41b700.png" 
+                src="/lovable-uploads/edbba8da-699b-4792-9129-417439bd312c.png" 
                 alt="Charis Eagle Springs" 
-                className="h-8 w-auto transition-transform duration-300 group-hover:scale-110"
-                style={{ filter: 'brightness(0) invert(0)' }}
+                className="h-12 w-auto transition-transform duration-300 group-hover:scale-110"
               />
             </div>
           </Link>
