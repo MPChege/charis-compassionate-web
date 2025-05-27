@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -111,8 +110,7 @@ const resources = [
     size: "3.2 MB",
     category: "Mental Health & Dementia Care",
     icon: FileText,
-    downloadUrl: "https://www.commage.org/wp-content/uploads/2024/10/4527_FY25_HC_CommonAge_FullReport_Digital_v11-with-links.pdf",
-    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    downloadUrl: "https://www.commage.org/wp-content/uploads/2024/10/4527_FY25_HC_CommonAge_FullReport_Digital_v11-with-links.pdf"
   },
   {
     title: "Train the Trainer Programme – Elder Care",
@@ -121,8 +119,7 @@ const resources = [
     size: "2.1 MB",
     category: "Mental Health & Dementia Care",
     icon: FileText,
-    downloadUrl: "https://www.commage.org/wp-content/uploads/2024/09/REPORT-TRAIN-THE-TRAINER.pdf",
-    image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    downloadUrl: "https://www.commage.org/wp-content/uploads/2024/09/REPORT-TRAIN-THE-TRAINER.pdf"
   },
   {
     title: "Pass It On® Stories – Volume 1",
@@ -131,8 +128,7 @@ const resources = [
     size: "4.5 MB",
     category: "Inspirational Stories & Community Engagement",
     icon: FileText,
-    downloadUrl: "https://www.passiton.com/ebooks/FBL_PassItOn_Stories_Volume_1.pdf",
-    image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    downloadUrl: "https://www.passiton.com/ebooks/FBL_PassItOn_Stories_Volume_1.pdf"
   },
   {
     title: "All the Right Notes",
@@ -141,8 +137,7 @@ const resources = [
     size: "1.8 MB",
     category: "Inspirational Stories & Community Engagement",
     icon: FileText,
-    downloadUrl: "https://assets.passiton.com/articles/pdfs/167_All_the_Right_Notes_PassItOn.pdf",
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    downloadUrl: "https://assets.passiton.com/articles/pdfs/167_All_the_Right_Notes_PassItOn.pdf"
   },
   {
     title: "Doctor at Your Door: A Guide to Medical House Call Programs",
@@ -151,8 +146,7 @@ const resources = [
     size: "2.7 MB",
     category: "Elder Care & Health Services",
     icon: FileText,
-    downloadUrl: "https://leadingage.org/sites/default/files/Senior_Housing_Guide_to_Medical_House_Calls.pdf",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    downloadUrl: "https://leadingage.org/sites/default/files/Senior_Housing_Guide_to_Medical_House_Calls.pdf"
   },
   {
     title: "Electronic Health Records for Long-Term Care",
@@ -161,8 +155,7 @@ const resources = [
     size: "3.1 MB",
     category: "Elder Care & Health Services",
     icon: FileText,
-    downloadUrl: "https://leadingage.org/sites/default/files/EHR_For_LTPAC_A_Primer_on_Planning_and_Vendor_Selection_0.pdf",
-    image: "https://images.unsplash.com/photo-1504813184591-01572f98c85f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    downloadUrl: "https://leadingage.org/sites/default/files/EHR_For_LTPAC_A_Primer_on_Planning_and_Vendor_Selection_0.pdf"
   },
   {
     title: "Ageing in the Commonwealth – Research Report",
@@ -171,8 +164,7 @@ const resources = [
     size: "2.9 MB",
     category: "Global Aging & Policy Reports",
     icon: FileText,
-    downloadUrl: "https://www.commage.org/wp-content/uploads/2019/07/CommonAge-Research-Report-Final.pdf",
-    image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    downloadUrl: "https://www.commage.org/wp-content/uploads/2019/07/CommonAge-Research-Report-Final.pdf"
   },
   {
     title: "Chapter Report – July 2024",
@@ -181,8 +173,7 @@ const resources = [
     size: "1.5 MB",
     category: "Global Aging & Policy Reports",
     icon: FileText,
-    downloadUrl: "https://www.commage.org/wp-content/uploads/2024/09/Chapter-Report-July-2024.pdf",
-    image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    downloadUrl: "https://www.commage.org/wp-content/uploads/2024/09/Chapter-Report-July-2024.pdf"
   }
 ];
 
@@ -402,13 +393,6 @@ const AwarenessHub = () => {
                 {filteredResources.length > 0 ? (
                   filteredResources.map((resource, index) => (
                     <Card key={index} className="transition-all duration-300 hover:shadow-xl hover:scale-105 group">
-                      <div className="h-40 overflow-hidden rounded-t-lg">
-                        <img 
-                          src={resource.image} 
-                          alt={resource.title} 
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                        />
-                      </div>
                       <CardHeader className="flex flex-row items-start space-x-4 pb-2">
                         <div className="h-12 w-12 rounded-full bg-charis-green-light flex items-center justify-center">
                           <resource.icon className="h-6 w-6 text-charis-green-dark" />
@@ -429,7 +413,8 @@ const AwarenessHub = () => {
                       </CardContent>
                       <CardFooter>
                         <Button 
-                          className="bg-gradient-to-r from-charis-green to-charis-green-dark hover:from-charis-green-dark hover:to-charis-green text-white font-semibold w-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                          variant="highlighted"
+                          className="w-full"
                           onClick={() => handleDownload(resource.downloadUrl, resource.title)}
                         >
                           <Download className="mr-2 h-4 w-4" />
