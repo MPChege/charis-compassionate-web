@@ -1,8 +1,7 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Mail, Phone, MapPin, Send, Facebook, Instagram, Twitter, MessageCircle, Globe, Headphones } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Facebook, Instagram, Twitter, MessageCircle, Globe, Headphones, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -125,7 +124,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-xl text-charis-blue-dark mb-2">Our Location</h3>
-                      <p className="text-gray-700">123 Compassion Way</p>
+                      <p className="text-gray-700">P.O. Box 62362-00200</p>
                       <p className="text-gray-700">Nairobi, Kenya</p>
                     </div>
                   </CardContent>
@@ -138,7 +137,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-xl text-charis-blue-dark mb-2">Phone</h3>
-                      <p className="text-gray-700">+254 123 456 789</p>
+                      <p className="text-gray-700">+254 722 679 107</p>
                       <p className="text-gray-500 text-sm">Monday - Friday, 9am - 5pm</p>
                     </div>
                   </CardContent>
@@ -151,8 +150,21 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-xl text-charis-blue-dark mb-2">Email</h3>
-                      <p className="text-gray-700">info@chariseaglesprings.org</p>
+                      <p className="text-gray-700">shironjagi@gmail.com</p>
                       <p className="text-gray-500 text-sm">We'll respond as soon as possible</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-charis-neutral-light border-none hover:bg-charis-blue-light/30 transition-colors">
+                  <CardContent className="flex items-start p-6">
+                    <div className="h-12 w-12 rounded-full bg-charis-blue-light flex items-center justify-center mr-6">
+                      <User className="h-6 w-6 text-charis-blue-dark" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-xl text-charis-blue-dark mb-2">CEO & Founder</h3>
+                      <p className="text-gray-700">Margaret Njagi</p>
+                      <p className="text-gray-500 text-sm">Leading our mission with passion and dedication</p>
                     </div>
                   </CardContent>
                 </Card>
