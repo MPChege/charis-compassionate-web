@@ -14,10 +14,20 @@ const StatsSection = () => {
   const { elementRef, isVisible } = useScrollAnimation(0.3);
 
   return (
-    <section ref={elementRef} className="section-padding bg-gray-50">
-      <div className="container-custom">
+    <section ref={elementRef} className="relative section-padding overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          src="/lovable-uploads/4b610869-b25a-4fac-bbd5-a76fc765b517.png" 
+          alt="Community elder in traditional dress" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gray-50/90"></div>
+      </div>
+      
+      <div className="container-custom relative z-10">
         <div className="text-center mb-20">
-          <span className="text-sm font-light tracking-widest text-gray-500 uppercase mb-4 block">
+          <span className="text-sm font-light tracking-widest text-gray-600 uppercase mb-4 block">
             Our Impact
           </span>
           <h2 className="font-heading text-black">
@@ -36,12 +46,14 @@ const StatsSection = () => {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
-              <h3 className="text-5xl md:text-6xl font-light text-black mb-4">
-                {stat.number}
-              </h3>
-              <p className="text-lg font-light text-gray-600">
-                {stat.label}
-              </p>
+              <div className="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-white/20">
+                <h3 className="text-5xl md:text-6xl font-light text-black mb-4">
+                  {stat.number}
+                </h3>
+                <p className="text-lg font-light text-gray-600">
+                  {stat.label}
+                </p>
+              </div>
             </div>
           ))}
         </div>
@@ -54,26 +66,40 @@ const CallToAction = () => {
   const { elementRef, isVisible } = useScrollAnimation(0.3);
 
   return (
-    <section ref={elementRef} className="section-padding bg-black text-white">
-      <div className="container-custom text-center">
+    <section ref={elementRef} className="relative section-padding overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          src="/lovable-uploads/a3eabbcc-f8ac-4805-a8a2-a318cd803e6e.png" 
+          alt="Community gathering" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/70"></div>
+      </div>
+      
+      {/* Floating elements */}
+      <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
+      
+      <div className="container-custom text-center relative z-10">
         <div className={`max-w-4xl mx-auto transition-all duration-1000 delay-200 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
-          <h2 className="font-heading text-white mb-8">
+          <h2 className="font-heading text-white mb-8 drop-shadow-lg">
             Ready to Make a Difference?
           </h2>
-          <p className="text-xl font-light text-gray-300 mb-12 leading-relaxed">
+          <p className="text-xl font-light text-white/90 mb-12 leading-relaxed drop-shadow-md">
             Join us in our mission to improve the lives of elderly individuals by supporting compassionate care and mental health awareness.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Button asChild className="bg-white text-black hover:bg-gray-100 px-8 py-4 text-sm font-medium transition-all duration-300 group">
+            <Button asChild className="bg-white text-black hover:bg-gray-100 px-8 py-4 text-sm font-medium transition-all duration-300 group shadow-lg">
               <Link to="/get-involved" className="flex items-center">
                 <Heart className="mr-2 h-4 w-4" />
                 Donate Now
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
-            <Button asChild className="border border-white text-white hover:bg-white hover:text-black px-8 py-4 text-sm font-medium transition-all duration-300 group bg-transparent">
+            <Button asChild className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 text-sm font-medium transition-all duration-300 group bg-transparent shadow-lg">
               <Link to="/programs" className="flex items-center">
                 <Calendar className="mr-2 h-4 w-4" />
                 Join Our Programs
