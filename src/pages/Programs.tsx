@@ -1,7 +1,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { BookOpen, Heart, Users, Landmark, Calendar, ChevronRight } from "lucide-react";
+import { BookOpen, Heart, Users, Landmark, Calendar, ChevronRight, Target, Award, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -79,14 +79,62 @@ const Programs = () => {
     <>
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-charis-green-light to-charis-blue-light pt-20 pb-16">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-6">Our Programs</h1>
-            <p className="text-xl text-gray-700">
-              Learn about our initiatives and how we're making a difference in elderly mental health care and awareness.
+      {/* Enhanced Hero Section */}
+      <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
+        {/* Dynamic background with overlay */}
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+            alt="Programs" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-charis-green-dark/80 via-charis-blue-dark/70 to-black/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+        </div>
+        
+        {/* Animated elements */}
+        <div className="absolute top-20 right-10 opacity-30">
+          <Target className="w-20 h-20 text-white animate-spin-slow" />
+        </div>
+        <div className="absolute bottom-20 left-10 opacity-30">
+          <Award className="w-16 h-16 text-white animate-pulse delay-700" />
+        </div>
+        <div className="absolute top-1/3 left-1/4 opacity-20">
+          <TrendingUp className="w-12 h-12 text-white animate-pulse delay-300" />
+        </div>
+        
+        {/* Grid overlay */}
+        <div className="absolute inset-0 bg-grid-white/[0.05] bg-grid-16"></div>
+        
+        {/* Content */}
+        <div className="container-custom relative z-10 text-center">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-8 animate-fade-in">
+              <span className="text-sm font-light tracking-widest text-white/80 uppercase mb-4 block">
+                Impact • Innovation • Excellence
+              </span>
+              <h1 className="font-heading text-white mb-6 leading-tight drop-shadow-lg">
+                Our Programs
+              </h1>
+              <div className="flex justify-center items-center mb-8 space-x-4">
+                <div className="w-8 h-8 border-2 border-white/40 rotate-45"></div>
+                <div className="w-20 h-1 bg-gradient-to-r from-charis-green-light to-charis-blue-light"></div>
+                <div className="w-4 h-4 bg-white/40 rounded-full"></div>
+                <div className="w-20 h-1 bg-gradient-to-r from-charis-blue-light to-charis-green-light"></div>
+                <div className="w-8 h-8 border-2 border-white/40 rotate-45"></div>
+              </div>
+            </div>
+            <p className="text-xl md:text-2xl font-light text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+              Discover our transformative initiatives and how we're making a meaningful difference in elderly mental health care and community awareness.
             </p>
+          </div>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="flex flex-col items-center">
+            <div className="w-px h-12 bg-white/60"></div>
+            <div className="w-2 h-2 bg-white/60 rounded-full mt-2"></div>
           </div>
         </div>
       </section>

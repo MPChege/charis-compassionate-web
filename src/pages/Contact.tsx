@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Mail, Phone, MapPin, Send, Facebook, Instagram, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Facebook, Instagram, Twitter, MessageCircle, Globe, Headphones } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -51,15 +51,61 @@ const Contact = () => {
     <>
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-charis-blue-light to-charis-purple-light pt-20 pb-16">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-6">Contact Us</h1>
-            <p className="text-xl text-gray-700">
-              Have questions or want to learn more? We're here to help. Reach out to our team using the information below.
+      {/* Enhanced Hero Section */}
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        {/* Background with modern overlay */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-charis-blue-dark via-charis-purple to-charis-green-dark"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+        </div>
+        
+        {/* Communication icons floating */}
+        <div className="absolute top-20 left-10 opacity-20">
+          <MessageCircle className="w-16 h-16 text-white animate-pulse" />
+        </div>
+        <div className="absolute top-32 right-20 opacity-20">
+          <Globe className="w-12 h-12 text-white animate-pulse delay-500" />
+        </div>
+        <div className="absolute bottom-32 left-20 opacity-20">
+          <Headphones className="w-14 h-14 text-white animate-pulse delay-1000" />
+        </div>
+        
+        {/* Connection lines */}
+        <div className="absolute inset-0">
+          <svg className="w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M20,20 Q50,5 80,20 T80,80 Q50,95 20,80 T20,20" stroke="white" strokeWidth="0.5" fill="none" />
+            <path d="M10,50 Q30,30 50,50 T90,50" stroke="white" strokeWidth="0.3" fill="none" />
+          </svg>
+        </div>
+        
+        {/* Content */}
+        <div className="container-custom relative z-10 text-center">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-8 animate-fade-in">
+              <span className="text-sm font-light tracking-widest text-white/80 uppercase mb-4 block">
+                Connect • Communicate • Collaborate
+              </span>
+              <h1 className="font-heading text-white mb-6 leading-tight drop-shadow-lg">
+                Contact Us
+              </h1>
+              <div className="flex justify-center items-center mb-8">
+                <div className="w-6 h-6 bg-white/20 rounded-full mr-3"></div>
+                <div className="w-16 h-1 bg-gradient-to-r from-white/40 to-white/80 mr-3"></div>
+                <div className="w-3 h-3 bg-white/60 rounded-full mr-3"></div>
+                <div className="w-16 h-1 bg-gradient-to-r from-white/80 to-white/40 mr-3"></div>
+                <div className="w-6 h-6 bg-white/20 rounded-full"></div>
+              </div>
+            </div>
+            <p className="text-xl md:text-2xl font-light text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+              Have questions or want to learn more? We're here to help. Reach out to our dedicated team using the information below.
             </p>
           </div>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-px h-12 bg-white/60"></div>
+          <div className="w-2 h-2 bg-white/60 rounded-full mx-auto mt-2"></div>
         </div>
       </section>
 

@@ -8,15 +8,45 @@ const About = () => {
     <>
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="bg-charis-blue-light pt-20 pb-16">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-6">About Us</h1>
-            <p className="text-xl text-gray-700">
-              Learn about our mission, vision, and the story behind Charis Eagle Springs.
+      {/* Enhanced Hero Section */}
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        {/* Background with overlay */}
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1531983412531-1f49a365ffed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+            alt="About Us" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-charis-blue-dark/30 to-transparent"></div>
+        </div>
+        
+        {/* Floating elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-32 h-32 bg-charis-blue-light/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        
+        {/* Content */}
+        <div className="container-custom relative z-10 text-center">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-8 animate-fade-in">
+              <span className="text-sm font-light tracking-widest text-white/80 uppercase mb-4 block">
+                Learn About Our Journey
+              </span>
+              <h1 className="font-heading text-white mb-6 leading-tight drop-shadow-lg">
+                About Us
+              </h1>
+              <div className="w-24 h-1 bg-gradient-to-r from-charis-blue-light to-charis-green-light mx-auto mb-8"></div>
+            </div>
+            <p className="text-xl md:text-2xl font-light text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+              Discover our mission, vision, and the passionate story behind Charis Eagle Springs as we work to transform elderly mental health care.
             </p>
           </div>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-px h-12 bg-white/60"></div>
+          <div className="w-2 h-2 bg-white/60 rounded-full mx-auto mt-2"></div>
         </div>
       </section>
 

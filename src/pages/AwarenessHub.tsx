@@ -1,7 +1,8 @@
+
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Search, FileText, Calendar, Download, BookOpen } from "lucide-react";
+import { Search, FileText, Calendar, Download, BookOpen, Lightbulb, Brain } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -122,25 +123,66 @@ const AwarenessHub = () => {
     <>
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-charis-purple-light to-charis-blue-light pt-20 pb-16">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-6">Awareness Hub</h1>
-            <p className="text-xl text-gray-700 mb-8">
-              Access educational resources, articles, and tools to better understand elderly mental health and caregiving.
+      {/* Enhanced Hero Section */}
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+        {/* Animated background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-charis-purple via-charis-blue-dark to-charis-green-dark"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+        </div>
+        
+        {/* Floating icons */}
+        <div className="absolute top-20 left-10 opacity-20">
+          <Brain className="w-16 h-16 text-white animate-pulse" />
+        </div>
+        <div className="absolute top-40 right-20 opacity-20">
+          <Lightbulb className="w-12 h-12 text-white animate-pulse delay-500" />
+        </div>
+        <div className="absolute bottom-40 left-20 opacity-20">
+          <BookOpen className="w-14 h-14 text-white animate-pulse delay-1000" />
+        </div>
+        
+        {/* Geometric shapes */}
+        <div className="absolute top-32 right-10 w-24 h-24 border border-white/20 rotate-45 animate-spin-slow"></div>
+        <div className="absolute bottom-32 left-32 w-16 h-16 bg-white/10 rounded-full animate-pulse"></div>
+        
+        {/* Content */}
+        <div className="container-custom relative z-10 text-center">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-8 animate-fade-in">
+              <span className="text-sm font-light tracking-widest text-white/80 uppercase mb-4 block">
+                Knowledge • Resources • Education
+              </span>
+              <h1 className="font-heading text-white mb-6 leading-tight drop-shadow-lg">
+                Awareness Hub
+              </h1>
+              <div className="flex justify-center mb-8">
+                <div className="w-16 h-1 bg-charis-blue-light mr-2"></div>
+                <div className="w-8 h-1 bg-charis-green-light mr-2"></div>
+                <div className="w-4 h-1 bg-charis-purple-light"></div>
+              </div>
+            </div>
+            <p className="text-xl md:text-2xl font-light text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+              Access educational resources, expert insights, and practical tools to better understand elderly mental health and caregiving excellence.
             </p>
             <div className="max-w-xl mx-auto relative">
-              <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+              <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-full"></div>
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/60" />
               <Input
                 type="text"
                 placeholder="Search for resources, articles, or events..."
-                className="pl-10 py-6 text-base"
+                className="pl-12 py-6 text-base bg-white/20 border-white/30 text-white placeholder-white/60 rounded-full backdrop-blur-sm"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
           </div>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-px h-12 bg-white/60"></div>
+          <div className="w-2 h-2 bg-white/60 rounded-full mx-auto mt-2"></div>
         </div>
       </section>
 
