@@ -71,8 +71,8 @@ const Mission = () => {
             <div className="relative group elegant-hover">
               <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent rounded-lg"></div>
               <img 
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                alt="Elderly person with caregiver" 
+                src="https://www.capitalfm.co.ke/lifestyle/files/2012/08/older-couple.jpg" 
+                alt="Elderly couple showing dignity and connection" 
                 className="w-full h-[600px] object-cover rounded-lg shadow-2xl transition-all duration-500 group-hover:shadow-3xl group-hover:scale-105"
               />
             </div>

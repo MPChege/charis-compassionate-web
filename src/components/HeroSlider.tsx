@@ -26,7 +26,7 @@ const slides = [
   },
   {
     id: 4,
-    image: "/lovable-uploads/edbba8da-699b-4792-9129-417439bd312c.png",
+    image: "https://www.capitalfm.co.ke/lifestyle/files/2012/08/older-couple.jpg",
     title: "Building Connections",
     description: "Reducing social isolation through vibrant community engagement and fostering intergenerational relationships."
   }
