@@ -1,8 +1,7 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Mail, Phone, MapPin, Send, Facebook, Instagram, MessageCircle, Globe, Headphones, User } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageCircle, Globe, Headphones, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -169,45 +168,6 @@ const Contact = () => {
                     </div>
                   </CardContent>
                 </Card>
-              </div>
-
-              <Separator className="my-8" />
-
-              <div>
-                <h3 className="font-semibold text-xl text-charis-blue-dark mb-4">Connect With Us</h3>
-                <div className="flex space-x-4">
-                  <a 
-                    href="https://facebook.com" 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="h-12 w-12 rounded-full bg-charis-blue flex items-center justify-center text-white hover:bg-charis-blue-dark transition-colors"
-                    aria-label="Facebook"
-                  >
-                    <Facebook size={20} />
-                  </a>
-                  <a 
-                    href="https://instagram.com" 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="h-12 w-12 rounded-full bg-charis-blue flex items-center justify-center text-white hover:bg-charis-blue-dark transition-colors"
-                    aria-label="Instagram"
-                  >
-                    <Instagram size={20} />
-                  </a>
-                  <a 
-                    href="https://x.com" 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="h-12 w-12 rounded-full bg-charis-blue flex items-center justify-center text-white hover:bg-charis-blue-dark transition-colors"
-                    aria-label="X (formerly Twitter)"
-                  >
-                    <img 
-                      src="/lovable-uploads/c5b2be7f-c9d2-401e-8b03-2b8f54fe800c.png" 
-                      alt="X" 
-                      className="w-5 h-5"
-                    />
-                  </a>
-                </div>
               </div>
             </div>
 
