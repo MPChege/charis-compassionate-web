@@ -2,15 +2,24 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
+import ScrollToTop from "@/components/ScrollToTop";
 import { Heart, HandHelping, Users, Link as LinkIcon, CheckCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useScrollAnimation, useParallaxScroll } from "@/hooks/useScrollAnimation";
 
 const GetInvolved = () => {
   const { toast } = useToast();
+  const scrollY = useParallaxScroll();
+  const { elementRef: waysRef, isVisible: waysVisible } = useScrollAnimation(0.1);
+  const { elementRef: donationRef, isVisible: donationVisible } = useScrollAnimation(0.1);
+  const { elementRef: formRef, isVisible: formVisible } = useScrollAnimation(0.1);
+  const { elementRef: testimonialRef, isVisible: testimonialVisible } = useScrollAnimation(0.1);
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -85,13 +94,28 @@ const GetInvolved = () => {
 
   return (
     <>
+      <ScrollProgress />
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-charis-purple-light via-charis-blue-light to-charis-green-light pt-20 pb-16">
+      {/* Hero Section with Parallax */}
+      <section className="relative bg-gradient-to-br from-charis-purple-light via-charis-blue-light to-charis-green-light pt-20 pb-16 overflow-hidden">
+        {/* Floating elements with parallax */}
+        <div 
+          className="absolute top-20 right-10 opacity-20"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        >
+          <Heart className="w-20 h-20 text-charis-blue-dark animate-pulse" />
+        </div>
+        <div 
+          className="absolute bottom-20 left-10 opacity-20"
+          style={{ transform: `translateY(${scrollY * -0.2}px)` }}
+        >
+          <HandHelping className="w-16 h-16 text-charis-green-dark animate-pulse delay-700" />
+        </div>
+        
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-6">Get Involved</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-6 animate-fade-in">Get Involved</h1>
             <p className="text-xl text-gray-700">
               Join us in our mission to improve elderly mental health care and awareness. There are many ways to contribute and make a difference.
             </p>
@@ -99,17 +123,21 @@ const GetInvolved = () => {
         </div>
       </section>
 
-      {/* Ways to Get Involved */}
-      <section className="py-16 bg-white">
+      {/* Ways to Get Involved with Scroll Animation */}
+      <section ref={waysRef} className="py-16 bg-white">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className={`max-w-3xl mx-auto text-center mb-12 transition-all duration-1000 ${
+            waysVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Ways to Support Our Mission</h2>
             <p className="text-gray-700">
               Whether through volunteering, donating, or partnering with us, your support helps us create a more compassionate world for elderly individuals.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${
+            waysVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             {/* Volunteer */}
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
@@ -215,17 +243,21 @@ const GetInvolved = () => {
         </div>
       </section>
 
-      {/* Donation Options */}
-      <section className="py-16 bg-charis-neutral-light">
+      {/* Donation Options with Scroll Animation */}
+      <section ref={donationRef} className="py-16 bg-charis-neutral-light">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className={`max-w-3xl mx-auto text-center mb-12 transition-all duration-1000 ${
+            donationVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Donation Options</h2>
             <p className="text-gray-700">
               Your financial support enables us to continue our vital work in elderly mental health care and awareness.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${
+            donationVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             {donations.map((donation, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow h-full">
                 <CardHeader>
@@ -261,17 +293,21 @@ const GetInvolved = () => {
         </div>
       </section>
 
-      {/* Volunteer Form */}
-      <section className="py-16 bg-white">
+      {/* Volunteer Form with Scroll Animation */}
+      <section ref={formRef} className="py-16 bg-white">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className={`max-w-3xl mx-auto text-center mb-12 transition-all duration-1000 ${
+            formVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Interested in Getting Involved?</h2>
             <p className="text-gray-700">
               Fill out the form below and we'll get in touch with you about the best ways to contribute based on your interests and availability.
             </p>
           </div>
 
-          <div className="max-w-2xl mx-auto">
+          <div className={`max-w-2xl mx-auto transition-all duration-1000 delay-300 ${
+            formVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
@@ -351,10 +387,12 @@ const GetInvolved = () => {
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="py-16 bg-charis-blue-light">
+      {/* Testimonial with Scroll Animation */}
+      <section ref={testimonialRef} className="py-16 bg-charis-blue-light">
         <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
+            testimonialVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <Users className="h-16 w-16 mx-auto text-charis-blue-dark opacity-40 mb-8" />
             <p className="text-xl md:text-2xl italic text-charis-blue-dark mb-8">
               "Volunteering with Charis Eagle Springs has been one of the most rewarding experiences of my life. Seeing the positive impact on elderly individuals and their families makes every minute worthwhile."
@@ -368,6 +406,7 @@ const GetInvolved = () => {
       </section>
 
       <Footer />
+      <ScrollToTop />
     </>
   );
 };

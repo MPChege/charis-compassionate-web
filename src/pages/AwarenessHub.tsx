@@ -1,12 +1,15 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
+import ScrollToTop from "@/components/ScrollToTop";
 import { Search, FileText, Calendar, Download, BookOpen, Lightbulb, Brain, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { useScrollAnimation, useParallaxScroll } from "@/hooks/useScrollAnimation";
 
 // Sample data for resources
 const articles = [
@@ -203,6 +206,8 @@ const events = [
 
 const AwarenessHub = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const scrollY = useParallaxScroll();
+  const { elementRef: resourcesRef, isVisible: resourcesVisible } = useScrollAnimation(0.1);
 
   const filteredArticles = articles.filter(article => 
     article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -239,28 +244,50 @@ const AwarenessHub = () => {
 
   return (
     <>
+      <ScrollProgress />
       <Navbar />
       
-      {/* Enhanced Hero Section - Reduced height for mobile */}
+      {/* Enhanced Hero Section with Parallax */}
       <section className="relative min-h-[60vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden">
-        {/* Animated background */}
+        {/* Animated background with parallax */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-charis-purple via-charis-blue-dark to-charis-green-dark"></div>
+          <div 
+            className="absolute inset-0 bg-gradient-to-br from-charis-purple via-charis-blue-dark to-charis-green-dark"
+            style={{
+              transform: `translateY(${scrollY * 0.3}px)`,
+            }}
+          ></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
         </div>
         
-        <div className="absolute top-20 left-10 opacity-20">
+        {/* Animated elements with parallax */}
+        <div 
+          className="absolute top-20 left-10 opacity-20"
+          style={{ transform: `translateY(${scrollY * 0.4}px)` }}
+        >
           <Brain className="w-16 h-16 text-white animate-pulse" />
         </div>
-        <div className="absolute top-40 right-20 opacity-20">
+        <div 
+          className="absolute top-40 right-20 opacity-20"
+          style={{ transform: `translateY(${scrollY * -0.2}px)` }}
+        >
           <Lightbulb className="w-12 h-12 text-white animate-pulse delay-500" />
         </div>
-        <div className="absolute bottom-40 left-20 opacity-20">
+        <div 
+          className="absolute bottom-40 left-20 opacity-20"
+          style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+        >
           <BookOpen className="w-14 h-14 text-white animate-pulse delay-1000" />
         </div>
         
-        <div className="absolute top-32 right-10 w-24 h-24 border border-white/20 rotate-45 animate-spin-slow"></div>
-        <div className="absolute bottom-32 left-32 w-16 h-16 bg-white/10 rounded-full animate-pulse"></div>
+        <div 
+          className="absolute top-32 right-10 w-24 h-24 border border-white/20 rotate-45 animate-spin-slow"
+          style={{ transform: `translateY(${scrollY * 0.2}px)` }}
+        ></div>
+        <div 
+          className="absolute bottom-32 left-32 w-16 h-16 bg-white/10 rounded-full animate-pulse"
+          style={{ transform: `translateY(${scrollY * -0.1}px)` }}
+        ></div>
         
         <div className="container-custom relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
@@ -300,11 +327,13 @@ const AwarenessHub = () => {
         </div>
       </section>
 
-      {/* Resources Tab Section - Added padding top for mobile */}
-      <section className="py-8 md:py-16 bg-white">
+      {/* Resources Tab Section with Scroll Animation */}
+      <section ref={resourcesRef} className="py-8 md:py-16 bg-white">
         <div className="container-custom">
           <Tabs defaultValue="articles" className="w-full">
-            <TabsList className="grid grid-cols-3 mb-8 md:mb-12 mx-4 md:mx-0">
+            <TabsList className={`grid grid-cols-3 mb-8 md:mb-12 mx-4 md:mx-0 transition-all duration-1000 ${
+              resourcesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>
               <TabsTrigger value="articles" className="text-sm md:text-base px-2 md:px-4">Articles</TabsTrigger>
               <TabsTrigger value="resources" className="text-sm md:text-base px-2 md:px-4">Resources</TabsTrigger>
               <TabsTrigger value="events" className="text-sm md:text-base px-2 md:px-4">Events</TabsTrigger>
@@ -484,6 +513,7 @@ const AwarenessHub = () => {
       </section>
 
       <Footer />
+      <ScrollToTop />
     </>
   );
 };

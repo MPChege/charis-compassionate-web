@@ -1,29 +1,47 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
+import ScrollToTop from "@/components/ScrollToTop";
 import { Heart, Star, Zap, Users } from "lucide-react";
+import { useScrollAnimation, useParallaxScroll } from "@/hooks/useScrollAnimation";
 
 const About = () => {
+  const scrollY = useParallaxScroll();
+  const { elementRef: storyRef, isVisible: storyVisible } = useScrollAnimation(0.1);
+  const { elementRef: missionRef, isVisible: missionVisible } = useScrollAnimation(0.1);
+  const { elementRef: valuesRef, isVisible: valuesVisible } = useScrollAnimation(0.1);
+
   return (
     <>
+      <ScrollProgress />
       <Navbar />
       
-      {/* Enhanced Hero Section */}
+      {/* Enhanced Hero Section with Parallax */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-        {/* Background with overlay */}
+        {/* Background with overlay and parallax effect */}
         <div className="absolute inset-0">
           <img 
             src="/lovable-uploads/f38fe72c-5c15-4c17-9e2f-aeda7abdb70a.png" 
             alt="Community elder with traditional attire" 
             className="w-full h-full object-cover"
+            style={{
+              transform: `translateY(${scrollY * 0.5}px)`,
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-charis-blue-dark/30 to-transparent"></div>
         </div>
         
-        {/* Floating elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-32 h-32 bg-charis-blue-light/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        {/* Floating elements with parallax */}
+        <div 
+          className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-pulse"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        ></div>
+        <div 
+          className="absolute bottom-20 right-10 w-32 h-32 bg-charis-blue-light/20 rounded-full blur-2xl animate-pulse delay-1000"
+          style={{ transform: `translateY(${scrollY * -0.2}px)` }}
+        ></div>
         
         {/* Content */}
         <div className="container-custom relative z-10 text-center">
@@ -50,10 +68,12 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Story Section */}
-      <section className="py-16 bg-white">
+      {/* Our Story Section with Scroll Animation */}
+      <section ref={storyRef} className="py-16 bg-white">
         <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className={`grid md:grid-cols-2 gap-12 items-center transition-all duration-1000 ${
+            storyVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <div>
               <h2 className="text-3xl font-bold text-charis-blue-dark mb-6">Our Story</h2>
               <p className="mb-4">
@@ -77,20 +97,25 @@ const About = () => {
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="relative py-16 overflow-hidden">
+      {/* Mission & Vision with Scroll Animation */}
+      <section ref={missionRef} className="relative py-16 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
             src="/lovable-uploads/a3eabbcc-f8ac-4805-a8a2-a318cd803e6e.png" 
             alt="Community gathering" 
             className="w-full h-full object-cover"
+            style={{
+              transform: `translateY(${scrollY * 0.1}px)`,
+            }}
           />
           <div className="absolute inset-0 bg-white/90"></div>
         </div>
         
         <div className="container-custom relative z-10">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className={`grid md:grid-cols-2 gap-12 transition-all duration-1000 delay-300 ${
+            missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <div className="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-white/20">
               <div className="h-14 w-14 rounded-full bg-charis-blue-light flex items-center justify-center mb-6">
                 <Heart className="h-8 w-8 text-charis-blue-dark" />
@@ -120,17 +145,21 @@ const About = () => {
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="py-16 bg-white">
+      {/* Core Values with Scroll Animation */}
+      <section ref={valuesRef} className="py-16 bg-white">
         <div className="container-custom">
-          <div className="text-center mb-12">
+          <div className={`text-center mb-12 transition-all duration-1000 ${
+            valuesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Our Core Values</h2>
             <p className="max-w-3xl mx-auto text-gray-700">
               The principles that guide our work and define our organization's character.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-1000 delay-500 ${
+            valuesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             {[
               {
                 icon: Heart,
@@ -166,6 +195,7 @@ const About = () => {
       </section>
 
       <Footer />
+      <ScrollToTop />
     </>
   );
 };

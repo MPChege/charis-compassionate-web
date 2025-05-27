@@ -1,11 +1,19 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
+import ScrollToTop from "@/components/ScrollToTop";
 import { BookOpen, Heart, Users, Landmark, Calendar, ChevronRight, Target, Award, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useScrollAnimation, useParallaxScroll } from "@/hooks/useScrollAnimation";
 
 const Programs = () => {
+  const scrollY = useParallaxScroll();
+  const { elementRef: programsRef, isVisible: programsVisible } = useScrollAnimation(0.1);
+  const { elementRef: eventsRef, isVisible: eventsVisible } = useScrollAnimation(0.1);
+  const { elementRef: impactRef, isVisible: impactVisible } = useScrollAnimation(0.1);
+
   const programs = [
     {
       title: "Dementia Awareness Program",
@@ -77,9 +85,10 @@ const Programs = () => {
 
   return (
     <>
+      <ScrollProgress />
       <Navbar />
       
-      {/* Enhanced Hero Section */}
+      {/* Enhanced Hero Section with Parallax */}
       <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
         {/* Dynamic background with overlay */}
         <div className="absolute inset-0">
@@ -87,19 +96,31 @@ const Programs = () => {
             src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
             alt="Programs" 
             className="w-full h-full object-cover"
+            style={{
+              transform: `translateY(${scrollY * 0.5}px)`,
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-charis-green-dark/80 via-charis-blue-dark/70 to-black/60"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         </div>
         
-        {/* Animated elements */}
-        <div className="absolute top-20 right-10 opacity-30">
+        {/* Animated elements with parallax */}
+        <div 
+          className="absolute top-20 right-10 opacity-30"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        >
           <Target className="w-20 h-20 text-white animate-spin-slow" />
         </div>
-        <div className="absolute bottom-20 left-10 opacity-30">
+        <div 
+          className="absolute bottom-20 left-10 opacity-30"
+          style={{ transform: `translateY(${scrollY * -0.2}px)` }}
+        >
           <Award className="w-16 h-16 text-white animate-pulse delay-700" />
         </div>
-        <div className="absolute top-1/3 left-1/4 opacity-20">
+        <div 
+          className="absolute top-1/3 left-1/4 opacity-20"
+          style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+        >
           <TrendingUp className="w-12 h-12 text-white animate-pulse delay-300" />
         </div>
         
@@ -139,10 +160,12 @@ const Programs = () => {
         </div>
       </section>
 
-      {/* Programs Section */}
-      <section className="py-16 bg-white">
+      {/* Programs Section with Scroll Animation */}
+      <section ref={programsRef} className="py-16 bg-white">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className={`max-w-3xl mx-auto text-center mb-12 transition-all duration-1000 ${
+            programsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Current Initiatives</h2>
             <p className="text-gray-700">
               Our programs aim to improve the quality of life for elderly individuals by addressing mental health needs, supporting caregivers, and creating compassionate communities.
@@ -151,7 +174,9 @@ const Programs = () => {
 
           <div className="space-y-16">
             {programs.map((program, index) => (
-              <div key={index} className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-12 items-center`}>
+              <div key={index} className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-12 items-center transition-all duration-1000 ${
+                programsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`} style={{ transitionDelay: `${index * 200}ms` }}>
                 <div className="md:w-1/2">
                   <div className="rounded-xl overflow-hidden shadow-lg">
                     <img 
@@ -185,17 +210,21 @@ const Programs = () => {
         </div>
       </section>
 
-      {/* Upcoming Events Section */}
-      <section className="py-16 bg-charis-neutral-light">
+      {/* Upcoming Events Section with Scroll Animation */}
+      <section ref={eventsRef} className="py-16 bg-charis-neutral-light">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className={`max-w-3xl mx-auto text-center mb-12 transition-all duration-1000 ${
+            eventsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Upcoming Events</h2>
             <p className="text-gray-700">
               Join us at one of our upcoming events to learn more about elderly mental health and how you can get involved.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className={`grid md:grid-cols-3 gap-6 transition-all duration-1000 delay-300 ${
+            eventsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             {upcomingEvents.map((event, index) => (
               <div key={index} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
                 <div className="h-12 w-12 rounded-full bg-charis-green-light flex items-center justify-center mb-4">
@@ -219,17 +248,21 @@ const Programs = () => {
         </div>
       </section>
 
-      {/* Impact Section */}
-      <section className="py-16 bg-white">
+      {/* Impact Section with Scroll Animation */}
+      <section ref={impactRef} className="py-16 bg-white">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className={`max-w-3xl mx-auto text-center mb-12 transition-all duration-1000 ${
+            impactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Our Impact</h2>
             <p className="text-gray-700">
               Through our programs and initiatives, we have made a meaningful difference in the lives of many elderly individuals and their caregivers.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-500 ${
+            impactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <div className="text-center p-6 rounded-xl bg-charis-blue-light/50">
               <h3 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-2">50+</h3>
               <p className="text-gray-700">Community Workshops Conducted</p>
@@ -260,6 +293,7 @@ const Programs = () => {
       </section>
 
       <Footer />
+      <ScrollToTop />
     </>
   );
 };
