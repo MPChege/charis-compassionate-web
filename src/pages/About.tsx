@@ -13,8 +13,8 @@ const About = () => {
         {/* Background with overlay */}
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1531983412531-1f49a365ffed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-            alt="About Us" 
+            src="/lovable-uploads/f38fe72c-5c15-4c17-9e2f-aeda7abdb70a.png" 
+            alt="Community elder with traditional attire" 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
@@ -68,8 +68,8 @@ const About = () => {
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="https://images.unsplash.com/photo-1531983412531-1f49a365ffed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                alt="Elderly people in a community setting" 
+                src="/lovable-uploads/4b610869-b25a-4fac-bbd5-a76fc765b517.png" 
+                alt="Community elder in traditional dress" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -78,10 +78,20 @@ const About = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16 bg-charis-neutral-light">
-        <div className="container-custom">
+      <section className="relative py-16 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="/lovable-uploads/a3eabbcc-f8ac-4805-a8a2-a318cd803e6e.png" 
+            alt="Community gathering" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-white/90"></div>
+        </div>
+        
+        <div className="container-custom relative z-10">
           <div className="grid md:grid-cols-2 gap-12">
-            <div className="bg-white p-8 rounded-xl shadow-md">
+            <div className="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-white/20">
               <div className="h-14 w-14 rounded-full bg-charis-blue-light flex items-center justify-center mb-6">
                 <Heart className="h-8 w-8 text-charis-blue-dark" />
               </div>
@@ -94,7 +104,7 @@ const About = () => {
               </p>
             </div>
             
-            <div className="bg-white p-8 rounded-xl shadow-md">
+            <div className="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-white/20">
               <div className="h-14 w-14 rounded-full bg-charis-green-light flex items-center justify-center mb-6">
                 <Star className="h-8 w-8 text-charis-green-dark" />
               </div>
@@ -143,7 +153,7 @@ const About = () => {
                 description: "We equip caregivers and communities with knowledge and tools to provide better support."
               }
             ].map((value, index) => (
-              <div key={index} className="bg-charis-neutral-light p-6 rounded-lg">
+              <div key={index} className="bg-charis-neutral-light p-6 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                 <div className="h-12 w-12 rounded-full bg-charis-blue-light flex items-center justify-center mb-4">
                   <value.icon className="h-6 w-6 text-charis-blue-dark" />
                 </div>
