@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -87,6 +87,15 @@
 
   html {
     scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body.high-contrast {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 10%;
+    --muted: 0 0% 20%;
+    --border: 0 0% 40%;
   }
 }
 
@@ -96,36 +105,133 @@
   }
 
   body {
-    @apply bg-background text-foreground font-body;
+    @apply bg-background text-foreground font-body antialiased;
+    line-height: 1.7;
+    letter-spacing: -0.01em;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    @apply text-4xl md:text-6xl lg:text-7xl font-light;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-light;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-normal;
   }
 
   p {
-    @apply text-base md:text-lg leading-relaxed;
+    @apply text-lg md:text-xl leading-relaxed;
+    color: rgba(0, 0, 0, 0.8);
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-charis-blue px-6 py-3 text-white rounded-md hover:bg-charis-blue-dark transition-colors duration-300 font-medium text-base md:text-lg;
+    @apply inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-white bg-black rounded-none border border-black transition-all duration-300 hover:bg-white hover:text-black hover:border-black;
   }
 
   .btn-secondary {
-    @apply bg-charis-green px-6 py-3 text-foreground rounded-md hover:bg-charis-green-dark transition-colors duration-300 font-medium text-base md:text-lg;
+    @apply inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-black bg-transparent rounded-none border border-black transition-all duration-300 hover:bg-black hover:text-white;
   }
 
   .container-custom {
-    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
-  }
-
-  .card-custom {
-    @apply bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300;
+    @apply container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl;
   }
 
   .section-padding {
-    @apply py-12 md:py-20;
+    @apply py-24 md:py-32 lg:py-40;
   }
+
+  .fade-in-up {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+
+  .fade-in-up.animate {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .parallax-slow {
+    transform: translateY(var(--scroll-y, 0) * 0.5);
+  }
+
+  .elegant-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .elegant-hover:hover {
+    @apply transform scale-105;
+  }
+}
+
+/* Scroll-triggered animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }

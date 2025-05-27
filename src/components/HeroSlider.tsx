@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const slides = [
   {
@@ -27,95 +27,90 @@ const slides = [
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
 
   // Auto slide change
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 5000);
+    }, 6000);
     return () => clearInterval(interval);
   }, [currentSlide]);
 
   return (
-    <section className="relative bg-gradient-to-br from-charis-blue to-charis-purple pt-20 pb-24 md:pt-28 md:pb-32 overflow-hidden">
-      <div className="container-custom relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="text-white animate-fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              {slides[currentSlide].title}
-            </h1>
-            <p className="text-xl mb-8 text-white/90">
-              {slides[currentSlide].description}
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg" className="bg-white text-charis-blue-dark hover:bg-charis-green-light hover:text-charis-blue-dark">
-                <Link to="/get-involved">Get Involved</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="text-charis-blue-dark bg-white border-white hover:bg-charis-green-light hover:text-charis-blue-dark">
-                <Link to="/awareness-hub">Learn More</Link>
-              </Button>
-            </div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Images */}
+      <div className="absolute inset-0">
+        {slides.map((slide, index) => (
+          <div 
+            key={slide.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentSlide ? "opacity-30" : "opacity-0"
+            }`}
+          >
+            <img 
+              src={slide.image} 
+              alt={slide.title} 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-white/70"></div>
           </div>
-          <div className="rounded-2xl overflow-hidden shadow-xl border-4 border-white/30 animate-zoom-in">
-            <div className="relative h-[300px] md:h-[400px]">
-              {slides.map((slide, index) => (
-                <div 
-                  key={slide.id}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                    index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-                  }`}
-                >
-                  <img 
-                    src={slide.image} 
-                    alt={slide.title} 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
+        ))}
+      </div>
+      
+      {/* Content */}
+      <div className="container-custom relative z-10 text-center">
+        <div className={`max-w-4xl mx-auto transition-all duration-1000 delay-300 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}>
+          <h1 className="font-heading text-black mb-8 leading-tight">
+            {slides[currentSlide].title}
+          </h1>
+          <p className="text-xl md:text-2xl font-light text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
+            {slides[currentSlide].description}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <Button asChild className="btn-primary group">
+              <Link to="/get-involved" className="flex items-center">
+                Get Involved
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Button>
+            <Button asChild className="btn-secondary">
+              <Link to="/awareness-hub">Learn More</Link>
+            </Button>
           </div>
         </div>
       </div>
       
-      {/* Slider Navigation */}
-      <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-20">
+      {/* Minimal Slider Navigation */}
+      <div className="absolute bottom-12 left-0 right-0 flex justify-center gap-3 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
               index === currentSlide 
-                ? "bg-white scale-125" 
-                : "bg-white/50 hover:bg-white/70"
+                ? "bg-black w-8" 
+                : "bg-gray-400 hover:bg-gray-600"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
       
-      <button 
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full hover:bg-black/50 transition-colors z-20"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
-      
-      <button 
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full hover:bg-black/50 transition-colors z-20"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-px h-8 bg-black/30"></div>
+      </div>
     </section>
   );
 };

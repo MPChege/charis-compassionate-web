@@ -63,25 +63,24 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-                // Custom colors for Charis Eagle Springs
                 charis: {
                     blue: {
-                        light: '#D3E4FD', // Soft blue
-                        DEFAULT: '#93B7E0', // Medium blue
-                        dark: '#5A86B8', // Darker blue
+                        light: '#D3E4FD',
+                        DEFAULT: '#93B7E0',
+                        dark: '#5A86B8',
                     },
                     green: {
-                        light: '#F2FCE2', // Soft green
-                        DEFAULT: '#B8D8A0', // Medium green
-                        dark: '#7EA767', // Darker green
+                        light: '#F2FCE2',
+                        DEFAULT: '#B8D8A0',
+                        dark: '#7EA767',
                     },
                     purple: {
-                        light: '#E5DEFF', // Soft purple
-                        DEFAULT: '#BEB4E0', // Medium purple
+                        light: '#E5DEFF',
+                        DEFAULT: '#BEB4E0',
                     },
                     neutral: {
-                        DEFAULT: '#8E9196', // Neutral gray
-                        light: '#F5F7F9', // Light gray background
+                        DEFAULT: '#8E9196',
+                        light: '#F5F7F9',
                     }
                 }
 			},
@@ -91,7 +90,7 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
             fontFamily: {
-                'heading': ['Nunito', 'sans-serif'],
+                'heading': ['Playfair Display', 'serif'],
                 'body': ['Inter', 'sans-serif'],
             },
 			keyframes: {
@@ -114,7 +113,7 @@ export default {
                 'fade-in': {
                     '0%': {
                         opacity: '0',
-                        transform: 'translateY(10px)'
+                        transform: 'translateY(20px)'
                     },
                     '100%': {
                         opacity: '1',
@@ -130,13 +129,24 @@ export default {
                         opacity: '1',
                         transform: 'scale(1)'
                     }
+                },
+                'slide-up': {
+                    '0%': {
+                        opacity: '0',
+                        transform: 'translateY(40px)'
+                    },
+                    '100%': {
+                        opacity: '1',
+                        transform: 'translateY(0)'
+                    }
                 }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-                'fade-in': 'fade-in 0.5s ease-out forwards',
-                'zoom-in': 'zoom-in 0.5s ease-out forwards'
+                'fade-in': 'fade-in 0.6s ease-out forwards',
+                'zoom-in': 'zoom-in 0.6s ease-out forwards',
+                'slide-up': 'slide-up 0.8s ease-out forwards'
 			}
 		}
 	},
