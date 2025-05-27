@@ -1,14 +1,14 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useScrollAnimation, useParallaxScroll } from "@/hooks/useScrollAnimation";
 import { ArrowRight, Heart, Users, Star } from "lucide-react";
 
 const Mission = () => {
   const { elementRef, isVisible } = useScrollAnimation(0.3);
+  const scrollY = useParallaxScroll();
 
   return (
-    <section ref={elementRef} className="section-padding bg-gradient-to-br from-gray-50 to-white">
+    <section ref={elementRef} className="section-padding bg-gradient-to-br from-gray-50 to-white overflow-hidden">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div className={`transition-all duration-1000 delay-200 ${
@@ -23,7 +23,9 @@ const Mission = () => {
               Our Mission & Vision
             </h2>
             <div className="space-y-8">
-              <div>
+              <div className={`transition-all duration-700 delay-400 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}>
                 <h3 className="text-xl font-semibold text-black mb-4 flex items-center">
                   <Heart className="mr-2 h-5 w-5 text-charis-blue-dark" />
                   Mission
@@ -32,7 +34,9 @@ const Mission = () => {
                   To promote the mental well-being of the elderly through theatre and arts.
                 </p>
               </div>
-              <div>
+              <div className={`transition-all duration-700 delay-600 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}>
                 <h3 className="text-xl font-semibold text-black mb-4 flex items-center">
                   <Star className="mr-2 h-5 w-5 text-charis-green-dark" />
                   Vision
@@ -41,13 +45,17 @@ const Mission = () => {
                   A society where elderly individuals are celebrated, empowered, and supported to thrive in their golden years.
                 </p>
               </div>
-              <div>
+              <div className={`transition-all duration-700 delay-800 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}>
                 <p className="text-lg font-light leading-relaxed text-gray-700">
                   Charis Eagle Springs is a Nairobi-based non-profit organization dedicated to enhancing the mental well-being of the elderly through artistic engagement such as theatre and storytelling. We strive to support elderly Kenyans in maintaining their dignity and sharing their unique voices with the community.
                 </p>
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 mt-12">
+            <div className={`flex flex-col sm:flex-row gap-4 mt-12 transition-all duration-1000 delay-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}>
               <Button asChild className="group relative overflow-hidden bg-black text-white hover:bg-white hover:text-black border-2 border-black px-8 py-4 transition-all duration-500 transform hover:scale-105 hover:shadow-xl">
                 <Link to="/about" className="flex items-center relative z-10">
                   <Users className="mr-2 h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
@@ -65,9 +73,14 @@ const Mission = () => {
               </Button>
             </div>
           </div>
-          <div className={`transition-all duration-1000 delay-500 ${
-            isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-          }`}>
+          <div 
+            className={`transition-all duration-1000 delay-500 ${
+              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+            }`}
+            style={{
+              transform: `translateY(${scrollY * 0.1}px)`
+            }}
+          >
             <div className="relative group elegant-hover">
               <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent rounded-lg"></div>
               <img 

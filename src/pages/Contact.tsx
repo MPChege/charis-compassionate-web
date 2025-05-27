@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
+import ScrollToTop from "@/components/ScrollToTop";
 import { Mail, Phone, MapPin, Send, Facebook, Instagram, MessageCircle, Globe, Headphones, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,10 +10,17 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
+import { useScrollAnimation, useParallaxScroll } from "@/hooks/useScrollAnimation";
+
 const Contact = () => {
   const {
     toast
   } = useToast();
+  const scrollY = useParallaxScroll();
+  const { elementRef: heroRef, isVisible: heroVisible } = useScrollAnimation(0.2);
+  const { elementRef: contactRef, isVisible: contactVisible } = useScrollAnimation(0.3);
+  const { elementRef: formRef, isVisible: formVisible } = useScrollAnimation(0.3);
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -47,25 +56,38 @@ const Contact = () => {
       variant: "default"
     });
   };
-  return <>
+  return (
+    <>
+      <ScrollProgress />
       <Navbar />
       
-      {/* Enhanced Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-        {/* Background with modern overlay */}
-        <div className="absolute inset-0">
+      {/* Enhanced Hero Section with parallax */}
+      <section ref={heroRef} className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        {/* Background with parallax effect */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            transform: `translateY(${scrollY * 0.5}px)`
+          }}
+        >
           <div className="absolute inset-0 bg-gradient-to-br from-charis-blue-dark via-charis-purple to-charis-green-dark"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
         </div>
         
-        {/* Communication icons floating */}
-        <div className="absolute top-20 left-10 opacity-20">
+        {/* Animated communication icons */}
+        <div className={`absolute top-20 left-10 transition-all duration-1000 delay-200 ${
+          heroVisible ? "opacity-20 translate-y-0" : "opacity-0 translate-y-8"
+        }`}>
           <MessageCircle className="w-16 h-16 text-white animate-pulse" />
         </div>
-        <div className="absolute top-32 right-20 opacity-20">
+        <div className={`absolute top-32 right-20 transition-all duration-1000 delay-400 ${
+          heroVisible ? "opacity-20 translate-y-0" : "opacity-0 translate-y-8"
+        }`}>
           <Globe className="w-12 h-12 text-white animate-pulse delay-500" />
         </div>
-        <div className="absolute bottom-32 left-20 opacity-20">
+        <div className={`absolute bottom-32 left-20 transition-all duration-1000 delay-600 ${
+          heroVisible ? "opacity-20 translate-y-0" : "opacity-0 translate-y-8"
+        }`}>
           <Headphones className="w-14 h-14 text-white animate-pulse delay-1000" />
         </div>
         
@@ -108,12 +130,14 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Information & Map */}
-      <section className="py-16 bg-white">
+      {/* Contact Information & Map with scroll animations */}
+      <section ref={contactRef} className="py-16 bg-white">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Information */}
-            <div>
+            <div className={`transition-all duration-1000 delay-200 ${
+              contactVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+            }`}>
               <h2 className="text-3xl font-bold text-charis-blue-dark mb-8">Get in Touch</h2>
               
               <div className="space-y-6">
@@ -180,7 +204,9 @@ const Contact = () => {
             </div>
 
             {/* Google Map */}
-            <div className="h-full min-h-[400px] rounded-xl overflow-hidden shadow-lg">
+            <div className={`h-full min-h-[400px] rounded-xl overflow-hidden shadow-lg transition-all duration-1000 delay-400 ${
+              contactVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+            }`}>
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.35853792106!2d36.68258066316405!3d-1.3028617916137266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1650222190172!5m2!1sen!2sus" width="100%" height="100%" style={{
               border: 0
             }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Charis Eagle Springs Location" className="rounded-xl"></iframe>
@@ -189,18 +215,22 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form */}
-      <section className="py-16 bg-charis-neutral-light">
+      {/* Contact Form with enhanced animations */}
+      <section ref={formRef} className="py-16 bg-charis-neutral-light">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
+            <div className={`text-center mb-12 transition-all duration-1000 delay-200 ${
+              formVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}>
               <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Send Us a Message</h2>
               <p className="text-gray-700">
                 Have a specific question or want to learn more about our programs? Fill out the form below and we'll get back to you.
               </p>
             </div>
 
-            <Card className="bg-white shadow-lg">
+            <Card className={`bg-white shadow-lg transition-all duration-1000 delay-400 hover:shadow-xl ${
+              formVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}>
               <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -272,6 +302,9 @@ const Contact = () => {
       </section>
 
       <Footer />
-    </>;
+      <ScrollToTop />
+    </>
+  );
 };
+
 export default Contact;

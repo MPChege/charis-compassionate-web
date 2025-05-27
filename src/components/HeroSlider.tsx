@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Heart, Users } from "lucide-react";
+import { useParallaxScroll } from "@/hooks/useScrollAnimation";
 
 const slides = [
   {
@@ -35,6 +36,7 @@ const slides = [
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const scrollY = useParallaxScroll();
 
   useEffect(() => {
     setIsVisible(true);
@@ -54,7 +56,7 @@ const HeroSlider = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Images with better visibility */}
+      {/* Background Images with parallax effect */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
           <div 
@@ -62,6 +64,9 @@ const HeroSlider = () => {
             className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
               index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
             }`}
+            style={{
+              transform: `translateY(${scrollY * 0.5}px)`
+            }}
           >
             <img 
               src={slide.image} 
@@ -74,8 +79,13 @@ const HeroSlider = () => {
         ))}
       </div>
       
-      {/* Content */}
-      <div className="container-custom relative z-10 text-center">
+      {/* Content with parallax */}
+      <div 
+        className="container-custom relative z-10 text-center"
+        style={{
+          transform: `translateY(${scrollY * 0.2}px)`
+        }}
+      >
         <div className={`max-w-4xl mx-auto transition-all duration-1000 delay-300 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
