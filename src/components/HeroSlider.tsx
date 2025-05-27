@@ -22,6 +22,12 @@ const slides = [
     image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     title: "Building Stronger Communities",
     description: "Creating networks of support for the elderly and their caregivers."
+  },
+  {
+    id: 4,
+    image: "/lovable-uploads/edbba8da-699b-4792-9129-417439bd312c.png",
+    title: "Empowering Through Connection",
+    description: "Fostering meaningful relationships and social connections within our community to combat isolation and promote wellbeing."
   }
 ];
 
