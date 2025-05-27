@@ -123,8 +123,8 @@ const AwarenessHub = () => {
     <>
       <Navbar />
       
-      {/* Enhanced Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+      {/* Enhanced Hero Section - Reduced height for mobile */}
+      <section className="relative min-h-[60vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Animated background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-charis-purple via-charis-blue-dark to-charis-green-dark"></div>
@@ -149,29 +149,29 @@ const AwarenessHub = () => {
         {/* Content */}
         <div className="container-custom relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
-            <div className="mb-8 animate-fade-in">
+            <div className="mb-6 md:mb-8 animate-fade-in">
               <span className="text-sm font-light tracking-widest text-white/80 uppercase mb-4 block">
                 Knowledge • Resources • Education
               </span>
-              <h1 className="font-heading text-white mb-6 leading-tight drop-shadow-lg">
+              <h1 className="font-heading text-white mb-4 md:mb-6 leading-tight drop-shadow-lg">
                 Awareness Hub
               </h1>
-              <div className="flex justify-center mb-8">
+              <div className="flex justify-center mb-6 md:mb-8">
                 <div className="w-16 h-1 bg-charis-blue-light mr-2"></div>
                 <div className="w-8 h-1 bg-charis-green-light mr-2"></div>
                 <div className="w-4 h-1 bg-charis-purple-light"></div>
               </div>
             </div>
-            <p className="text-xl md:text-2xl font-light text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+            <p className="text-lg md:text-xl lg:text-2xl font-light text-white/90 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-md px-4">
               Access educational resources, expert insights, and practical tools to better understand elderly mental health and caregiving excellence.
             </p>
-            <div className="max-w-xl mx-auto relative">
+            <div className="max-w-xl mx-auto relative px-4">
               <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-full"></div>
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/60" />
+              <Search className="absolute left-8 top-1/2 transform -translate-y-1/2 h-5 w-5 text-white/60" />
               <Input
                 type="text"
                 placeholder="Search for resources, articles, or events..."
-                className="pl-12 py-6 text-base bg-white/20 border-white/30 text-white placeholder-white/60 rounded-full backdrop-blur-sm"
+                className="pl-12 py-4 md:py-6 text-base bg-white/20 border-white/30 text-white placeholder-white/60 rounded-full backdrop-blur-sm"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -180,25 +180,25 @@ const AwarenessHub = () => {
         </div>
         
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-px h-12 bg-white/60"></div>
+        <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-px h-8 md:h-12 bg-white/60"></div>
           <div className="w-2 h-2 bg-white/60 rounded-full mx-auto mt-2"></div>
         </div>
       </section>
 
-      {/* Resources Tab Section */}
-      <section className="py-16 bg-white">
+      {/* Resources Tab Section - Added padding top for mobile */}
+      <section className="py-8 md:py-16 bg-white">
         <div className="container-custom">
           <Tabs defaultValue="articles" className="w-full">
-            <TabsList className="grid grid-cols-3 mb-12">
-              <TabsTrigger value="articles" className="text-base">Articles</TabsTrigger>
-              <TabsTrigger value="resources" className="text-base">Downloadable Resources</TabsTrigger>
-              <TabsTrigger value="events" className="text-base">Upcoming Events</TabsTrigger>
+            <TabsList className="grid grid-cols-3 mb-8 md:mb-12 mx-4 md:mx-0">
+              <TabsTrigger value="articles" className="text-sm md:text-base px-2 md:px-4">Articles</TabsTrigger>
+              <TabsTrigger value="resources" className="text-sm md:text-base px-2 md:px-4">Resources</TabsTrigger>
+              <TabsTrigger value="events" className="text-sm md:text-base px-2 md:px-4">Events</TabsTrigger>
             </TabsList>
             
             {/* Articles Tab */}
             <TabsContent value="articles">
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8 px-4 md:px-0">
                 {filteredArticles.length > 0 ? (
                   filteredArticles.map((article, index) => (
                     <Card key={index} className="overflow-hidden transition-shadow hover:shadow-lg">
@@ -245,7 +245,7 @@ const AwarenessHub = () => {
             
             {/* Downloadable Resources Tab */}
             <TabsContent value="resources">
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-6 px-4 md:px-0">
                 {filteredResources.length > 0 ? (
                   filteredResources.map((resource, index) => (
                     <Card key={index} className="transition-shadow hover:shadow-md">
@@ -288,7 +288,7 @@ const AwarenessHub = () => {
             
             {/* Upcoming Events Tab */}
             <TabsContent value="events">
-              <div className="space-y-6">
+              <div className="space-y-6 px-4 md:px-0">
                 {filteredEvents.length > 0 ? (
                   filteredEvents.map((event, index) => (
                     <Card key={index} className="transition-shadow hover:shadow-md">
