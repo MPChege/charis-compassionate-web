@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 // Sample data for resources
 const articles = [
@@ -310,49 +310,73 @@ const AwarenessHub = () => {
               <TabsTrigger value="events" className="text-sm md:text-base px-2 md:px-4">Events</TabsTrigger>
             </TabsList>
             
-            {/* Articles Tab */}
+            {/* Articles Tab with Carousel */}
             <TabsContent value="articles">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4 md:px-0">
+              <div className="px-4 md:px-0">
                 {filteredArticles.length > 0 ? (
-                  filteredArticles.map((article, index) => (
-                    <Card key={index} className="overflow-hidden transition-shadow hover:shadow-lg">
-                      <div className="h-48 overflow-hidden">
-                        <img 
-                          src={article.image} 
-                          alt={article.title} 
-                          className="w-full h-full object-cover transition-transform hover:scale-105"
-                        />
+                  <Carousel
+                    opts={{
+                      align: "start",
+                      loop: true,
+                    }}
+                    className="w-full"
+                  >
+                    <div className="flex items-center justify-between mb-6">
+                      <h3 className="text-2xl font-heading text-charis-blue-dark">
+                        Latest Articles & Insights
+                      </h3>
+                      <div className="flex gap-2">
+                        <CarouselPrevious className="relative top-0 left-0 translate-y-0 translate-x-0" />
+                        <CarouselNext className="relative top-0 right-0 translate-y-0 translate-x-0" />
                       </div>
-                      <CardHeader className="pb-2">
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="text-sm font-medium px-3 py-1 bg-charis-blue-light text-charis-blue-dark rounded-full">
-                            {article.category}
-                          </span>
-                          <span className="text-sm text-gray-500">{article.date}</span>
-                        </div>
-                        <CardTitle className="text-xl text-charis-blue-dark line-clamp-2">{article.title}</CardTitle>
-                        <p className="text-sm text-charis-purple font-medium">{article.source}</p>
-                      </CardHeader>
-                      <CardContent>
-                        <CardDescription className="text-gray-700 line-clamp-3">
-                          {article.excerpt}
-                        </CardDescription>
-                      </CardContent>
-                      <CardFooter className="flex justify-between items-center">
-                        <span className="text-sm text-gray-500">{article.readTime}</span>
-                        <Button 
-                          variant="ghost" 
-                          className="text-charis-blue-dark hover:text-charis-blue hover:bg-charis-blue-light/50"
-                          onClick={() => handleReadMore(article.url)}
-                        >
-                          Read More
-                          <ExternalLink className="ml-2 h-4 w-4" />
-                        </Button>
-                      </CardFooter>
-                    </Card>
-                  ))
+                    </div>
+                    <CarouselContent className="-ml-2 md:-ml-4">
+                      {filteredArticles.map((article, index) => (
+                        <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                          <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 h-full">
+                            <div className="h-48 overflow-hidden">
+                              <img 
+                                src={article.image} 
+                                alt={article.title} 
+                                className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                              />
+                            </div>
+                            <CardHeader className="pb-2">
+                              <div className="flex justify-between items-center mb-2">
+                                <span className="text-xs font-medium px-2 py-1 bg-charis-blue-light text-charis-blue-dark rounded-full">
+                                  {article.category}
+                                </span>
+                                <span className="text-xs text-gray-500">{article.date}</span>
+                              </div>
+                              <CardTitle className="text-lg text-charis-blue-dark line-clamp-2 leading-tight">
+                                {article.title}
+                              </CardTitle>
+                              <p className="text-xs text-charis-purple font-medium">{article.source}</p>
+                            </CardHeader>
+                            <CardContent className="flex-1">
+                              <CardDescription className="text-sm text-gray-700 line-clamp-3">
+                                {article.excerpt}
+                              </CardDescription>
+                            </CardContent>
+                            <CardFooter className="flex justify-between items-center pt-2">
+                              <span className="text-xs text-gray-500">{article.readTime}</span>
+                              <Button 
+                                size="sm"
+                                variant="ghost" 
+                                className="text-charis-blue-dark hover:text-charis-blue hover:bg-charis-blue-light/50 text-xs px-2 py-1"
+                                onClick={() => handleReadMore(article.url)}
+                              >
+                                Read More
+                                <ExternalLink className="ml-1 h-3 w-3" />
+                              </Button>
+                            </CardFooter>
+                          </Card>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                  </Carousel>
                 ) : (
-                  <div className="col-span-3 py-12 text-center">
+                  <div className="py-12 text-center">
                     <BookOpen className="h-12 w-12 mx-auto text-gray-400 mb-4" />
                     <h3 className="text-xl font-medium text-gray-600 mb-2">No Articles Found</h3>
                     <p className="text-gray-500">
