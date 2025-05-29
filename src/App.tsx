@@ -25,10 +25,17 @@ const ScrollToTop = () => {
   return null;
 };
 
+// Create QueryClient outside of component to prevent recreation on every render
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      retry: 1,
+    },
+  },
+});
+
 const App = () => {
-  // Create a client inside the function component to ensure it's not shared between renders
-  const queryClient = new QueryClient();
-  
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
