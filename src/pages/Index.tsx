@@ -23,23 +23,23 @@ const StatsSection = () => {
           alt="Community elder participating in traditional cultural activities, representing dignity in aging" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gray-50/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-charis-blue-light/80 via-charis-purple-light/70 to-charis-green-light/80"></div>
       </div>
       
       <div className="container-custom relative z-10">
         <div className="text-center mb-20">
-          <span className="text-sm font-light tracking-widest text-gray-600 uppercase mb-4 block">
+          <span className="text-sm font-light tracking-widest text-white/90 uppercase mb-4 block">
             Our Impact
           </span>
-          <h2 className="font-heading text-black">
+          <h2 className="font-heading text-white drop-shadow-lg">
             Making a Difference Through Arts
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {[
-            { number: "200+", label: "Older Persons Participants", delay: "delay-200" },
-            { number: "50+", label: "Theatre Workshops", delay: "delay-400" },
-            { number: "25+", label: "Community Performances", delay: "delay-600" },
+            { number: "200+", label: "Older Persons Participants", delay: "delay-200", color: "from-charis-green to-charis-green-dark" },
+            { number: "50+", label: "Theatre Workshops", delay: "delay-400", color: "from-charis-blue to-charis-blue-dark" },
+            { number: "25+", label: "Community Performances", delay: "delay-600", color: "from-charis-purple to-charis-purple-light" },
           ].map((stat, index) => (
             <div 
               key={index}
@@ -47,11 +47,11 @@ const StatsSection = () => {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
-              <div className="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-white/20">
-                <h3 className="text-5xl md:text-6xl font-light text-black mb-4">
+              <div className={`bg-gradient-to-br ${stat.color} p-8 rounded-xl shadow-xl border-2 border-white/30 backdrop-blur-sm transform hover:scale-105 transition-all duration-300`}>
+                <h3 className="text-5xl md:text-6xl font-light text-white mb-4 drop-shadow-md">
                   {stat.number}
                 </h3>
-                <p className="text-lg font-light text-gray-600">
+                <p className="text-lg font-light text-white/90">
                   {stat.label}
                 </p>
               </div>
@@ -70,30 +70,38 @@ const CoreValuesSection = () => {
     {
       icon: Heart,
       title: "Respect",
-      description: "Honoring dignity and individuality of every older person"
+      description: "Honoring dignity and individuality of every older person",
+      gradient: "from-red-400 to-pink-500",
+      bgColor: "bg-gradient-to-br from-red-50 to-pink-50"
     },
     {
       icon: Users,
       title: "Community",
-      description: "Encouraging connections and belonging through shared experiences"
+      description: "Encouraging connections and belonging through shared experiences",
+      gradient: "from-blue-400 to-indigo-500",
+      bgColor: "bg-gradient-to-br from-blue-50 to-indigo-50"
     },
     {
       icon: Zap,
       title: "Empowerment",
-      description: "Promoting self-expression and confidence through the arts"
+      description: "Promoting self-expression and confidence through the arts",
+      gradient: "from-yellow-400 to-orange-500",
+      bgColor: "bg-gradient-to-br from-yellow-50 to-orange-50"
     },
     {
       icon: Star,
       title: "Integrity",
-      description: "Ensuring transparency and ethical practices in all our work"
+      description: "Ensuring transparency and ethical practices in all our work",
+      gradient: "from-purple-400 to-violet-500",
+      bgColor: "bg-gradient-to-br from-purple-50 to-violet-50"
     }
   ];
 
   return (
-    <section ref={elementRef} className="section-padding bg-white">
+    <section ref={elementRef} className="section-padding bg-gradient-to-br from-charis-neutral-light via-white to-charis-blue-light/30">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-charis-blue-dark mb-4">Our Core Values for Older Persons Support</h2>
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-charis-blue-dark to-charis-purple bg-clip-text text-transparent mb-4">Our Core Values for Older Persons Support</h2>
           <p className="max-w-3xl mx-auto text-gray-700">
             The principles that guide our work and define our commitment to older persons' mental wellness through the arts.
           </p>
@@ -107,11 +115,11 @@ const CoreValuesSection = () => {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
-              <div className="bg-charis-neutral-light p-8 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
-                <div className="h-16 w-16 rounded-full bg-charis-blue-light flex items-center justify-center mb-6 mx-auto">
-                  <value.icon className="h-8 w-8 text-charis-blue-dark" />
+              <div className={`${value.bgColor} p-8 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-3 border-2 border-transparent hover:border-white/50`}>
+                <div className={`h-16 w-16 rounded-full bg-gradient-to-r ${value.gradient} flex items-center justify-center mb-6 mx-auto shadow-lg`}>
+                  <value.icon className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-charis-blue-dark mb-4">{value.title}</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">{value.title}</h3>
                 <p className="text-gray-700 leading-relaxed">{value.description}</p>
               </div>
             </div>
@@ -134,12 +142,12 @@ const CallToAction = () => {
           alt="Diverse community gathering supporting older persons mental health initiatives" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-charis-blue-dark/90 via-charis-purple/80 to-charis-green-dark/90"></div>
       </div>
       
       {/* Floating elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
+      <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-charis-green to-charis-blue rounded-full blur-xl animate-pulse opacity-60"></div>
+      <div className="absolute bottom-20 right-10 w-32 h-32 bg-gradient-to-r from-charis-purple to-charis-green-light rounded-full blur-2xl animate-pulse delay-1000 opacity-60"></div>
       
       <div className="container-custom text-center relative z-10">
         <div className={`max-w-4xl mx-auto transition-all duration-1000 delay-200 ${
@@ -152,14 +160,14 @@ const CallToAction = () => {
             Help us create a society where older persons are celebrated, empowered, and supported through the transformative power of theatre and arts.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Button asChild className="bg-white text-black hover:bg-gray-100 px-8 py-4 text-sm font-medium transition-all duration-300 group shadow-lg">
+            <Button asChild className="bg-gradient-to-r from-charis-green to-charis-green-dark text-white hover:from-charis-green-dark hover:to-charis-green px-8 py-4 text-sm font-medium transition-all duration-300 group shadow-xl border-2 border-white/20">
               <Link to="/get-involved" className="flex items-center">
                 <Heart className="mr-2 h-4 w-4" />
                 Support Our Mission
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
-            <Button asChild className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 text-sm font-medium transition-all duration-300 group bg-transparent shadow-lg">
+            <Button asChild className="border-2 border-white text-white hover:bg-gradient-to-r hover:from-white hover:to-charis-blue-light hover:text-charis-blue-dark px-8 py-4 text-sm font-medium transition-all duration-300 group bg-transparent shadow-xl backdrop-blur-sm">
               <Link to="/programs" className="flex items-center">
                 <Calendar className="mr-2 h-4 w-4" />
                 Explore Programs
