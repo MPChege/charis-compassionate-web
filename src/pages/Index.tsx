@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -8,6 +9,7 @@ import Testimonials from "@/components/Testimonials";
 import HeroSlider from "@/components/HeroSlider";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ArrowRight, Heart, Calendar, Star, Users, Zap } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const StatsSection = () => {
   const { elementRef, isVisible } = useScrollAnimation(0.3);
@@ -18,7 +20,7 @@ const StatsSection = () => {
       <div className="absolute inset-0">
         <img 
           src="/lovable-uploads/4b610869-b25a-4fac-bbd5-a76fc765b517.png" 
-          alt="Community elder in traditional dress" 
+          alt="Community elder participating in traditional cultural activities, representing dignity in aging" 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gray-50/90"></div>
@@ -91,7 +93,7 @@ const CoreValuesSection = () => {
     <section ref={elementRef} className="section-padding bg-white">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-charis-blue-dark mb-4">Our Core Values</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-charis-blue-dark mb-4">Our Core Values for Older Persons Support</h2>
           <p className="max-w-3xl mx-auto text-gray-700">
             The principles that guide our work and define our commitment to older persons' mental wellness through the arts.
           </p>
@@ -129,7 +131,7 @@ const CallToAction = () => {
       <div className="absolute inset-0">
         <img 
           src="/lovable-uploads/a3eabbcc-f8ac-4805-a8a2-a318cd803e6e.png" 
-          alt="Community gathering" 
+          alt="Diverse community gathering supporting older persons mental health initiatives" 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/70"></div>
@@ -173,14 +175,23 @@ const CallToAction = () => {
 const Index = () => {
   return (
     <>
+      <Helmet>
+        <title>Charis Eagle Springs - Mental Health Support for Older Persons in Kenya</title>
+        <meta name="description" content="Promoting mental wellness for older persons through theatre and arts in Kenya. Supporting dignified aging with community programs, awareness campaigns, and caregiver resources since 2018." />
+        <meta name="keywords" content="older persons mental health Kenya, elder care programs, theatre therapy, aging support, dementia awareness, community outreach, mental wellness older adults" />
+        <link rel="canonical" href="https://chariseaglesprings.org" />
+      </Helmet>
+      
       <Navbar />
-      <HeroSlider />
-      <StatsSection />
-      <Mission />
-      <Services />
-      <CoreValuesSection />
-      <Testimonials />
-      <CallToAction />
+      <main>
+        <HeroSlider />
+        <StatsSection />
+        <Mission />
+        <Services />
+        <CoreValuesSection />
+        <Testimonials />
+        <CallToAction />
+      </main>
       <Footer />
     </>
   );
