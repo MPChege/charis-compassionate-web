@@ -25,7 +25,7 @@ const articles = [
   },
   {
     title: "Ageing in The Commonwealth – Research Report",
-    excerpt: "This research highlights the challenges and opportunities associated with population ageing in Commonwealth countries, emphasizing the importance of recognizing and supporting the contributions of older people.",
+    excerpt: "This research highlights the challenges and opportunities associated with population ageing in Commonwealth countries, emphasizing the importance of recognizing and supporting the contributions of older persons.",
     category: "Research",
     date: "July 2019",
     readTime: "30 min read",
@@ -117,7 +117,7 @@ const resources = [
   },
   {
     title: "Train the Trainer Programme – Elder Care",
-    description: "Details a training program aimed at enhancing elder care practices in developing countries, emphasizing capacity building and best practices.",
+    description: "Details a training program aimed at enhancing care practices for older persons in developing countries, emphasizing capacity building and best practices.",
     type: "PDF",
     size: "2.1 MB",
     category: "Mental Health & Dementia Care",
@@ -186,21 +186,21 @@ const events = [
     date: "Date to be confirmed",
     time: "Full Day Workshop",
     location: "Multiple Locations (Commonwealth Countries)",
-    description: "A comprehensive training program designed to enhance elder care practices and build capacity among caregivers and healthcare professionals in developing countries."
+    description: "A comprehensive training program designed to enhance care practices for older persons and build capacity among caregivers and healthcare professionals in developing countries."
   },
   {
     title: "Community Festivals & Cultural Celebrations",
     date: "Various Dates Throughout the Year",
     time: "Community Events",
     location: "Local Communities, Nairobi",
-    description: "Join us for various cultural festivals and community celebrations that bring together elderly individuals, families, and caregivers to foster social connections and mental well-being."
+    description: "Join us for various cultural festivals and community celebrations that bring together older persons, families, and caregivers to foster social connections and mental well-being."
   },
   {
     title: "World Elder Abuse Awareness Day",
     date: "June 15, 2025",
     time: "All Day Campaign",
     location: "Global Initiative - Local Participation",
-    description: "A global awareness campaign dedicated to raising awareness about elder abuse prevention, education, and support services for vulnerable elderly populations."
+    description: "A global awareness campaign dedicated to raising awareness about elder abuse prevention, education, and support services for vulnerable older persons."
   }
 ];
 
@@ -305,7 +305,7 @@ const AwarenessHub = () => {
               </div>
             </div>
             <p className="text-lg md:text-xl lg:text-2xl font-light text-white/90 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-md px-4">
-              Access educational resources, expert insights, and practical tools to better understand elderly mental health and caregiving excellence.
+              Access educational resources, expert insights, and practical tools to better understand mental health and caregiving excellence for older persons.
             </p>
             <div className="max-w-xl mx-auto relative px-4">
               <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-full"></div>

@@ -289,10 +289,10 @@ const Contact = () => {
             answer: "Yes, Charis Eagle Springs is a registered non-profit organization, and all donations are tax-deductible to the extent allowed by law. We provide receipts for all donations for tax purposes."
           }, {
             question: "Do you offer training for family caregivers?",
-            answer: "Yes, we regularly conduct training sessions for family caregivers of elderly individuals with mental health challenges. Check our Awareness Hub page for upcoming training sessions and workshops."
+            answer: "Yes, we regularly conduct training sessions for family caregivers of older persons with mental health challenges. Check our Awareness Hub page for upcoming training sessions and workshops."
           }, {
             question: "How can my organization partner with Charis Eagle Springs?",
-            answer: "We welcome partnerships with organizations that share our mission of improving elderly mental health care. Please contact us through our website or by email to discuss potential collaboration opportunities."
+            answer: "We welcome partnerships with organizations that share our mission of improving mental health care for older persons. Please contact us through our website or by email to discuss potential collaboration opportunities."
           }].map((faq, index) => <div key={index} className="bg-charis-neutral-light rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-charis-blue-dark mb-2">{faq.question}</h3>
                 <p className="text-gray-700">{faq.answer}</p>

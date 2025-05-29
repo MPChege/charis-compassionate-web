@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -117,7 +116,7 @@ const GetInvolved = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-6 animate-fade-in">Get Involved</h1>
             <p className="text-xl text-gray-700">
-              Join us in our mission to improve elderly mental health care and awareness. There are many ways to contribute and make a difference.
+              Join us in our mission to improve mental health care and awareness for older persons. There are many ways to contribute and make a difference.
             </p>
           </div>
         </div>
@@ -131,7 +130,7 @@ const GetInvolved = () => {
           }`}>
             <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Ways to Support Our Mission</h2>
             <p className="text-gray-700">
-              Whether through volunteering, donating, or partnering with us, your support helps us create a more compassionate world for elderly individuals.
+              Whether through volunteering, donating, or partnering with us, your support helps us create a more compassionate world for older persons.
             </p>
           </div>
 
@@ -148,7 +147,7 @@ const GetInvolved = () => {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-gray-700 mb-6">
-                  Share your time and skills to support our programs and help elderly individuals in your community.
+                  Share your time and skills to support our programs and help older persons in your community.
                 </CardDescription>
                 <ul className="text-left space-y-2 mb-6">
                   <li className="flex items-start">
@@ -182,7 +181,7 @@ const GetInvolved = () => {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-gray-700 mb-6">
-                  Support our work financially to help us expand our programs and reach more elderly individuals in need.
+                  Support our work financially to help us expand our programs and reach more older persons in need.
                 </CardDescription>
                 <ul className="text-left space-y-2 mb-6">
                   <li className="flex items-start">
@@ -251,7 +250,7 @@ const GetInvolved = () => {
           }`}>
             <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Donation Options</h2>
             <p className="text-gray-700">
-              Your financial support enables us to continue our vital work in elderly mental health care and awareness.
+              Your financial support enables us to continue our vital work in mental health care and awareness for older persons.
             </p>
           </div>
 
@@ -395,7 +394,7 @@ const GetInvolved = () => {
           }`}>
             <Users className="h-16 w-16 mx-auto text-charis-blue-dark opacity-40 mb-8" />
             <p className="text-xl md:text-2xl italic text-charis-blue-dark mb-8">
-              "Volunteering with Charis Eagle Springs has been one of the most rewarding experiences of my life. Seeing the positive impact on elderly individuals and their families makes every minute worthwhile."
+              "Volunteering with Charis Eagle Springs has been one of the most rewarding experiences of my life. Seeing the positive impact on older persons and their families makes every minute worthwhile."
             </p>
             <div>
               <h4 className="font-semibold text-charis-blue-dark">James Mwangi</h4>

@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -56,7 +55,7 @@ const About = () => {
               <div className="w-24 h-1 bg-gradient-to-r from-charis-blue-light to-charis-green-light mx-auto mb-8"></div>
             </div>
             <p className="text-xl md:text-2xl font-light text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
-              Discover our mission, vision, and the passionate story behind Charis Eagle Springs as we work to transform elderly mental health care.
+              Discover our mission, vision, and the passionate story behind Charis Eagle Springs as we work to transform mental health care for older persons.
             </p>
           </div>
         </div>
@@ -77,13 +76,13 @@ const About = () => {
             <div>
               <h2 className="text-3xl font-bold text-charis-blue-dark mb-6">Our Story</h2>
               <p className="mb-4">
-                Charis Eagle Springs was founded in 2018 by a group of healthcare professionals and community leaders who recognized the growing need for specialized mental health support for the elderly population.
+                Charis Eagle Springs was founded in 2018 by a group of healthcare professionals and community leaders who recognized the growing need for specialized mental health support for older persons.
               </p>
               <p className="mb-4">
-                Our founders witnessed firsthand the challenges faced by elderly individuals dealing with dementia, depression, and anxiety, as well as the struggles of their caregivers and family members.
+                Our founders witnessed firsthand the challenges faced by older persons dealing with dementia, depression, and anxiety, as well as the struggles of their caregivers and family members.
               </p>
               <p>
-                What began as a small community initiative has grown into a comprehensive organization dedicated to raising awareness, providing resources, and advocating for better mental health care for our elderly citizens.
+                What began as a small community initiative has grown into a comprehensive organization dedicated to raising awareness, providing resources, and advocating for better mental health care for our older community members.
               </p>
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg">
@@ -122,10 +121,10 @@ const About = () => {
               </div>
               <h2 className="text-2xl font-bold text-charis-blue-dark mb-4">Our Mission</h2>
               <p className="mb-3">
-                To raise awareness about mental health issues affecting the elderly and promote compassionate, dignified care for senior citizens.
+                To raise awareness about mental health issues affecting older persons and promote compassionate, dignified care for senior citizens.
               </p>
               <p>
-                We strive to educate communities, empower caregivers, and advocate for better policies and resources to support elderly mental health.
+                We strive to educate communities, empower caregivers, and advocate for better policies and resources to support mental health for older persons.
               </p>
             </div>
             
@@ -135,7 +134,7 @@ const About = () => {
               </div>
               <h2 className="text-2xl font-bold text-charis-blue-dark mb-4">Our Vision</h2>
               <p className="mb-3">
-                A society where elderly individuals receive the mental health support they need, where caregivers are equipped with proper resources, and where communities understand and value the dignity of their senior members.
+                A society where older persons receive the mental health support they need, where caregivers are equipped with proper resources, and where communities understand and value the dignity of their senior members.
               </p>
               <p>
                 We envision a world where aging with mental health challenges doesn't lead to isolation or diminished quality of life.
@@ -164,12 +163,12 @@ const About = () => {
               {
                 icon: Heart,
                 title: "Compassion",
-                description: "We approach our work with empathy and genuine care for the elderly and their families."
+                description: "We approach our work with empathy and genuine care for older persons and their families."
               },
               {
                 icon: Users,
                 title: "Respect",
-                description: "We honor the dignity and worth of every elderly person regardless of their mental health status."
+                description: "We honor the dignity and worth of every older person regardless of their mental health status."
               },
               {
                 icon: Star,

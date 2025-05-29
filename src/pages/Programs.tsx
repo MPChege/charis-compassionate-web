@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -29,37 +28,37 @@ const Programs = () => {
     },
     {
       title: "Caregiver Training & Support",
-      description: "Comprehensive training programs and ongoing support for professional and family caregivers of elderly individuals.",
+      description: "Comprehensive training programs and ongoing support for professional and family caregivers of older persons.",
       image: "https://images.unsplash.com/photo-1576765608866-5b51046452be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80",
       icon: Heart,
       goals: [
         "Develop caregiving skills and knowledge",
         "Prevent caregiver burnout through self-care strategies",
         "Create support networks for caregivers",
-        "Improve quality of care for elderly individuals"
+        "Improve quality of care for older persons"
       ]
     },
     {
       title: "Community Outreach Initiative",
-      description: "Programs that bring mental health awareness and elderly support services directly to communities across the region.",
+      description: "Programs that bring mental health awareness and support services for older persons directly to communities across the region.",
       image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
       icon: Users,
       goals: [
-        "Expand access to elderly mental health resources",
-        "Build community capacity to support elderly members",
+        "Expand access to mental health resources for older persons",
+        "Build community capacity to support older community members",
         "Reach underserved rural and urban communities",
         "Foster intergenerational connections and support"
       ]
     },
     {
       title: "Advocacy & Policy Reform",
-      description: "Working with stakeholders to advocate for better policies, funding, and resources for elderly mental health services.",
+      description: "Working with stakeholders to advocate for better policies, funding, and resources for mental health services for older persons.",
       image: "https://images.unsplash.com/photo-1504448919669-f34c354962c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
       icon: Landmark,
       goals: [
-        "Influence policy changes to prioritize elderly mental health",
-        "Increase public funding for elderly care services",
-        "Develop standards for quality elderly mental health care",
+        "Influence policy changes to prioritize mental health for older persons",
+        "Increase public funding for care services for older persons",
+        "Develop standards for quality mental health care for older persons",
         "Build coalitions with other advocacy organizations"
       ]
     }
@@ -146,7 +145,7 @@ const Programs = () => {
               </div>
             </div>
             <p className="text-xl md:text-2xl font-light text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
-              Discover our transformative initiatives and how we're making a meaningful difference in elderly mental health care and community awareness.
+              Discover our transformative initiatives and how we're making a meaningful difference in mental health care and community awareness for older persons.
             </p>
           </div>
         </div>
@@ -168,7 +167,7 @@ const Programs = () => {
           }`}>
             <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Current Initiatives</h2>
             <p className="text-gray-700">
-              Our programs aim to improve the quality of life for elderly individuals by addressing mental health needs, supporting caregivers, and creating compassionate communities.
+              Our programs aim to improve the quality of life for older persons by addressing mental health needs, supporting caregivers, and creating compassionate communities.
             </p>
           </div>
 
@@ -218,7 +217,7 @@ const Programs = () => {
           }`}>
             <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Upcoming Events</h2>
             <p className="text-gray-700">
-              Join us at one of our upcoming events to learn more about elderly mental health and how you can get involved.
+              Join us at one of our upcoming events to learn more about mental health and how you can get involved.
             </p>
           </div>
 
@@ -256,7 +255,7 @@ const Programs = () => {
           }`}>
             <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Our Impact</h2>
             <p className="text-gray-700">
-              Through our programs and initiatives, we have made a meaningful difference in the lives of many elderly individuals and their caregivers.
+              Through our programs and initiatives, we have made a meaningful difference in the lives of many older persons and their caregivers.
             </p>
           </div>
 
@@ -273,7 +272,7 @@ const Programs = () => {
             </div>
             <div className="text-center p-6 rounded-xl bg-charis-purple-light/50">
               <h3 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-2">5,000+</h3>
-              <p className="text-gray-700">Elderly Lives Impacted</p>
+              <p className="text-gray-700">Lives of Older Persons Impacted</p>
             </div>
           </div>
         </div>

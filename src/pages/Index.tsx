@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -36,7 +35,7 @@ const StatsSection = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {[
-            { number: "200+", label: "Elderly Participants", delay: "delay-200" },
+            { number: "200+", label: "Older Persons Participants", delay: "delay-200" },
             { number: "50+", label: "Theatre Workshops", delay: "delay-400" },
             { number: "25+", label: "Community Performances", delay: "delay-600" },
           ].map((stat, index) => (
@@ -69,7 +68,7 @@ const CoreValuesSection = () => {
     {
       icon: Heart,
       title: "Respect",
-      description: "Honoring dignity and individuality of every elderly person"
+      description: "Honoring dignity and individuality of every older person"
     },
     {
       icon: Users,
@@ -94,7 +93,7 @@ const CoreValuesSection = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-charis-blue-dark mb-4">Our Core Values</h2>
           <p className="max-w-3xl mx-auto text-gray-700">
-            The principles that guide our work and define our commitment to elderly mental wellness through the arts.
+            The principles that guide our work and define our commitment to older persons' mental wellness through the arts.
           </p>
         </div>
         
@@ -145,10 +144,10 @@ const CallToAction = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
           <h2 className="font-heading text-white mb-8 drop-shadow-lg">
-            Join Us in Promoting Elderly Mental Wellness
+            Join Us in Promoting Mental Wellness for Older Persons
           </h2>
           <p className="text-xl font-light text-white/90 mb-12 leading-relaxed drop-shadow-md">
-            Help us create a society where elderly individuals are celebrated, empowered, and supported through the transformative power of theatre and arts.
+            Help us create a society where older persons are celebrated, empowered, and supported through the transformative power of theatre and arts.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <Button asChild className="bg-white text-black hover:bg-gray-100 px-8 py-4 text-sm font-medium transition-all duration-300 group shadow-lg">
