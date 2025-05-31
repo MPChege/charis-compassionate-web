@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { Heart, Calendar, Users, CheckCircle, Sparkles } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface VolunteerModalProps {
   isOpen: boolean;
@@ -17,6 +18,7 @@ const VolunteerModal = ({ isOpen, onClose }: VolunteerModalProps) => {
   const { toast } = useToast();
   const [step, setStep] = useState(1);
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,27 +45,60 @@ const VolunteerModal = ({ isOpen, onClose }: VolunteerModalProps) => {
     );
   };
 
-  const handleSubmit = () => {
-    console.log("Volunteer application:", { ...formData, areas: selectedAreas });
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
     
-    toast({
-      title: "🎉 Welcome to the Team!",
-      description: "Your volunteer application has been submitted. We'll contact you within 48 hours!",
-      variant: "default",
-    });
+    try {
+      const { error } = await supabase
+        .from('volunteer_applications')
+        .insert([{
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          availability: formData.availability || null,
+          experience: formData.experience || null,
+          motivation: formData.motivation || null,
+          volunteer_areas: selectedAreas
+        }]);
 
-    // Reset and close
-    setStep(1);
-    setSelectedAreas([]);
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      availability: "",
-      experience: "",
-      motivation: ""
-    });
-    onClose();
+      if (error) {
+        console.error('Error submitting application:', error);
+        toast({
+          title: "Error",
+          description: "Failed to submit your application. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      toast({
+        title: "🎉 Welcome to the Team!",
+        description: "Your volunteer application has been submitted. We'll contact you within 48 hours!",
+        variant: "default",
+      });
+
+      // Reset and close
+      setStep(1);
+      setSelectedAreas([]);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        availability: "",
+        experience: "",
+        motivation: ""
+      });
+      onClose();
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -142,7 +177,7 @@ const VolunteerModal = ({ isOpen, onClose }: VolunteerModalProps) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium text-gray-700 mb-2 block">Full Name</label>
+                <label className="text-sm font-medium text-gray-700 mb-2 block">Full Name *</label>
                 <Input
                   name="name"
                   value={formData.name}
@@ -152,7 +187,7 @@ const VolunteerModal = ({ isOpen, onClose }: VolunteerModalProps) => {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700 mb-2 block">Email</label>
+                <label className="text-sm font-medium text-gray-700 mb-2 block">Email *</label>
                 <Input
                   name="email"
                   type="email"
@@ -216,14 +251,16 @@ const VolunteerModal = ({ isOpen, onClose }: VolunteerModalProps) => {
                 variant="outline"
                 onClick={() => setStep(1)}
                 className="flex-1"
+                disabled={isSubmitting}
               >
                 Back
               </Button>
               <Button
                 onClick={handleSubmit}
+                disabled={!formData.name || !formData.email || isSubmitting}
                 className="flex-1 bg-charis-green hover:bg-charis-green-dark transform hover:scale-105 transition-all duration-200"
               >
-                Submit Application
+                {isSubmitting ? "Submitting..." : "Submit Application"}
               </Button>
             </div>
           </div>

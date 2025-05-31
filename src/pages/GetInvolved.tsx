@@ -14,6 +14,7 @@ import { useScrollAnimation, useParallaxScroll } from "@/hooks/useScrollAnimatio
 import VolunteerModal from "@/components/get-involved/VolunteerModal";
 import DonationModal from "@/components/get-involved/DonationModal";
 import PartnershipModal from "@/components/get-involved/PartnershipModal";
+import { supabase } from "@/integrations/supabase/client";
 
 const GetInvolved = () => {
   const { toast } = useToast();
@@ -28,6 +29,7 @@ const GetInvolved = () => {
   const [donationModalOpen, setDonationModalOpen] = useState(false);
   const [partnershipModalOpen, setPartnershipModalOpen] = useState(false);
   const [selectedDonationType, setSelectedDonationType] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const [formData, setFormData] = useState({
     name: "",
@@ -45,23 +47,54 @@ const GetInvolved = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
     
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      interest: "",
-      message: ""
-    });
+    try {
+      const { error } = await supabase
+        .from('general_inquiries')
+        .insert([{
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          interest: formData.interest || null,
+          message: formData.message || null
+        }]);
 
-    toast({
-      title: "Form Submitted!",
-      description: "Thank you for your interest. We'll be in touch soon.",
-      variant: "default",
-    });
+      if (error) {
+        console.error('Error submitting inquiry:', error);
+        toast({
+          title: "Error",
+          description: "Failed to submit your inquiry. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        interest: "",
+        message: ""
+      });
+
+      toast({
+        title: "Form Submitted!",
+        description: "Thank you for your interest. We'll be in touch soon.",
+        variant: "default",
+      });
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleDonationSelect = (donationType: string) => {
@@ -336,7 +369,7 @@ const GetInvolved = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-gray-700">
-                    Your Name
+                    Your Name *
                   </label>
                   <Input
                     id="name"
@@ -349,7 +382,7 @@ const GetInvolved = () => {
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-gray-700">
-                    Email Address
+                    Email Address *
                   </label>
                   <Input
                     id="email"
@@ -402,9 +435,13 @@ const GetInvolved = () => {
                   rows={5}
                 />
               </div>
-              <Button type="submit" className="w-full bg-charis-blue hover:bg-charis-blue-dark">
+              <Button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full bg-charis-blue hover:bg-charis-blue-dark"
+              >
                 <Send className="mr-2 h-5 w-5" />
-                Submit
+                {isSubmitting ? "Submitting..." : "Submit"}
               </Button>
             </form>
           </div>
