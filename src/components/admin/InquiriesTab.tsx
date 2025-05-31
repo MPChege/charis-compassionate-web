@@ -23,6 +23,9 @@ import {
 import { Search, Eye, CheckCircle, XCircle, Clock, Phone, Mail } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import type { Database } from '@/integrations/supabase/types';
+
+type ApplicationStatus = Database['public']['Enums']['application_status'];
 
 interface Inquiry {
   id: string;
@@ -31,7 +34,7 @@ interface Inquiry {
   phone: string;
   interest: string;
   message: string;
-  status: 'pending' | 'approved' | 'rejected' | 'contacted';
+  status: ApplicationStatus;
   notes: string;
   created_at: string;
   updated_at: string;
@@ -81,7 +84,7 @@ const InquiriesTab = () => {
     }
   };
 
-  const updateInquiryStatus = async (id: string, status: string, notes?: string) => {
+  const updateInquiryStatus = async (id: string, status: ApplicationStatus, notes?: string) => {
     try {
       const { error } = await supabase
         .from('general_inquiries')
@@ -111,7 +114,7 @@ const InquiriesTab = () => {
     }
   };
 
-  const getStatusBadge = (status: string) => {
+  const getStatusBadge = (status: ApplicationStatus) => {
     const statusConfig = {
       pending: { label: 'Pending', variant: 'secondary' as const, icon: Clock },
       approved: { label: 'Responded', variant: 'default' as const, icon: CheckCircle },
@@ -119,7 +122,7 @@ const InquiriesTab = () => {
       contacted: { label: 'Contacted', variant: 'outline' as const, icon: Phone }
     };
 
-    const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.pending;
+    const config = statusConfig[status] || statusConfig.pending;
     const Icon = config.icon;
 
     return (

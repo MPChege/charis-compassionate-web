@@ -23,6 +23,9 @@ import {
 import { Search, Eye, CheckCircle, XCircle, Clock, Phone, Mail, Building } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import type { Database } from '@/integrations/supabase/types';
+
+type ApplicationStatus = Database['public']['Enums']['application_status'];
 
 interface Partnership {
   id: string;
@@ -35,7 +38,7 @@ interface Partnership {
   description: string;
   proposed_collaboration: string;
   resources_offered: string;
-  status: 'pending' | 'approved' | 'rejected' | 'contacted';
+  status: ApplicationStatus;
   notes: string;
   created_at: string;
   updated_at: string;
@@ -85,7 +88,7 @@ const PartnershipsTab = () => {
     }
   };
 
-  const updatePartnershipStatus = async (id: string, status: string, notes?: string) => {
+  const updatePartnershipStatus = async (id: string, status: ApplicationStatus, notes?: string) => {
     try {
       const { error } = await supabase
         .from('partnership_inquiries')
@@ -115,7 +118,7 @@ const PartnershipsTab = () => {
     }
   };
 
-  const getStatusBadge = (status: string) => {
+  const getStatusBadge = (status: ApplicationStatus) => {
     const statusConfig = {
       pending: { label: 'Pending', variant: 'secondary' as const, icon: Clock },
       approved: { label: 'Approved', variant: 'default' as const, icon: CheckCircle },
@@ -123,7 +126,7 @@ const PartnershipsTab = () => {
       contacted: { label: 'Contacted', variant: 'outline' as const, icon: Phone }
     };
 
-    const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.pending;
+    const config = statusConfig[status] || statusConfig.pending;
     const Icon = config.icon;
 
     return (

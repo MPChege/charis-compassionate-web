@@ -23,6 +23,9 @@ import {
 import { Search, Eye, CheckCircle, XCircle, Clock, Phone, Mail } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import type { Database } from '@/integrations/supabase/types';
+
+type ApplicationStatus = Database['public']['Enums']['application_status'];
 
 interface VolunteerApplication {
   id: string;
@@ -33,7 +36,7 @@ interface VolunteerApplication {
   experience: string;
   motivation: string;
   volunteer_areas: string[];
-  status: 'pending' | 'approved' | 'rejected' | 'contacted';
+  status: ApplicationStatus;
   notes: string;
   created_at: string;
   updated_at: string;
@@ -83,7 +86,7 @@ const VolunteerApplicationsTab = () => {
     }
   };
 
-  const updateApplicationStatus = async (id: string, status: string, notes?: string) => {
+  const updateApplicationStatus = async (id: string, status: ApplicationStatus, notes?: string) => {
     try {
       const { error } = await supabase
         .from('volunteer_applications')
@@ -113,7 +116,7 @@ const VolunteerApplicationsTab = () => {
     }
   };
 
-  const getStatusBadge = (status: string) => {
+  const getStatusBadge = (status: ApplicationStatus) => {
     const statusConfig = {
       pending: { label: 'Pending', variant: 'secondary' as const, icon: Clock },
       approved: { label: 'Approved', variant: 'default' as const, icon: CheckCircle },
@@ -121,7 +124,7 @@ const VolunteerApplicationsTab = () => {
       contacted: { label: 'Contacted', variant: 'outline' as const, icon: Phone }
     };
 
-    const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.pending;
+    const config = statusConfig[status] || statusConfig.pending;
     const Icon = config.icon;
 
     return (

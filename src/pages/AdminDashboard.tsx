@@ -72,7 +72,7 @@ const AdminDashboard = () => {
         },
         donations: {
           total: donations?.length || 0,
-          amount: donations?.reduce((sum, d) => sum + parseFloat(d.amount || '0'), 0) || 0
+          amount: donations?.reduce((sum, d) => sum + parseFloat(String(d.amount || '0')), 0) || 0
         },
         partnerships: {
           total: partnerships?.length || 0,
