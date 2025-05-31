@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -10,6 +11,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useScrollAnimation, useParallaxScroll } from "@/hooks/useScrollAnimation";
+import VolunteerModal from "@/components/get-involved/VolunteerModal";
+import DonationModal from "@/components/get-involved/DonationModal";
+import PartnershipModal from "@/components/get-involved/PartnershipModal";
 
 const GetInvolved = () => {
   const { toast } = useToast();
@@ -18,6 +22,12 @@ const GetInvolved = () => {
   const { elementRef: donationRef, isVisible: donationVisible } = useScrollAnimation(0.1);
   const { elementRef: formRef, isVisible: formVisible } = useScrollAnimation(0.1);
   const { elementRef: testimonialRef, isVisible: testimonialVisible } = useScrollAnimation(0.1);
+  
+  // Modal states
+  const [volunteerModalOpen, setVolunteerModalOpen] = useState(false);
+  const [donationModalOpen, setDonationModalOpen] = useState(false);
+  const [partnershipModalOpen, setPartnershipModalOpen] = useState(false);
+  const [selectedDonationType, setSelectedDonationType] = useState<string>("");
   
   const [formData, setFormData] = useState({
     name: "",
@@ -39,7 +49,6 @@ const GetInvolved = () => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     
-    // Reset the form
     setFormData({
       name: "",
       email: "",
@@ -48,12 +57,16 @@ const GetInvolved = () => {
       message: ""
     });
 
-    // Show success toast
     toast({
       title: "Form Submitted!",
       description: "Thank you for your interest. We'll be in touch soon.",
       variant: "default",
     });
+  };
+
+  const handleDonationSelect = (donationType: string) => {
+    setSelectedDonationType(donationType);
+    setDonationModalOpen(true);
   };
 
   const donations = [
@@ -138,7 +151,7 @@ const GetInvolved = () => {
             waysVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             {/* Volunteer */}
-            <Card className="text-center hover:shadow-lg transition-shadow">
+            <Card className="text-center hover:shadow-lg transition-all duration-300 hover:scale-105">
               <CardHeader>
                 <div className="mx-auto h-16 w-16 rounded-full bg-charis-blue-light flex items-center justify-center mb-4">
                   <HandHelping className="h-8 w-8 text-charis-blue-dark" />
@@ -165,14 +178,17 @@ const GetInvolved = () => {
                 </ul>
               </CardContent>
               <CardFooter className="flex justify-center pt-0">
-                <Button className="bg-charis-blue hover:bg-charis-blue-dark w-full">
+                <Button 
+                  onClick={() => setVolunteerModalOpen(true)}
+                  className="bg-charis-blue hover:bg-charis-blue-dark w-full transform hover:scale-105 transition-all duration-200"
+                >
                   Become a Volunteer
                 </Button>
               </CardFooter>
             </Card>
 
             {/* Donate */}
-            <Card className="text-center hover:shadow-lg transition-shadow border-charis-green">
+            <Card className="text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-charis-green">
               <CardHeader className="pb-0">
                 <div className="mx-auto h-16 w-16 rounded-full bg-charis-green-light flex items-center justify-center mb-4">
                   <Heart className="h-8 w-8 text-charis-green-dark" />
@@ -199,14 +215,17 @@ const GetInvolved = () => {
                 </ul>
               </CardContent>
               <CardFooter className="flex justify-center pt-0">
-                <Button className="bg-charis-green hover:bg-charis-green-dark w-full">
+                <Button 
+                  onClick={() => setDonationModalOpen(true)}
+                  className="bg-charis-green hover:bg-charis-green-dark w-full transform hover:scale-105 transition-all duration-200"
+                >
                   Donate Now
                 </Button>
               </CardFooter>
             </Card>
 
             {/* Partner */}
-            <Card className="text-center hover:shadow-lg transition-shadow">
+            <Card className="text-center hover:shadow-lg transition-all duration-300 hover:scale-105">
               <CardHeader>
                 <div className="mx-auto h-16 w-16 rounded-full bg-charis-purple-light flex items-center justify-center mb-4">
                   <LinkIcon className="h-8 w-8 text-charis-blue-dark" />
@@ -233,7 +252,10 @@ const GetInvolved = () => {
                 </ul>
               </CardContent>
               <CardFooter className="flex justify-center pt-0">
-                <Button className="bg-charis-blue hover:bg-charis-blue-dark w-full">
+                <Button 
+                  onClick={() => setPartnershipModalOpen(true)}
+                  className="bg-charis-blue hover:bg-charis-blue-dark w-full transform hover:scale-105 transition-all duration-200"
+                >
                   Become a Partner
                 </Button>
               </CardFooter>
@@ -258,7 +280,7 @@ const GetInvolved = () => {
             donationVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             {donations.map((donation, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow h-full">
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:scale-105 h-full">
                 <CardHeader>
                   <CardTitle className="text-xl text-center text-charis-blue-dark">{donation.title}</CardTitle>
                   <div className="bg-charis-blue-light text-charis-blue-dark text-center py-2 px-4 rounded-full mx-auto mt-2 font-medium">
@@ -282,7 +304,10 @@ const GetInvolved = () => {
                   </div>
                 </CardContent>
                 <CardFooter className="flex justify-center">
-                  <Button className="bg-charis-green hover:bg-charis-green-dark w-full">
+                  <Button 
+                    onClick={() => handleDonationSelect(donation.title)}
+                    className="bg-charis-green hover:bg-charis-green-dark w-full transform hover:scale-105 transition-all duration-200"
+                  >
                     Select
                   </Button>
                 </CardFooter>
@@ -386,7 +411,6 @@ const GetInvolved = () => {
         </div>
       </section>
 
-      {/* Testimonial with Scroll Animation */}
       <section ref={testimonialRef} className="py-16 bg-charis-blue-light">
         <div className="container-custom">
           <div className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
@@ -403,6 +427,23 @@ const GetInvolved = () => {
           </div>
         </div>
       </section>
+
+      {/* Modals */}
+      <VolunteerModal 
+        isOpen={volunteerModalOpen} 
+        onClose={() => setVolunteerModalOpen(false)} 
+      />
+      
+      <DonationModal 
+        isOpen={donationModalOpen} 
+        onClose={() => setDonationModalOpen(false)}
+        selectedType={selectedDonationType}
+      />
+      
+      <PartnershipModal 
+        isOpen={partnershipModalOpen} 
+        onClose={() => setPartnershipModalOpen(false)} 
+      />
 
       <Footer />
       <ScrollToTop />
