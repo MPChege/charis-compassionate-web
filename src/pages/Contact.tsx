@@ -59,7 +59,7 @@ const Contact = () => {
     <>
       <Helmet>
         <title>Contact Us - Charis Eagle Springs | Get in Touch</title>
-        <meta name="description" content="Contact Charis Eagle Springs for questions about mental health support for older persons in Kenya. Phone: +254 722 679 107 | Email: shironjagi@gmail.com | Nairobi, Kenya" />
+        <meta name="description" content="Contact Charis Eagle Springs for questions about mental health support for older persons in Kenya. Phone: +254 722 679 107 | Email: info@chariseaglesprings.org | Nairobi, Kenya" />
         <meta name="keywords" content="contact Charis Eagle Springs, older persons mental health Kenya, elder care contact, nonprofit contact information" />
         <link rel="canonical" href="https://chariseaglesprings.org/contact" />
       </Helmet>
@@ -181,7 +181,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-xl text-charis-blue-dark mb-2">Email</h3>
-                        <p className="text-gray-700">shironjagi@gmail.com</p>
+                        <p className="text-gray-700">info@chariseaglesprings.org</p>
                         <p className="text-gray-500 text-sm">We'll respond as soon as possible</p>
                       </div>
                     </CardContent>

@@ -125,10 +125,10 @@ const Footer = () => {
                   <Mail size={14} className="text-white" />
                 </div>
                 <a 
-                  href="mailto:shironjagi@gmail.com" 
+                  href="mailto:info@chariseaglesprings.org" 
                   className="text-white/80 hover:text-white hover:bg-gradient-to-r hover:from-charis-green-light hover:to-charis-blue-light hover:bg-clip-text hover:text-transparent transition-all duration-300"
                 >
-                  shironjagi@gmail.com
+                  info@chariseaglesprings.org
                 </a>
               </li>
             </ul>
