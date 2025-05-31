@@ -17,6 +17,7 @@ const Navbar = () => {
     { name: "Programs", path: "/programs" },
     { name: "Get Involved", path: "/get-involved" },
     { name: "Contact", path: "/contact" },
+    { name: "Admin", path: "/auth" },
   ];
 
   useEffect(() => {
@@ -65,6 +66,19 @@ const Navbar = () => {
                       {link.name}
                     </span>
                     <div className="absolute inset-0 bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out -z-10"></div>
+                  </Link>
+                </Button>
+              ) : link.name === "Admin" ? (
+                <Button 
+                  key={link.name}
+                  asChild
+                  variant="outline"
+                  className="group relative overflow-hidden border-2 px-6 py-2 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                >
+                  <Link to={link.path} className="relative z-10">
+                    <span className="transition-transform duration-300 group-hover:scale-110">
+                      {link.name}
+                    </span>
                   </Link>
                 </Button>
               ) : (
@@ -122,6 +136,20 @@ const Navbar = () => {
                           {link.name}
                         </span>
                         <div className="absolute inset-0 bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out -z-10"></div>
+                      </Link>
+                    </Button>
+                  ) : link.name === "Admin" ? (
+                    <Button 
+                      key={link.name} 
+                      asChild 
+                      variant="outline"
+                      className="group relative overflow-hidden border-2 w-full justify-center py-3 transition-all duration-300 hover:scale-105"
+                      onClick={closeMenu}
+                    >
+                      <Link to={link.path} className="relative z-10">
+                        <span className="transition-transform duration-300 group-hover:scale-110">
+                          {link.name}
+                        </span>
                       </Link>
                     </Button>
                   ) : (
