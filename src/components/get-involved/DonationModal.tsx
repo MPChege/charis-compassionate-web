@@ -25,7 +25,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
     anonymous: false
   });
 
-  const predefinedAmounts = ["25", "50", "100", "250", "500", "1000"];
+  const predefinedAmounts = ["500", "1000", "2500", "5000", "10000", "25000"];
   const paymentMethods = [
     { id: "mpesa", label: "M-Pesa", icon: "📱" },
     { id: "card", label: "Credit/Debit Card", icon: "💳" },
@@ -49,7 +49,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
     
     toast({
       title: "🎉 Thank You for Your Generosity!",
-      description: `Your ${donationData.frequency} donation of $${donationData.amount} will make a real difference in older persons' lives.`,
+      description: `Your ${donationData.frequency} donation of KSH ${Number(donationData.amount).toLocaleString()} will make a real difference in older persons' lives.`,
       variant: "default",
     });
 
@@ -95,7 +95,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
 
             <div>
               <label className="text-sm font-medium text-gray-700 mb-3 block">
-                Choose Donation Amount (USD)
+                Choose Donation Amount (KSH)
               </label>
               <div className="grid grid-cols-3 gap-3 mb-4">
                 {predefinedAmounts.map((amount) => (
@@ -109,7 +109,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
                         : 'hover:border-charis-green'
                     }`}
                   >
-                    ${amount}
+                    KSH {Number(amount).toLocaleString()}
                   </Button>
                 ))}
               </div>
@@ -170,7 +170,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
             <div className="flex items-center justify-between p-4 bg-charis-neutral-light rounded-lg">
               <div>
                 <span className="text-lg font-semibold text-charis-blue-dark">
-                  ${donationData.amount} {donationData.frequency}
+                  KSH {Number(donationData.amount).toLocaleString()} {donationData.frequency}
                 </span>
                 <p className="text-sm text-gray-600">
                   {donationData.frequency === "monthly" 

@@ -116,7 +116,7 @@ const GetInvolved = () => {
     {
       title: "Monthly Giving",
       description: "Become a sustaining supporter with a recurring monthly donation.",
-      amount: "Starting at $10/month",
+      amount: "Starting at KSH 500/month",
       benefits: [
         "Sustained support for long-term initiatives",
         "Convenient automatic payments",
