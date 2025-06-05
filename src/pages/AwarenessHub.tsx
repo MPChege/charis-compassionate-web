@@ -20,8 +20,7 @@ const articles = [
     date: "September 2024",
     readTime: "45 min read",
     source: "CommonAge",
-    url: "https://www.commage.org/wp-content/uploads/2024/09/Dementia-in-the-Commonwealth-full-report-2024.pdf",
-    image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+    url: "https://www.commage.org/wp-content/uploads/2024/09/Dementia-in-the-Commonwealth-full-report-2024.pdf"
   },
   {
     title: "Ageing in The Commonwealth – Research Report",
@@ -30,8 +29,7 @@ const articles = [
     date: "July 2019",
     readTime: "30 min read",
     source: "CommonAge",
-    url: "https://www.commage.org/wp-content/uploads/2019/07/CommonAge-Research-Report-Final.pdf",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+    url: "https://www.commage.org/wp-content/uploads/2019/07/CommonAge-Research-Report-Final.pdf"
   },
   {
     title: "Celebrating Commonwealth Day & International Women's Day",
@@ -40,8 +38,7 @@ const articles = [
     date: "March 2021",
     readTime: "8 min read",
     source: "CommonAge",
-    url: "https://www.commage.org/celebrating-commonwealth-day-international-womens-day-8-march-2021/",
-    image: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+    url: "https://www.commage.org/celebrating-commonwealth-day-international-womens-day-8-march-2021/"
   },
   {
     title: "Positive Good News Stories",
@@ -50,8 +47,7 @@ const articles = [
     date: "2024",
     readTime: "15 min read",
     source: "The Foundation for a Better Life",
-    url: "https://www.passiton.com/positive-good-news-stories",
-    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+    url: "https://www.passiton.com/positive-good-news-stories"
   },
   {
     title: "Father Turns Personal Tragedy into Triumph",
@@ -60,8 +56,7 @@ const articles = [
     date: "2024",
     readTime: "6 min read",
     source: "The Foundation for a Better Life",
-    url: "https://www.passiton.com/passiton-blog/152-father-turns-personal-tragedy-into-triumph-for",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+    url: "https://www.passiton.com/passiton-blog/152-father-turns-personal-tragedy-into-triumph-for"
   },
   {
     title: "A Legend On and Off the Court",
@@ -70,8 +65,7 @@ const articles = [
     date: "2024",
     readTime: "5 min read",
     source: "The Foundation for a Better Life",
-    url: "https://www.passiton.com/positive-good-news-stories/108-a-legend-on-and-off-the-court",
-    image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+    url: "https://www.passiton.com/positive-good-news-stories/108-a-legend-on-and-off-the-court"
   },
   {
     title: "Older Americans Month 2024: Building Connections",
@@ -80,8 +74,7 @@ const articles = [
     date: "May 2024",
     readTime: "10 min read",
     source: "LeadingAge",
-    url: "https://leadingage.org/older-americans-month-2024-news-article/",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+    url: "https://leadingage.org/older-americans-month-2024-news-article/"
   },
   {
     title: "Assisted Living News & Insights",
@@ -90,8 +83,7 @@ const articles = [
     date: "2024",
     readTime: "20 min read",
     source: "LeadingAge",
-    url: "https://leadingage.org/assisted-living-news/",
-    image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+    url: "https://leadingage.org/assisted-living-news/"
   },
   {
     title: "Housing Programs and Policy Impact",
@@ -100,8 +92,7 @@ const articles = [
     date: "2024",
     readTime: "12 min read",
     source: "LeadingAge",
-    url: "https://leadingage.org/threat-to-hud-programs-staff-focus-of-house-hearing/",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+    url: "https://leadingage.org/threat-to-hud-programs-staff-focus-of-house-hearing/"
   }
 ];
 
@@ -362,7 +353,7 @@ const AwarenessHub = () => {
                     <CarouselContent className="-ml-2 md:-ml-4">
                       {filteredArticles.map((article, index) => (
                         <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                          <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 h-full">
+                          <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105 h-full">
                             <div className="h-48 overflow-hidden">
                               <img 
                                 src={article.image} 
