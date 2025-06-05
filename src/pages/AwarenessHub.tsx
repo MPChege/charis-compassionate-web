@@ -354,13 +354,6 @@ const AwarenessHub = () => {
                       {filteredArticles.map((article, index) => (
                         <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                           <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105 h-full">
-                            <div className="h-48 overflow-hidden">
-                              <img 
-                                src={article.image} 
-                                alt={article.title} 
-                                className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                              />
-                            </div>
                             <CardHeader className="pb-2">
                               <div className="flex justify-between items-center mb-2">
                                 <span className="text-xs font-medium px-2 py-1 bg-charis-blue-light text-charis-blue-dark rounded-full">
