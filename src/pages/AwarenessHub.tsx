@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -10,212 +11,115 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useScrollAnimation, useParallaxScroll } from "@/hooks/useScrollAnimation";
+import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
 
-// Sample data for resources
-const articles = [
-  {
-    title: "Dementia in the Commonwealth – Full Report",
-    excerpt: "This comprehensive report provides expert insights into dementia prevention, diagnosis, care, and support across Commonwealth countries. It offers valuable information for healthcare programs and initiatives.",
-    category: "Dementia",
-    date: "September 2024",
-    readTime: "45 min read",
-    source: "CommonAge",
-    url: "https://www.commage.org/wp-content/uploads/2024/09/Dementia-in-the-Commonwealth-full-report-2024.pdf"
-  },
-  {
-    title: "Ageing in The Commonwealth – Research Report",
-    excerpt: "This research highlights the challenges and opportunities associated with population ageing in Commonwealth countries, emphasizing the importance of recognizing and supporting the contributions of older persons.",
-    category: "Research",
-    date: "July 2019",
-    readTime: "30 min read",
-    source: "CommonAge",
-    url: "https://www.commage.org/wp-content/uploads/2019/07/CommonAge-Research-Report-Final.pdf"
-  },
-  {
-    title: "Celebrating Commonwealth Day & International Women's Day",
-    excerpt: "An inspiring article sharing stories of older women from communities across the Commonwealth, emphasizing the value and contributions of older women in society.",
-    category: "Community",
-    date: "March 2021",
-    readTime: "8 min read",
-    source: "CommonAge",
-    url: "https://www.commage.org/celebrating-commonwealth-day-international-womens-day-8-march-2021/"
-  },
-  {
-    title: "Positive Good News Stories",
-    excerpt: "A collection of life-affirming true stories that highlight values such as kindness, perseverance, and compassion. These stories serve as inspiration and showcase the power of human connection.",
-    category: "Inspiration",
-    date: "2024",
-    readTime: "15 min read",
-    source: "The Foundation for a Better Life",
-    url: "https://www.passiton.com/positive-good-news-stories"
-  },
-  {
-    title: "Father Turns Personal Tragedy into Triumph",
-    excerpt: "A powerful story about a father who created the Honor Connor Scholarship Fund to reward students who served in their community, transforming personal tragedy into positive community impact.",
-    category: "Inspiration",
-    date: "2024",
-    readTime: "6 min read",
-    source: "The Foundation for a Better Life",
-    url: "https://www.passiton.com/passiton-blog/152-father-turns-personal-tragedy-into-triumph-for"
-  },
-  {
-    title: "A Legend On and Off the Court",
-    excerpt: "An article about Kareem Abdul-Jabbar selling his championship rings and MVP trophies to support youth education programs, demonstrating extraordinary generosity and commitment to community development.",
-    category: "Inspiration",
-    date: "2024",
-    readTime: "5 min read",
-    source: "The Foundation for a Better Life",
-    url: "https://www.passiton.com/positive-good-news-stories/108-a-legend-on-and-off-the-court"
-  },
-  {
-    title: "Older Americans Month 2024: Building Connections",
-    excerpt: "An article highlighting how older adults in communities boost physical and emotional health through connections, aligning with mental well-being and community engagement initiatives.",
-    category: "Community",
-    date: "May 2024",
-    readTime: "10 min read",
-    source: "LeadingAge",
-    url: "https://leadingage.org/older-americans-month-2024-news-article/"
-  },
-  {
-    title: "Assisted Living News & Insights",
-    excerpt: "A comprehensive section featuring news for assisted living providers, offering valuable insights into current trends, challenges, and innovations in elder care services.",
-    category: "Healthcare",
-    date: "2024",
-    readTime: "20 min read",
-    source: "LeadingAge",
-    url: "https://leadingage.org/assisted-living-news/"
-  },
-  {
-    title: "Housing Programs and Policy Impact",
-    excerpt: "An important article discussing potential impacts of legislative changes on housing programs for older adults, relevant for understanding current policy environments and advocacy needs.",
-    category: "Policy",
-    date: "2024",
-    readTime: "12 min read",
-    source: "LeadingAge",
-    url: "https://leadingage.org/threat-to-hud-programs-staff-focus-of-house-hearing/"
-  }
-];
+// Type definitions based on database schema
+interface Article {
+  id: string;
+  title: string;
+  excerpt: string | null;
+  category: string;
+  date: string;
+  read_time: string | null;
+  source: string;
+  url: string;
+}
 
-const resources = [
-  {
-    title: "Dementia in the Commonwealth – Full Report",
-    description: "A comprehensive analysis of dementia care across Commonwealth nations, offering insights into prevention, diagnosis, and support strategies.",
-    type: "PDF",
-    size: "3.2 MB",
-    category: "Mental Health & Dementia Care",
-    icon: FileText,
-    downloadUrl: "https://www.commage.org/wp-content/uploads/2024/10/4527_FY25_HC_CommonAge_FullReport_Digital_v11-with-links.pdf"
-  },
-  {
-    title: "Train the Trainer Programme – Elder Care",
-    description: "Details a training program aimed at enhancing care practices for older persons in developing countries, emphasizing capacity building and best practices.",
-    type: "PDF",
-    size: "2.1 MB",
-    category: "Mental Health & Dementia Care",
-    icon: FileText,
-    downloadUrl: "https://www.commage.org/wp-content/uploads/2024/09/REPORT-TRAIN-THE-TRAINER.pdf"
-  },
-  {
-    title: "Pass It On® Stories – Volume 1",
-    description: "A collection of true stories highlighting values like perseverance, kindness, and hope, suitable for sharing to inspire visitors and community members.",
-    type: "PDF",
-    size: "4.5 MB",
-    category: "Inspirational Stories & Community Engagement",
-    icon: FileText,
-    downloadUrl: "https://www.passiton.com/ebooks/FBL_PassItOn_Stories_Volume_1.pdf"
-  },
-  {
-    title: "All the Right Notes",
-    description: "Explores how music can be a powerful tool for connection and healing, aligning with arts therapy and mental well-being programs.",
-    type: "PDF",
-    size: "1.8 MB",
-    category: "Inspirational Stories & Community Engagement",
-    icon: FileText,
-    downloadUrl: "https://assets.passiton.com/articles/pdfs/167_All_the_Right_Notes_PassItOn.pdf"
-  },
-  {
-    title: "Doctor at Your Door: A Guide to Medical House Call Programs",
-    description: "Provides insights into implementing medical house call programs for seniors, promoting accessible healthcare solutions for elderly populations.",
-    type: "PDF",
-    size: "2.7 MB",
-    category: "Elder Care & Health Services",
-    icon: FileText,
-    downloadUrl: "https://leadingage.org/sites/default/files/Senior_Housing_Guide_to_Medical_House_Calls.pdf"
-  },
-  {
-    title: "Electronic Health Records for Long-Term Care",
-    description: "A primer on planning and selecting electronic health record systems tailored for long-term and post-acute care settings.",
-    type: "PDF",
-    size: "3.1 MB",
-    category: "Elder Care & Health Services",
-    icon: FileText,
-    downloadUrl: "https://leadingage.org/sites/default/files/EHR_For_LTPAC_A_Primer_on_Planning_and_Vendor_Selection_0.pdf"
-  },
-  {
-    title: "Ageing in the Commonwealth – Research Report",
-    description: "Examines the challenges and opportunities of aging populations within Commonwealth countries, offering comprehensive policy recommendations.",
-    type: "PDF",
-    size: "2.9 MB",
-    category: "Global Aging & Policy Reports",
-    icon: FileText,
-    downloadUrl: "https://www.commage.org/wp-content/uploads/2019/07/CommonAge-Research-Report-Final.pdf"
-  },
-  {
-    title: "Chapter Report – July 2024",
-    description: "Outlines recent initiatives and collaborations aimed at improving aged care services across Commonwealth nations and regional partnerships.",
-    type: "PDF",
-    size: "1.5 MB",
-    category: "Global Aging & Policy Reports",
-    icon: FileText,
-    downloadUrl: "https://www.commage.org/wp-content/uploads/2024/09/Chapter-Report-July-2024.pdf"
-  }
-];
+interface Resource {
+  id: string;
+  title: string;
+  description: string | null;
+  type: string | null;
+  size: string | null;
+  category: string;
+  download_url: string;
+}
 
-const events = [
-  {
-    title: "Train a Trainer Programme",
-    date: "Date to be confirmed",
-    time: "Full Day Workshop",
-    location: "Multiple Locations (Commonwealth Countries)",
-    description: "A comprehensive training program designed to enhance care practices for older persons and build capacity among caregivers and healthcare professionals in developing countries."
-  },
-  {
-    title: "Community Festivals & Cultural Celebrations",
-    date: "Various Dates Throughout the Year",
-    time: "Community Events",
-    location: "Local Communities, Nairobi",
-    description: "Join us for various cultural festivals and community celebrations that bring together older persons, families, and caregivers to foster social connections and mental well-being."
-  },
-  {
-    title: "World Elder Abuse Awareness Day",
-    date: "June 15, 2025",
-    time: "All Day Campaign",
-    location: "Global Initiative - Local Participation",
-    description: "A global awareness campaign dedicated to raising awareness about elder abuse prevention, education, and support services for vulnerable older persons."
-  }
-];
+interface Event {
+  id: string;
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  description: string | null;
+}
 
 const AwarenessHub = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const scrollY = useParallaxScroll();
   const { elementRef: resourcesRef, isVisible: resourcesVisible } = useScrollAnimation(0.1);
 
+  // Fetch articles from database
+  const { data: articles = [], isLoading: articlesLoading } = useQuery({
+    queryKey: ['articles'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('articles')
+        .select('*')
+        .order('created_at', { ascending: false });
+      
+      if (error) {
+        console.error('Error fetching articles:', error);
+        throw error;
+      }
+      
+      return data as Article[];
+    },
+  });
+
+  // Fetch resources from database
+  const { data: resources = [], isLoading: resourcesLoading } = useQuery({
+    queryKey: ['resources'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('resources')
+        .select('*')
+        .order('created_at', { ascending: false });
+      
+      if (error) {
+        console.error('Error fetching resources:', error);
+        throw error;
+      }
+      
+      return data as Resource[];
+    },
+  });
+
+  // Fetch events from database
+  const { data: events = [], isLoading: eventsLoading } = useQuery({
+    queryKey: ['events'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('events')
+        .select('*')
+        .order('created_at', { ascending: false });
+      
+      if (error) {
+        console.error('Error fetching events:', error);
+        throw error;
+      }
+      
+      return data as Event[];
+    },
+  });
+
   const filteredArticles = articles.filter(article => 
     article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    article.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    (article.excerpt && article.excerpt.toLowerCase().includes(searchQuery.toLowerCase())) ||
     article.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
     article.source.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const filteredResources = resources.filter(resource =>
     resource.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    resource.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    (resource.description && resource.description.toLowerCase().includes(searchQuery.toLowerCase())) ||
     resource.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const filteredEvents = events.filter(event =>
     event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    event.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    (event.description && event.description.toLowerCase().includes(searchQuery.toLowerCase())) ||
     event.location.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -333,7 +237,12 @@ const AwarenessHub = () => {
             {/* Articles Tab with Carousel */}
             <TabsContent value="articles">
               <div className="px-4 md:px-0">
-                {filteredArticles.length > 0 ? (
+                {articlesLoading ? (
+                  <div className="py-12 text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-charis-blue mx-auto mb-4"></div>
+                    <p>Loading articles...</p>
+                  </div>
+                ) : filteredArticles.length > 0 ? (
                   <Carousel
                     opts={{
                       align: "start",
@@ -351,8 +260,8 @@ const AwarenessHub = () => {
                       </div>
                     </div>
                     <CarouselContent className="-ml-2 md:-ml-4">
-                      {filteredArticles.map((article, index) => (
-                        <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                      {filteredArticles.map((article) => (
+                        <CarouselItem key={article.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                           <Card className="transition-all duration-300 hover:shadow-lg hover:scale-105 h-full">
                             <CardHeader className="pb-2">
                               <div className="flex justify-between items-center mb-2">
@@ -372,7 +281,7 @@ const AwarenessHub = () => {
                               </CardDescription>
                             </CardContent>
                             <CardFooter className="flex justify-between items-center pt-2">
-                              <span className="text-xs text-gray-500">{article.readTime}</span>
+                              <span className="text-xs text-gray-500">{article.read_time}</span>
                               <Button 
                                 size="sm"
                                 variant="ghost" 
@@ -403,12 +312,17 @@ const AwarenessHub = () => {
             {/* Downloadable Resources Tab */}
             <TabsContent value="resources">
               <div className="grid md:grid-cols-2 gap-6 px-4 md:px-0">
-                {filteredResources.length > 0 ? (
-                  filteredResources.map((resource, index) => (
-                    <Card key={index} className="transition-all duration-300 hover:shadow-xl hover:scale-105 group">
+                {resourcesLoading ? (
+                  <div className="col-span-2 py-12 text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-charis-blue mx-auto mb-4"></div>
+                    <p>Loading resources...</p>
+                  </div>
+                ) : filteredResources.length > 0 ? (
+                  filteredResources.map((resource) => (
+                    <Card key={resource.id} className="transition-all duration-300 hover:shadow-xl hover:scale-105 group">
                       <CardHeader className="flex flex-row items-start space-x-4 pb-2">
                         <div className="h-12 w-12 rounded-full bg-charis-green-light flex items-center justify-center">
-                          <resource.icon className="h-6 w-6 text-charis-green-dark" />
+                          <FileText className="h-6 w-6 text-charis-green-dark" />
                         </div>
                         <div className="space-y-1 flex-1">
                           <CardTitle className="text-xl text-charis-blue-dark">{resource.title}</CardTitle>
@@ -428,7 +342,7 @@ const AwarenessHub = () => {
                         <Button 
                           variant="highlighted"
                           className="w-full"
-                          onClick={() => handleDownload(resource.downloadUrl, resource.title)}
+                          onClick={() => handleDownload(resource.download_url, resource.title)}
                         >
                           <Download className="mr-2 h-4 w-4" />
                           Download PDF
@@ -451,9 +365,14 @@ const AwarenessHub = () => {
             {/* Upcoming Events Tab */}
             <TabsContent value="events">
               <div className="space-y-6 px-4 md:px-0">
-                {filteredEvents.length > 0 ? (
-                  filteredEvents.map((event, index) => (
-                    <Card key={index} className="transition-shadow hover:shadow-md">
+                {eventsLoading ? (
+                  <div className="py-12 text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-charis-blue mx-auto mb-4"></div>
+                    <p>Loading events...</p>
+                  </div>
+                ) : filteredEvents.length > 0 ? (
+                  filteredEvents.map((event) => (
+                    <Card key={event.id} className="transition-shadow hover:shadow-md">
                       <CardHeader className="pb-2">
                         <div className="flex justify-between flex-wrap gap-2">
                           <CardTitle className="text-xl text-charis-blue-dark">{event.title}</CardTitle>

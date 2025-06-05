@@ -42,6 +42,45 @@ export type Database = {
         }
         Relationships: []
       }
+      articles: {
+        Row: {
+          category: string
+          created_at: string | null
+          date: string
+          excerpt: string | null
+          id: string
+          read_time: string | null
+          source: string
+          title: string
+          updated_at: string | null
+          url: string
+        }
+        Insert: {
+          category: string
+          created_at?: string | null
+          date: string
+          excerpt?: string | null
+          id?: string
+          read_time?: string | null
+          source: string
+          title: string
+          updated_at?: string | null
+          url: string
+        }
+        Update: {
+          category?: string
+          created_at?: string | null
+          date?: string
+          excerpt?: string | null
+          id?: string
+          read_time?: string | null
+          source?: string
+          title?: string
+          updated_at?: string | null
+          url?: string
+        }
+        Relationships: []
+      }
       donations: {
         Row: {
           amount: number
@@ -93,6 +132,39 @@ export type Database = {
           transaction_id?: string | null
           updated_at?: string | null
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      events: {
+        Row: {
+          created_at: string | null
+          date: string
+          description: string | null
+          id: string
+          location: string
+          time: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          date: string
+          description?: string | null
+          id?: string
+          location: string
+          time: string
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          date?: string
+          description?: string | null
+          id?: string
+          location?: string
+          time?: string
+          title?: string
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -243,6 +315,42 @@ export type Database = {
           full_name?: string | null
           id?: string
           role?: Database["public"]["Enums"]["user_role"] | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      resources: {
+        Row: {
+          category: string
+          created_at: string | null
+          description: string | null
+          download_url: string
+          id: string
+          size: string | null
+          title: string
+          type: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          category: string
+          created_at?: string | null
+          description?: string | null
+          download_url: string
+          id?: string
+          size?: string | null
+          title: string
+          type?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string
+          created_at?: string | null
+          description?: string | null
+          download_url?: string
+          id?: string
+          size?: string | null
+          title?: string
+          type?: string | null
           updated_at?: string | null
         }
         Relationships: []
