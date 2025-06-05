@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { Heart, DollarSign, CreditCard, Sparkles, Gift } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -16,6 +17,7 @@ interface DonationModalProps {
 const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) => {
   const { toast } = useToast();
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [donationData, setDonationData] = useState({
     amount: "",
     frequency: "one-time",
@@ -44,26 +46,60 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
     }));
   };
 
-  const handleDonate = () => {
-    console.log("Donation data:", donationData);
+  const handleDonate = async () => {
+    setIsSubmitting(true);
     
-    toast({
-      title: "🎉 Thank You for Your Generosity!",
-      description: `Your ${donationData.frequency} donation of KSH ${Number(donationData.amount).toLocaleString()} will make a real difference in older persons' lives.`,
-      variant: "default",
-    });
+    try {
+      const { error } = await supabase
+        .from('donations')
+        .insert([{
+          donor_name: donationData.name,
+          donor_email: donationData.email,
+          amount: parseFloat(donationData.amount),
+          frequency: donationData.frequency === 'one-time' ? 'one_time' : 'monthly',
+          donation_type: selectedType || 'General Donation',
+          payment_method: donationData.paymentMethod,
+          anonymous: donationData.anonymous,
+          status: 'pending'
+        }]);
 
-    // Reset and close
-    setStep(1);
-    setDonationData({
-      amount: "",
-      frequency: "one-time",
-      paymentMethod: "",
-      name: "",
-      email: "",
-      anonymous: false
-    });
-    onClose();
+      if (error) {
+        console.error('Error submitting donation:', error);
+        toast({
+          title: "Error",
+          description: "Failed to submit your donation. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      toast({
+        title: "🎉 Thank You for Your Generosity!",
+        description: `Your ${donationData.frequency} donation of KSH ${Number(donationData.amount).toLocaleString()} will make a real difference in older persons' lives.`,
+        variant: "default",
+      });
+
+      // Reset and close
+      setStep(1);
+      setDonationData({
+        amount: "",
+        frequency: "one-time",
+        paymentMethod: "",
+        name: "",
+        email: "",
+        anonymous: false
+      });
+      onClose();
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -214,6 +250,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
                   value={donationData.name}
                   onChange={handleInputChange}
                   placeholder="Enter your full name"
+                  required
                 />
               </div>
               <div>
@@ -224,6 +261,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
                   value={donationData.email}
                   onChange={handleInputChange}
                   placeholder="your.email@example.com"
+                  required
                 />
               </div>
             </div>
@@ -247,16 +285,17 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
                 variant="outline"
                 onClick={() => setStep(1)}
                 className="flex-1"
+                disabled={isSubmitting}
               >
                 Back
               </Button>
               <Button
                 onClick={handleDonate}
-                disabled={!donationData.paymentMethod}
+                disabled={!donationData.paymentMethod || !donationData.name || !donationData.email || isSubmitting}
                 className="flex-1 bg-charis-green hover:bg-charis-green-dark transform hover:scale-105 transition-all duration-200"
               >
                 <CreditCard className="mr-2 h-4 w-4" />
-                Complete Donation
+                {isSubmitting ? "Processing..." : "Complete Donation"}
               </Button>
             </div>
           </div>

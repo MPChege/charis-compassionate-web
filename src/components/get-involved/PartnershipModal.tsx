@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { Building2, Handshake, Star, Zap, Target } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface PartnershipModalProps {
   isOpen: boolean;
@@ -17,6 +18,7 @@ const PartnershipModal = ({ isOpen, onClose }: PartnershipModalProps) => {
   const { toast } = useToast();
   const [step, setStep] = useState(1);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [partnershipData, setPartnershipData] = useState({
     organizationName: "",
     contactName: "",
@@ -61,30 +63,67 @@ const PartnershipModal = ({ isOpen, onClose }: PartnershipModalProps) => {
     setPartnershipData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = () => {
-    console.log("Partnership application:", { ...partnershipData, types: selectedTypes });
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
     
-    toast({
-      title: "🚀 Partnership Application Received!",
-      description: "We're excited about potential collaboration. Our team will review your application and contact you within 5 business days.",
-      variant: "default",
-    });
+    try {
+      const { error } = await supabase
+        .from('partnership_inquiries')
+        .insert([{
+          organization_name: partnershipData.organizationName,
+          contact_person: partnershipData.contactName,
+          email: partnershipData.email,
+          phone: partnershipData.phone || null,
+          organization_type: partnershipData.organizationType || null,
+          website: partnershipData.website || null,
+          description: partnershipData.description || null,
+          proposed_collaboration: partnershipData.goals || null,
+          resources_offered: partnershipData.resources || null,
+          partnership_types: selectedTypes,
+          status: 'pending'
+        }]);
 
-    // Reset and close
-    setStep(1);
-    setSelectedTypes([]);
-    setPartnershipData({
-      organizationName: "",
-      contactName: "",
-      email: "",
-      phone: "",
-      organizationType: "",
-      website: "",
-      description: "",
-      goals: "",
-      resources: ""
-    });
-    onClose();
+      if (error) {
+        console.error('Error submitting partnership application:', error);
+        toast({
+          title: "Error",
+          description: "Failed to submit your partnership application. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      toast({
+        title: "🚀 Partnership Application Received!",
+        description: "We're excited about potential collaboration. Our team will review your application and contact you within 5 business days.",
+        variant: "default",
+      });
+
+      // Reset and close
+      setStep(1);
+      setSelectedTypes([]);
+      setPartnershipData({
+        organizationName: "",
+        contactName: "",
+        email: "",
+        phone: "",
+        organizationType: "",
+        website: "",
+        description: "",
+        goals: "",
+        resources: ""
+      });
+      onClose();
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -283,15 +322,17 @@ const PartnershipModal = ({ isOpen, onClose }: PartnershipModalProps) => {
                 variant="outline"
                 onClick={() => setStep(1)}
                 className="flex-1"
+                disabled={isSubmitting}
               >
                 Back
               </Button>
               <Button
                 onClick={handleSubmit}
+                disabled={!partnershipData.organizationName || !partnershipData.contactName || !partnershipData.email || isSubmitting}
                 className="flex-1 bg-charis-green hover:bg-charis-green-dark transform hover:scale-105 transition-all duration-200"
               >
                 <Zap className="mr-2 h-4 w-4" />
-                Submit Application
+                {isSubmitting ? "Submitting..." : "Submit Application"}
               </Button>
             </div>
           </div>

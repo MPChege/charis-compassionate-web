@@ -9,9 +9,43 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      admin_users: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          email: string
+          full_name: string
+          id: string
+          is_active: boolean | null
+          role: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          email: string
+          full_name: string
+          id?: string
+          is_active?: boolean | null
+          role?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          is_active?: boolean | null
+          role?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       donations: {
         Row: {
           amount: number
+          anonymous: boolean | null
           created_at: string | null
           donation_type: string
           donor_email: string
@@ -24,9 +58,11 @@ export type Database = {
           status: string | null
           transaction_id: string | null
           updated_at: string | null
+          user_id: string | null
         }
         Insert: {
           amount: number
+          anonymous?: boolean | null
           created_at?: string | null
           donation_type: string
           donor_email: string
@@ -39,9 +75,11 @@ export type Database = {
           status?: string | null
           transaction_id?: string | null
           updated_at?: string | null
+          user_id?: string | null
         }
         Update: {
           amount?: number
+          anonymous?: boolean | null
           created_at?: string | null
           donation_type?: string
           donor_email?: string
@@ -54,6 +92,7 @@ export type Database = {
           status?: string | null
           transaction_id?: string | null
           updated_at?: string | null
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -121,6 +160,7 @@ export type Database = {
           organization_name: string
           organization_type: string | null
           partnership_type: string | null
+          partnership_types: string[] | null
           phone: string | null
           proposed_collaboration: string | null
           resources_offered: string | null
@@ -128,6 +168,7 @@ export type Database = {
           reviewed_by: string | null
           status: Database["public"]["Enums"]["application_status"] | null
           updated_at: string | null
+          website: string | null
         }
         Insert: {
           contact_person: string
@@ -139,6 +180,7 @@ export type Database = {
           organization_name: string
           organization_type?: string | null
           partnership_type?: string | null
+          partnership_types?: string[] | null
           phone?: string | null
           proposed_collaboration?: string | null
           resources_offered?: string | null
@@ -146,6 +188,7 @@ export type Database = {
           reviewed_by?: string | null
           status?: Database["public"]["Enums"]["application_status"] | null
           updated_at?: string | null
+          website?: string | null
         }
         Update: {
           contact_person?: string
@@ -157,6 +200,7 @@ export type Database = {
           organization_name?: string
           organization_type?: string | null
           partnership_type?: string | null
+          partnership_types?: string[] | null
           phone?: string | null
           proposed_collaboration?: string | null
           resources_offered?: string | null
@@ -164,6 +208,7 @@ export type Database = {
           reviewed_by?: string | null
           status?: Database["public"]["Enums"]["application_status"] | null
           updated_at?: string | null
+          website?: string | null
         }
         Relationships: [
           {
