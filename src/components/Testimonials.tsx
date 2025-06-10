@@ -8,21 +8,18 @@ const testimonials = [
     quote: "The resources provided by Charis Eagle Springs have been invaluable in helping me care for my mother with early-stage dementia. Their compassionate approach makes such a difference.",
     author: "Sarah Kimani",
     role: "Family Caregiver",
-    image: "https://randomuser.me/api/portraits/women/34.jpg",
     gradient: "from-pink-400 to-rose-500"
   },
   {
     quote: "As a healthcare professional, I've seen firsthand how Charis Eagle Springs' training programs improve the quality of care provided to older patients with mental health challenges.",
     author: "Dr. James Omondi",
     role: "Geriatric Psychiatrist",
-    image: "https://randomuser.me/api/portraits/men/42.jpg",
     gradient: "from-blue-400 to-indigo-500"
   },
   {
     quote: "The community workshops have helped our entire neighborhood become more understanding and supportive of our older members, especially those struggling with isolation.",
     author: "Margaret Wanjiru",
     role: "Community Leader",
-    image: "https://randomuser.me/api/portraits/women/68.jpg",
     gradient: "from-green-400 to-emerald-500"
   },
 ];
@@ -64,13 +61,6 @@ const Testimonials = () => {
                     "{currentTestimonial.quote}"
                   </p>
                   <div className="flex items-center">
-                    <div className={`p-1 rounded-full bg-gradient-to-r ${currentTestimonial.gradient} mr-4`}>
-                      <img 
-                        src={currentTestimonial.image} 
-                        alt={currentTestimonial.author} 
-                        className="w-12 h-12 rounded-full object-cover"
-                      />
-                    </div>
                     <div>
                       <h4 className="font-semibold text-gray-800">{currentTestimonial.author}</h4>
                       <p className="text-gray-600">{currentTestimonial.role}</p>
