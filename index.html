@@ -10,6 +10,7 @@
     <meta name="author" content="Charis Eagle Springs" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://chariseaglesprings.org" />
+    <link rel="icon" href="/lovable-uploads/0990c28f-4e9c-4cfb-9900-ad89ac1516dc.png" type="image/png">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -70,10 +71,78 @@
 
     <!-- Sitemap reference -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    
+    <style>
+      /* Loading spinner styles */
+      #initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #6ba3d6 0%, #b4a8d6 50%, #7fb069 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+      
+      .spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loader-text {
+        color: white;
+        font-family: 'Inter', sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        letter-spacing: 1px;
+      }
+      
+      .hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
   </head>
 
   <body>
+    <!-- Loading spinner -->
+    <div id="initial-loader">
+      <div class="spinner"></div>
+      <div class="loader-text">Loading Charis Eagle Springs...</div>
+    </div>
+    
     <div id="root"></div>
+    
+    <script>
+      // Hide loader when page is fully loaded
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loader = document.getElementById('initial-loader');
+          if (loader) {
+            loader.classList.add('hidden');
+            setTimeout(function() {
+              loader.style.display = 'none';
+            }, 500);
+          }
+        }, 500); // Small delay to ensure smooth transition
+      });
+    </script>
+    
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
