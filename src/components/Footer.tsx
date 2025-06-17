@@ -135,8 +135,24 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-12 pt-8 text-center">
-          <p className="text-white/70">© {new Date().getFullYear()} Charis Eagle Springs. All rights reserved.</p>
+        <div className="border-t border-white/20 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-white/70">© {new Date().getFullYear()} Charis Eagle Springs. All rights reserved.</p>
+            <div className="flex space-x-6">
+              <Link 
+                to="/terms" 
+                className="text-white/70 hover:text-white transition-colors duration-300 text-sm"
+              >
+                Terms & Conditions
+              </Link>
+              <Link 
+                to="/contact" 
+                className="text-white/70 hover:text-white transition-colors duration-300 text-sm"
+              >
+                Privacy Policy
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

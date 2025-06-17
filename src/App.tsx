@@ -13,6 +13,7 @@ import AwarenessHub from "./pages/AwarenessHub";
 import Programs from "./pages/Programs";
 import GetInvolved from "./pages/GetInvolved";
 import Contact from "./pages/Contact";
+import Terms from "./pages/Terms";
 import Auth from "./pages/Auth";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
@@ -55,6 +56,7 @@ const App = () => {
                 <Route path="/programs" element={<Programs />} />
                 <Route path="/get-involved" element={<GetInvolved />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/terms" element={<Terms />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/admin" element={<AdminDashboard />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
