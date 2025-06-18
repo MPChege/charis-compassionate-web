@@ -38,32 +38,32 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ${
       scrolled 
         ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100" 
         : "bg-white/10 backdrop-blur-sm"
     }`}>
-      <div className="container-custom py-4">
-        <div className="flex justify-between items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center group" onClick={closeMenu}>
+          <Link to="/" className="flex items-center group z-50" onClick={closeMenu}>
             <div className="relative overflow-hidden transition-all duration-300 group-hover:scale-105">
               <img 
                 src="/lovable-uploads/edbba8da-699b-4792-9129-417439bd312c.png" 
                 alt="Charis Eagle Springs" 
-                className="h-10 w-auto md:h-12 transition-transform duration-300 group-hover:scale-110"
+                className="h-8 w-auto sm:h-10 md:h-12 transition-transform duration-300 group-hover:scale-110"
               />
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          {/* Desktop Navigation - Show on medium screens and up */}
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navLinks.map((link) => (
               link.name === "Get Involved" ? (
                 <Button 
                   key={link.name}
                   asChild
-                  className="group relative overflow-hidden bg-gradient-to-r from-charis-blue to-charis-purple text-white hover:from-charis-purple hover:to-charis-blue border-0 px-6 py-2 transition-all duration-300 transform hover:scale-105 hover:shadow-lg rounded-full"
+                  className="group relative overflow-hidden bg-gradient-to-r from-charis-blue to-charis-purple text-white hover:from-charis-purple hover:to-charis-blue border-0 px-4 lg:px-6 py-2 transition-all duration-300 transform hover:scale-105 hover:shadow-lg rounded-full text-sm"
                 >
                   <Link to={link.path} className="relative z-10">
                     <span className="transition-transform duration-300 group-hover:scale-110 font-medium">
@@ -75,7 +75,7 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`relative text-sm font-medium tracking-wide transition-all duration-300 py-2 group ${
+                  className={`relative text-sm font-medium tracking-wide transition-all duration-300 py-2 group whitespace-nowrap ${
                     scrolled 
                       ? (isActive(link.path) ? "text-charis-blue-dark font-semibold" : "text-gray-700 hover:text-charis-blue-dark")
                       : (isActive(link.path) ? "text-white font-semibold" : "text-white/90 hover:text-white")
@@ -91,14 +91,14 @@ const Navbar = () => {
                 </Link>
               )
             ))}
-            <div className="ml-4">
+            <div className="ml-2 lg:ml-4">
               <AccessibilityToggle />
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Show on small screens */}
           <button
-            className={`lg:hidden p-2 transition-all duration-300 hover:scale-110 rounded-md ${
+            className={`md:hidden p-2 transition-all duration-300 hover:scale-110 rounded-md z-50 ${
               scrolled ? "text-gray-700 hover:text-charis-blue-dark hover:bg-gray-100" : "text-white/90 hover:text-white hover:bg-white/10"
             }`}
             onClick={toggleMenu}
@@ -110,12 +110,12 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`lg:hidden transition-all duration-300 ease-in-out ${
+        <div className={`md:hidden transition-all duration-300 ease-in-out ${
           isOpen 
-            ? "max-h-screen opacity-100 mt-6" 
+            ? "max-h-screen opacity-100 pb-6" 
             : "max-h-0 opacity-0 overflow-hidden"
         }`}>
-          <div className="bg-white/98 backdrop-blur-sm rounded-xl shadow-2xl border border-gray-200 p-6">
+          <div className="bg-white/98 backdrop-blur-sm rounded-xl shadow-2xl border border-gray-200 p-6 mt-4">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 link.name === "Get Involved" ? (
