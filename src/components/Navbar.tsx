@@ -51,8 +51,8 @@ const Navbar = () => {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8 xl:space-x-12">
+          {/* Desktop Navigation - Fixed display issue */}
+          <div className="flex items-center space-x-8 xl:space-x-12 max-lg:hidden">
             {navLinks.map((link) => (
               link.name === "Get Involved" ? (
                 <Button 
@@ -92,16 +92,19 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className={`lg:hidden p-2 transition-all duration-300 hover:scale-110 flex-shrink-0 ${
-              scrolled ? "text-gray-700 hover:text-black" : "text-white/80 hover:text-white"
-            }`}
-            onClick={toggleMenu}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile Menu Button - Show only on mobile/tablet */}
+          <div className="flex items-center space-x-4 lg:hidden">
+            <AccessibilityToggle />
+            <button
+              className={`p-2 transition-all duration-300 hover:scale-110 flex-shrink-0 ${
+                scrolled ? "text-gray-700 hover:text-black" : "text-white/80 hover:text-white"
+              }`}
+              onClick={toggleMenu}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -139,9 +142,6 @@ const Navbar = () => {
                     </Link>
                   )
                 ))}
-                <div className="pt-4 border-t border-gray-200">
-                  <AccessibilityToggle />
-                </div>
               </div>
             </div>
           </div>
