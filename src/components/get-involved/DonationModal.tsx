@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -41,11 +40,21 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, type, checked } = e.target;
-    setDonationData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
+    const target = e.target;
+    const { name, value } = target;
+    
+    // Type guard to check if target is HTMLInputElement (which has 'checked' property)
+    if (target instanceof HTMLInputElement && target.type === 'checkbox') {
+      setDonationData(prev => ({
+        ...prev,
+        [name]: target.checked
+      }));
+    } else {
+      setDonationData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
   };
 
   const handleDonate = async () => {
