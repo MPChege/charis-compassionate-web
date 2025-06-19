@@ -24,6 +24,8 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
     paymentMethod: "",
     name: "",
     email: "",
+    phone: "",
+    message: "",
     anonymous: false
   });
 
@@ -38,7 +40,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
     setDonationData(prev => ({ ...prev, amount }));
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type, checked } = e.target;
     setDonationData(prev => ({
       ...prev,
@@ -50,32 +52,33 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase
-        .from('donations')
-        .insert([{
-          donor_name: donationData.name,
-          donor_email: donationData.email,
-          amount: parseFloat(donationData.amount),
-          frequency: donationData.frequency === 'one-time' ? 'one_time' : 'monthly',
-          donation_type: selectedType || 'General Donation',
-          payment_method: donationData.paymentMethod,
-          anonymous: donationData.anonymous,
-          status: 'pending'
-        }]);
+      const { error } = await supabase.functions.invoke('send-donation-request', {
+        body: {
+          name: donationData.name,
+          email: donationData.email,
+          phone: donationData.phone,
+          amount: donationData.amount,
+          frequency: donationData.frequency,
+          donationType: selectedType || 'General Donation',
+          paymentMethod: donationData.paymentMethod,
+          message: donationData.message,
+          anonymous: donationData.anonymous
+        }
+      });
 
       if (error) {
-        console.error('Error submitting donation:', error);
+        console.error('Error sending donation request:', error);
         toast({
           title: "Error",
-          description: "Failed to submit your donation. Please try again.",
+          description: "Failed to send your donation request. Please try again.",
           variant: "destructive",
         });
         return;
       }
 
       toast({
-        title: "🎉 Thank You for Your Generosity!",
-        description: `Your ${donationData.frequency} donation of KSH ${Number(donationData.amount).toLocaleString()} will make a real difference in older persons' lives.`,
+        title: "🎉 Thank You for Your Interest!",
+        description: `Your donation request for KSH ${Number(donationData.amount).toLocaleString()} has been sent. We'll contact you with payment details shortly.`,
         variant: "default",
       });
 
@@ -87,6 +90,8 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
         paymentMethod: "",
         name: "",
         email: "",
+        phone: "",
+        message: "",
         anonymous: false
       });
       onClose();
@@ -108,7 +113,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-2xl text-charis-blue-dark">
             <Gift className="h-6 w-6 text-charis-green" />
-            Make a Donation
+            Donation Request
             {selectedType && (
               <Badge className="bg-charis-blue-light text-charis-blue-dark">
                 {selectedType}
@@ -122,10 +127,10 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
             <div className="text-center p-6 bg-gradient-to-br from-charis-green-light to-charis-blue-light rounded-lg">
               <Heart className="h-12 w-12 mx-auto text-charis-green-dark mb-4 animate-pulse" />
               <h3 className="text-xl font-semibold text-charis-blue-dark mb-2">
-                Your Impact Matters
+                Your Support Matters
               </h3>
               <p className="text-gray-700">
-                Every donation helps us reach more older persons with mental health support and theatre programs.
+                Fill out this form and we'll send you the payment details for your donation.
               </p>
             </div>
 
@@ -196,7 +201,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
               disabled={!donationData.amount}
               className="w-full bg-charis-green hover:bg-charis-green-dark transform hover:scale-105 transition-all duration-200"
             >
-              Continue to Payment
+              Continue to Details
             </Button>
           </div>
         )}
@@ -220,7 +225,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
 
             <div>
               <label className="text-sm font-medium text-gray-700 mb-3 block">
-                Payment Method
+                Preferred Payment Method
               </label>
               <div className="grid grid-cols-1 gap-3">
                 {paymentMethods.map((method) => (
@@ -244,7 +249,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium text-gray-700 mb-2 block">Full Name</label>
+                <label className="text-sm font-medium text-gray-700 mb-2 block">Full Name *</label>
                 <Input
                   name="name"
                   value={donationData.name}
@@ -254,7 +259,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-gray-700 mb-2 block">Email</label>
+                <label className="text-sm font-medium text-gray-700 mb-2 block">Email *</label>
                 <Input
                   name="email"
                   type="email"
@@ -264,6 +269,28 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
                   required
                 />
               </div>
+            </div>
+
+            <div>
+              <label className="text-sm font-medium text-gray-700 mb-2 block">Phone Number</label>
+              <Input
+                name="phone"
+                value={donationData.phone}
+                onChange={handleInputChange}
+                placeholder="Enter your phone number"
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-medium text-gray-700 mb-2 block">Message (Optional)</label>
+              <textarea
+                name="message"
+                value={donationData.message}
+                onChange={handleInputChange}
+                placeholder="Any additional message or special instructions"
+                rows={3}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-charis-blue"
+              />
             </div>
 
             <div className="flex items-center space-x-2">
@@ -295,7 +322,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
                 className="flex-1 bg-charis-green hover:bg-charis-green-dark transform hover:scale-105 transition-all duration-200"
               >
                 <CreditCard className="mr-2 h-4 w-4" />
-                {isSubmitting ? "Processing..." : "Complete Donation"}
+                {isSubmitting ? "Sending..." : "Send Request"}
               </Button>
             </div>
           </div>
