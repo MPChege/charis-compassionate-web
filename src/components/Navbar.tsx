@@ -33,32 +33,32 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ${
       scrolled 
         ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100" 
         : "bg-white/10 backdrop-blur-sm"
     }`}>
-      <div className="container-custom py-6">
-        <div className="flex justify-between items-center">
-          {/* Logo with new image */}
-          <Link to="/" className="flex items-center group" onClick={closeMenu}>
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-6">
+        <div className="flex justify-between items-center w-full">
+          {/* Logo */}
+          <Link to="/" className="flex items-center group flex-shrink-0" onClick={closeMenu}>
             <div className="relative overflow-hidden transition-all duration-300 group-hover:scale-105">
               <img 
                 src="/lovable-uploads/edbba8da-699b-4792-9129-417439bd312c.png" 
                 alt="Charis Eagle Springs" 
-                className="h-12 w-auto transition-transform duration-300 group-hover:scale-110"
+                className="h-10 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-110"
               />
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-12">
+          <div className="hidden lg:flex items-center space-x-8 xl:space-x-12">
             {navLinks.map((link) => (
               link.name === "Get Involved" ? (
                 <Button 
                   key={link.name}
                   asChild
-                  className="group relative overflow-hidden bg-black text-white hover:bg-white hover:text-black border-2 border-black px-6 py-2 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                  className="group relative overflow-hidden bg-black text-white hover:bg-white hover:text-black border-2 border-black px-4 xl:px-6 py-2 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-sm"
                 >
                   <Link to={link.path} className="relative z-10">
                     <span className="transition-transform duration-300 group-hover:scale-110">
@@ -71,7 +71,7 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`relative text-sm font-medium tracking-wide transition-all duration-300 py-2 group ${
+                  className={`relative text-sm font-medium tracking-wide transition-all duration-300 py-2 group whitespace-nowrap ${
                     scrolled 
                       ? (isActive(link.path) ? "text-black" : "text-gray-700 hover:text-black")
                       : (isActive(link.path) ? "text-white" : "text-white/80 hover:text-white")
@@ -94,7 +94,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className={`lg:hidden p-2 transition-all duration-300 hover:scale-110 ${
+            className={`lg:hidden p-2 transition-all duration-300 hover:scale-110 flex-shrink-0 ${
               scrolled ? "text-gray-700 hover:text-black" : "text-white/80 hover:text-white"
             }`}
             onClick={toggleMenu}
@@ -106,9 +106,9 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden mt-8 animate-fade-in">
-            <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl border border-gray-200 p-8">
-              <div className="flex flex-col space-y-6">
+          <div className="lg:hidden mt-6 animate-fade-in">
+            <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl border border-gray-200 p-6">
+              <div className="flex flex-col space-y-4">
                 {navLinks.map((link) => (
                   link.name === "Get Involved" ? (
                     <Button 
@@ -139,7 +139,7 @@ const Navbar = () => {
                     </Link>
                   )
                 ))}
-                <div className="pt-6 border-t border-gray-200">
+                <div className="pt-4 border-t border-gray-200">
                   <AccessibilityToggle />
                 </div>
               </div>
