@@ -17,7 +17,7 @@ const Programs = () => {
     {
       title: "Dementia Awareness Program",
       description: "Educational workshops and resources to help families and communities understand and support individuals with dementia.",
-      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      image: "/lovable-uploads/8e47fff9-02e0-457d-9bb2-03d32b763e2c.png",
       icon: BookOpen,
       goals: [
         "Increase understanding of dementia conditions",
@@ -29,7 +29,7 @@ const Programs = () => {
     {
       title: "Caregiver Training & Support",
       description: "Comprehensive training programs and ongoing support for professional and family caregivers of older persons.",
-      image: "https://images.unsplash.com/photo-1576765608866-5b51046452be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80",
+      image: "/lovable-uploads/024db1a6-cd23-48e3-98c6-e80299c12c4f.png",
       icon: Heart,
       goals: [
         "Develop caregiving skills and knowledge",
@@ -41,7 +41,7 @@ const Programs = () => {
     {
       title: "Community Outreach Initiative",
       description: "Programs that bring mental health awareness and support services for older persons directly to communities across the region.",
-      image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      image: "/lovable-uploads/9aec6cc2-0aef-435f-9b96-cad75227852f.png",
       icon: Users,
       goals: [
         "Expand access to mental health resources for older persons",
@@ -53,7 +53,7 @@ const Programs = () => {
     {
       title: "Advocacy & Policy Reform",
       description: "Working with stakeholders to advocate for better policies, funding, and resources for mental health services for older persons.",
-      image: "https://images.unsplash.com/photo-1504448919669-f34c354962c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      image: "/lovable-uploads/157b8c07-c8c7-4f11-a8e7-dfd844f701c4.png",
       icon: Landmark,
       goals: [
         "Influence policy changes to prioritize mental health for older persons",
