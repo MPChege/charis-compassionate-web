@@ -1,8 +1,10 @@
+
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Heart, DollarSign, CreditCard, Sparkles, Gift } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -25,7 +27,8 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
     email: "",
     phone: "",
     message: "",
-    anonymous: false
+    anonymous: false,
+    consentToStoreDetails: false
   });
 
   const predefinedAmounts = ["500", "1000", "2500", "5000", "10000", "25000"];
@@ -43,7 +46,6 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
     const target = e.target;
     const { name, value } = target;
     
-    // Type guard to check if target is HTMLInputElement (which has 'checked' property)
     if (target instanceof HTMLInputElement && target.type === 'checkbox') {
       setDonationData(prev => ({
         ...prev,
@@ -58,6 +60,15 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
   };
 
   const handleDonate = async () => {
+    if (!donationData.consentToStoreDetails) {
+      toast({
+        title: "Consent Required",
+        description: "Please consent to storing your details to proceed with the donation request.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
@@ -71,7 +82,8 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
           donationType: selectedType || 'General Donation',
           paymentMethod: donationData.paymentMethod,
           message: donationData.message,
-          anonymous: donationData.anonymous
+          anonymous: donationData.anonymous,
+          consentToStoreDetails: donationData.consentToStoreDetails
         }
       });
 
@@ -101,7 +113,8 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
         email: "",
         phone: "",
         message: "",
-        anonymous: false
+        anonymous: false,
+        consentToStoreDetails: false
       });
       onClose();
     } catch (error) {
@@ -302,18 +315,32 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
               />
             </div>
 
-            <div className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id="anonymous"
-                name="anonymous"
-                checked={donationData.anonymous}
-                onChange={handleInputChange}
-                className="rounded border-gray-300"
-              />
-              <label htmlFor="anonymous" className="text-sm text-gray-700">
-                Make this donation anonymous
-              </label>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <Checkbox
+                  id="anonymous"
+                  checked={donationData.anonymous}
+                  onCheckedChange={(checked) => 
+                    setDonationData(prev => ({ ...prev, anonymous: checked as boolean }))
+                  }
+                />
+                <label htmlFor="anonymous" className="text-sm text-gray-700">
+                  Make this donation anonymous
+                </label>
+              </div>
+
+              <div className="flex items-center space-x-2">
+                <Checkbox
+                  id="consentToStoreDetails"
+                  checked={donationData.consentToStoreDetails}
+                  onCheckedChange={(checked) => 
+                    setDonationData(prev => ({ ...prev, consentToStoreDetails: checked as boolean }))
+                  }
+                />
+                <label htmlFor="consentToStoreDetails" className="text-sm text-gray-700">
+                  I consent to Charis Eagle Springs storing my details for this donation and future communications *
+                </label>
+              </div>
             </div>
 
             <div className="flex gap-3">
@@ -327,7 +354,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
               </Button>
               <Button
                 onClick={handleDonate}
-                disabled={!donationData.paymentMethod || !donationData.name || !donationData.email || isSubmitting}
+                disabled={!donationData.paymentMethod || !donationData.name || !donationData.email || !donationData.consentToStoreDetails || isSubmitting}
                 className="flex-1 bg-charis-green hover:bg-charis-green-dark transform hover:scale-105 transition-all duration-200"
               >
                 <CreditCard className="mr-2 h-4 w-4" />
