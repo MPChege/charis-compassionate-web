@@ -14,31 +14,49 @@ export type Database = {
           created_at: string
           created_by: string | null
           email: string
+          email_verified: boolean | null
           full_name: string
           id: string
           is_active: boolean | null
+          password_changed: boolean | null
+          password_hash: string | null
           role: string
           updated_at: string
+          verification_sent_at: string | null
+          verification_token: string | null
+          verified_at: string | null
         }
         Insert: {
           created_at?: string
           created_by?: string | null
           email: string
+          email_verified?: boolean | null
           full_name: string
           id?: string
           is_active?: boolean | null
+          password_changed?: boolean | null
+          password_hash?: string | null
           role?: string
           updated_at?: string
+          verification_sent_at?: string | null
+          verification_token?: string | null
+          verified_at?: string | null
         }
         Update: {
           created_at?: string
           created_by?: string | null
           email?: string
+          email_verified?: boolean | null
           full_name?: string
           id?: string
           is_active?: boolean | null
+          password_changed?: boolean | null
+          password_hash?: string | null
           role?: string
           updated_at?: string
+          verification_sent_at?: string | null
+          verification_token?: string | null
+          verified_at?: string | null
         }
         Relationships: []
       }
@@ -419,6 +437,31 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      authenticate_admin: {
+        Args: { admin_email: string; password: string }
+        Returns: {
+          admin_id: string
+          email: string
+          role: string
+          verified: boolean
+          success: boolean
+        }[]
+      }
+      change_admin_password: {
+        Args: { admin_email: string; new_password: string }
+        Returns: boolean
+      }
+      create_admin_verification: {
+        Args: { admin_email: string }
+        Returns: {
+          verification_token: string
+          admin_id: string
+        }[]
+      }
+      generate_verification_token: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
       has_role: {
         Args: {
           _user_id: string
@@ -429,6 +472,14 @@ export type Database = {
       is_admin: {
         Args: { _user_id: string }
         Returns: boolean
+      }
+      verify_admin_email: {
+        Args: { token: string }
+        Returns: {
+          admin_id: string
+          email: string
+          success: boolean
+        }[]
       }
     }
     Enums: {

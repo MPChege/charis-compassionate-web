@@ -19,7 +19,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4 mt-6">
               <a 
-                href="https://facebook.com" 
+                href="https://www.facebook.com/share/1MdH7UoKBo/?mibextid=wwXIfr" 
                 target="_blank" 
                 rel="noreferrer"
                 className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg"
@@ -28,7 +28,7 @@ const Footer = () => {
                 <Facebook size={20} />
               </a>
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/chariseaglesprings?igsh=dWpuaHUxcmhjMmx1" 
                 target="_blank" 
                 rel="noreferrer"
                 className="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg"
