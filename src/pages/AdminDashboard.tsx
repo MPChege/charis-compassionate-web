@@ -163,7 +163,7 @@ const AdminDashboard = () => {
               <Heart className="h-4 w-4 text-charis-green" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">${stats.donations.amount.toLocaleString()}</div>
+              <div className="text-2xl font-bold">KSH {stats.donations.amount.toLocaleString()}</div>
               <p className="text-xs text-muted-foreground">
                 {stats.donations.total} total donations
               </p>

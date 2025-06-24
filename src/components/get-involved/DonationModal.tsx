@@ -72,7 +72,34 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase.functions.invoke('send-donation-request', {
+      // First, save to database
+      const { error: dbError } = await supabase
+        .from('donations')
+        .insert([{
+          donor_name: donationData.name,
+          donor_email: donationData.email,
+          donor_phone: donationData.phone || null,
+          amount: parseFloat(donationData.amount),
+          frequency: donationData.frequency === 'one-time' ? 'one_time' : 'monthly',
+          donation_type: selectedType || 'General Donation',
+          payment_method: donationData.paymentMethod,
+          status: 'pending',
+          anonymous: donationData.anonymous,
+          notes: donationData.message || null
+        }]);
+
+      if (dbError) {
+        console.error('Error saving donation to database:', dbError);
+        toast({
+          title: "Database Error",
+          description: "Failed to save donation request. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      // Then send email notification
+      const { error: emailError } = await supabase.functions.invoke('send-donation-request', {
         body: {
           name: donationData.name,
           email: donationData.email,
@@ -87,19 +114,15 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
         }
       });
 
-      if (error) {
-        console.error('Error sending donation request:', error);
-        toast({
-          title: "Error",
-          description: "Failed to send your donation request. Please try again.",
-          variant: "destructive",
-        });
-        return;
+      if (emailError) {
+        console.error('Error sending donation request email:', emailError);
+        // Don't return here - the database save was successful, just log the email error
+        console.log('Donation saved to database but email notification failed');
       }
 
       toast({
         title: "🎉 Thank You for Your Interest!",
-        description: `Your donation request for KSH ${Number(donationData.amount).toLocaleString()} has been sent. We'll contact you with payment details shortly.`,
+        description: `Your donation request for KSH ${Number(donationData.amount).toLocaleString()} has been saved. We'll contact you with payment details shortly.`,
         variant: "default",
       });
 

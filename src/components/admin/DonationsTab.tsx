@@ -122,7 +122,7 @@ const DonationsTab = () => {
             <DollarSign className="h-4 w-4 text-charis-green" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">${totalAmount.toLocaleString()}</div>
+            <div className="text-2xl font-bold">KSH {totalAmount.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">
               {filteredDonations.length} donations
             </p>
@@ -135,7 +135,7 @@ const DonationsTab = () => {
             <TrendingUp className="h-4 w-4 text-charis-blue" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">${monthlyRecurring.toLocaleString()}</div>
+            <div className="text-2xl font-bold">KSH {monthlyRecurring.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">
               Per month
             </p>
@@ -149,7 +149,7 @@ const DonationsTab = () => {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              ${filteredDonations.length > 0 ? (totalAmount / filteredDonations.length).toFixed(2) : '0.00'}
+              KSH {filteredDonations.length > 0 ? (totalAmount / filteredDonations.length).toFixed(2) : '0.00'}
             </div>
             <p className="text-xs text-muted-foreground">
               Per donation
@@ -196,7 +196,7 @@ const DonationsTab = () => {
                     </div>
                   </TableCell>
                   <TableCell className="font-medium">
-                    ${donation.amount.toLocaleString()}
+                    KSH {donation.amount.toLocaleString()}
                   </TableCell>
                   <TableCell>{donation.donation_type}</TableCell>
                   <TableCell>{getFrequencyBadge(donation.frequency)}</TableCell>
