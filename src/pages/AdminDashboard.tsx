@@ -13,13 +13,15 @@ import {
   LogOut,
   TrendingUp,
   Clock,
-  CheckCircle 
+  CheckCircle,
+  Mail
 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import VolunteerApplicationsTab from '@/components/admin/VolunteerApplicationsTab';
 import DonationsTab from '@/components/admin/DonationsTab';
 import PartnershipsTab from '@/components/admin/PartnershipsTab';
 import InquiriesTab from '@/components/admin/InquiriesTab';
+import ContactSubmissionsTab from '@/components/admin/ContactSubmissionsTab';
 
 const AdminDashboard = () => {
   const { user, isAdmin, signOut, loading } = useAuth();
@@ -27,7 +29,8 @@ const AdminDashboard = () => {
     volunteers: { total: 0, pending: 0, approved: 0 },
     donations: { total: 0, amount: 0 },
     partnerships: { total: 0, pending: 0 },
-    inquiries: { total: 0, pending: 0 }
+    inquiries: { total: 0, pending: 0 },
+    contacts: { total: 0, pending: 0 }
   });
 
   // Redirect if not admin
@@ -64,6 +67,11 @@ const AdminDashboard = () => {
         .from('general_inquiries')
         .select('status');
 
+      // Fetch contact submission stats
+      const { data: contacts } = await supabase
+        .from('contact_submissions')
+        .select('status');
+
       setStats({
         volunteers: {
           total: volunteers?.length || 0,
@@ -81,6 +89,10 @@ const AdminDashboard = () => {
         inquiries: {
           total: inquiries?.length || 0,
           pending: inquiries?.filter(i => i.status === 'pending').length || 0
+        },
+        contacts: {
+          total: contacts?.length || 0,
+          pending: contacts?.filter(c => c.status === 'pending').length || 0
         }
       });
     } catch (error) {
@@ -101,6 +113,9 @@ const AdminDashboard = () => {
         fetchStats();
       })
       .on('postgres_changes', { event: '*', schema: 'public', table: 'general_inquiries' }, () => {
+        fetchStats();
+      })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'contact_submissions' }, () => {
         fetchStats();
       })
       .subscribe();
@@ -143,7 +158,7 @@ const AdminDashboard = () => {
 
       {/* Stats Overview */}
       <div className="p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Volunteer Applications</CardTitle>
@@ -195,11 +210,24 @@ const AdminDashboard = () => {
               </p>
             </CardContent>
           </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Contact Submissions</CardTitle>
+              <Mail className="h-4 w-4 text-charis-blue" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{stats.contacts.total}</div>
+              <p className="text-xs text-muted-foreground">
+                {stats.contacts.pending} pending response
+              </p>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Main Content Tabs */}
         <Tabs defaultValue="volunteers" className="space-y-4">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="volunteers" className="flex items-center gap-2">
               <Users className="h-4 w-4" />
               Volunteers
@@ -215,6 +243,10 @@ const AdminDashboard = () => {
             <TabsTrigger value="inquiries" className="flex items-center gap-2">
               <MessageSquare className="h-4 w-4" />
               Inquiries
+            </TabsTrigger>
+            <TabsTrigger value="contacts" className="flex items-center gap-2">
+              <Mail className="h-4 w-4" />
+              Contact
             </TabsTrigger>
           </TabsList>
 
@@ -232,6 +264,10 @@ const AdminDashboard = () => {
 
           <TabsContent value="inquiries">
             <InquiriesTab />
+          </TabsContent>
+
+          <TabsContent value="contacts">
+            <ContactSubmissionsTab />
           </TabsContent>
         </Tabs>
       </div>
