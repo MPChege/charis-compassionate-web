@@ -118,6 +118,22 @@ const AdminDashboard = () => {
       .on('postgres_changes', { event: '*', schema: 'public', table: 'contact_submissions' }, () => {
         fetchStats();
       })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'articles' }, () => {
+        // Could add article stats here if needed
+        console.log('Articles table updated');
+      })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'events' }, () => {
+        // Could add event stats here if needed
+        console.log('Events table updated');
+      })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'resources' }, () => {
+        // Could add resource stats here if needed
+        console.log('Resources table updated');
+      })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'profiles' }, () => {
+        // Could add user stats here if needed
+        console.log('Profiles table updated');
+      })
       .subscribe();
 
     return () => {
