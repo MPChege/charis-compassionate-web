@@ -46,7 +46,7 @@ const Contact = () => {
     try {
       console.log("Submitting contact form:", formData);
 
-      // First, save to database
+      // Save to database with real-time enabled
       const { error: dbError } = await supabase
         .from('contact_submissions')
         .insert([{
@@ -67,14 +67,13 @@ const Contact = () => {
         return;
       }
 
-      // Then send email via edge function
+      // Send email via edge function
       const { error: emailError } = await supabase.functions.invoke('send-contact-email', {
         body: formData
       });
 
       if (emailError) {
         console.error("Error sending contact email:", emailError);
-        // Don't return here - the database save was successful, just log the email error
         console.log('Contact submission saved to database but email notification failed');
       }
 

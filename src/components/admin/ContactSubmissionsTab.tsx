@@ -20,7 +20,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { Search, MessageSquare, Eye, CheckCircle, Clock } from 'lucide-react';
+import { Search, MessageSquare, Eye, CheckCircle, Clock, Bell } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -46,14 +46,45 @@ const ContactSubmissionsTab = () => {
   const [selectedSubmission, setSelectedSubmission] = useState<ContactSubmission | null>(null);
   const [notes, setNotes] = useState('');
   const [isUpdating, setIsUpdating] = useState(false);
+  const [newSubmissionAlert, setNewSubmissionAlert] = useState(false);
 
   useEffect(() => {
     fetchSubmissions();
     
-    // Set up real-time subscription
+    // Set up real-time subscription with notification
     const channel = supabase
       .channel('contact_submissions')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'contact_submissions' }, () => {
+      .on('postgres_changes', { 
+        event: 'INSERT', 
+        schema: 'public', 
+        table: 'contact_submissions' 
+      }, (payload) => {
+        console.log('New contact submission received:', payload);
+        setNewSubmissionAlert(true);
+        setTimeout(() => setNewSubmissionAlert(false), 3000);
+        
+        // Show toast notification
+        toast({
+          title: "New Contact Submission!",
+          description: `New message from ${payload.new.name}`,
+          variant: "default",
+        });
+        
+        // Refresh submissions
+        fetchSubmissions();
+      })
+      .on('postgres_changes', { 
+        event: 'UPDATE', 
+        schema: 'public', 
+        table: 'contact_submissions' 
+      }, () => {
+        fetchSubmissions();
+      })
+      .on('postgres_changes', { 
+        event: 'DELETE', 
+        schema: 'public', 
+        table: 'contact_submissions' 
+      }, () => {
         fetchSubmissions();
       })
       .subscribe();
@@ -61,7 +92,7 @@ const ContactSubmissionsTab = () => {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, []);
+  }, [toast]);
 
   const fetchSubmissions = async () => {
     try {
@@ -145,6 +176,16 @@ const ContactSubmissionsTab = () => {
 
   return (
     <div className="space-y-6">
+      {/* Real-time notification alert */}
+      {newSubmissionAlert && (
+        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative animate-pulse">
+          <div className="flex items-center">
+            <Bell className="h-4 w-4 mr-2" />
+            <span className="font-medium">New contact submission received!</span>
+          </div>
+        </div>
+      )}
+
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card>
@@ -166,7 +207,7 @@ const ContactSubmissionsTab = () => {
             <Clock className="h-4 w-4 text-charis-orange" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{pendingCount}</div>
+            <div className="text-2xl font-bold text-charis-orange">{pendingCount}</div>
             <p className="text-xs text-muted-foreground">
               Awaiting response
             </p>
@@ -193,7 +234,14 @@ const ContactSubmissionsTab = () => {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
-            <span>Contact Submissions</span>
+            <span className="flex items-center">
+              Contact Submissions
+              {pendingCount > 0 && (
+                <Badge variant="destructive" className="ml-2">
+                  {pendingCount} pending
+                </Badge>
+              )}
+            </span>
             <div className="flex items-center gap-2">
               <Search className="h-4 w-4 text-gray-400" />
               <Input
@@ -218,7 +266,7 @@ const ContactSubmissionsTab = () => {
             </TableHeader>
             <TableBody>
               {filteredSubmissions.map((submission) => (
-                <TableRow key={submission.id}>
+                <TableRow key={submission.id} className={submission.status === 'pending' ? 'bg-yellow-50' : ''}>
                   <TableCell>
                     <div>
                       <div className="font-medium">{submission.name}</div>
@@ -232,7 +280,12 @@ const ContactSubmissionsTab = () => {
                   </TableCell>
                   <TableCell>{getStatusBadge(submission.status)}</TableCell>
                   <TableCell>
-                    {new Date(submission.created_at).toLocaleDateString()}
+                    <div className="text-sm">
+                      {new Date(submission.created_at).toLocaleDateString()}
+                      <div className="text-xs text-gray-500">
+                        {new Date(submission.created_at).toLocaleTimeString()}
+                      </div>
+                    </div>
                   </TableCell>
                   <TableCell>
                     <Dialog>
