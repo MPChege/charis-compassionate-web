@@ -49,6 +49,7 @@ const VolunteerModal = ({ isOpen, onClose }: VolunteerModalProps) => {
     setIsSubmitting(true);
     
     try {
+      // Save to database
       const { error } = await supabase
         .from('volunteer_applications')
         .insert([{
@@ -69,6 +70,27 @@ const VolunteerModal = ({ isOpen, onClose }: VolunteerModalProps) => {
           variant: "destructive",
         });
         return;
+      }
+
+      // Send email notification
+      try {
+        const { error: emailError } = await supabase.functions.invoke('send-volunteer-email', {
+          body: {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            availability: formData.availability,
+            experience: formData.experience,
+            motivation: formData.motivation,
+            volunteer_areas: selectedAreas
+          }
+        });
+
+        if (emailError) {
+          console.error('Error sending email notification:', emailError);
+        }
+      } catch (emailError) {
+        console.error('Error with email function:', emailError);
       }
 
       toast({

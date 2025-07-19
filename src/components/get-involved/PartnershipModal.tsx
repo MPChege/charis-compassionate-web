@@ -67,6 +67,7 @@ const PartnershipModal = ({ isOpen, onClose }: PartnershipModalProps) => {
     setIsSubmitting(true);
     
     try {
+      // Save to database
       const { error } = await supabase
         .from('partnership_inquiries')
         .insert([{
@@ -91,6 +92,30 @@ const PartnershipModal = ({ isOpen, onClose }: PartnershipModalProps) => {
           variant: "destructive",
         });
         return;
+      }
+
+      // Send email notification
+      try {
+        const { error: emailError } = await supabase.functions.invoke('send-partnership-email', {
+          body: {
+            organization_name: partnershipData.organizationName,
+            contact_person: partnershipData.contactName,
+            email: partnershipData.email,
+            phone: partnershipData.phone,
+            organization_type: partnershipData.organizationType,
+            website: partnershipData.website,
+            description: partnershipData.description,
+            proposed_collaboration: partnershipData.goals,
+            resources_offered: partnershipData.resources,
+            partnership_types: selectedTypes
+          }
+        });
+
+        if (emailError) {
+          console.error('Error sending email notification:', emailError);
+        }
+      } catch (emailError) {
+        console.error('Error with email function:', emailError);
       }
 
       toast({
