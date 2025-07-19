@@ -27,6 +27,18 @@ const handler = async (req: Request): Promise<Response> => {
     const { name, email, subject, message }: ContactFormRequest = await req.json();
 
     console.log("Sending contact form email:", { name, email, subject });
+    console.log("RESEND_API_KEY exists:", !!Deno.env.get("RESEND_API_KEY"));
+
+    if (!Deno.env.get("RESEND_API_KEY")) {
+      console.error("RESEND_API_KEY is not set");
+      return new Response(
+        JSON.stringify({ error: "Email service not configured" }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
 
     // Send email to Charis Eagle Springs
     const emailResponse = await resend.emails.send({
@@ -50,6 +62,17 @@ const handler = async (req: Request): Promise<Response> => {
     });
 
     console.log("Email sent successfully:", emailResponse);
+
+    if (emailResponse.error) {
+      console.error("Resend API error:", emailResponse.error);
+      return new Response(
+        JSON.stringify({ error: "Failed to send email", details: emailResponse.error }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
