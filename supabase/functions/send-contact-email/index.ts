@@ -42,7 +42,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to Charis Eagle Springs
     const emailResponse = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
+      from: "Contact Form <noreply@chariseaglesprings.org>",
       to: ["info@chariseaglesprings.org"],
       subject: `Contact Form: ${subject}`,
       html: `
