@@ -59,7 +59,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to Charis Eagle Springs
     const emailResponse = await resend.emails.send({
-      from: "Partnership Inquiry <noreply@chariseaglesprings.org>",
+      from: "Partnership Inquiry <info@chariseaglesprings.org>",
       to: ["info@chariseaglesprings.org"],
       subject: `New Partnership Inquiry - ${organization_name}`,
       html: `

@@ -57,7 +57,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to Charis Eagle Springs
     const emailResponse = await resend.emails.send({
-      from: "Donation Request <noreply@chariseaglesprings.org>",
+      from: "Donation Request <info@chariseaglesprings.org>",
       to: ["info@chariseaglesprings.org"],
       subject: `New Donation Request - KSH ${Number(amount).toLocaleString()}`,
       html: `
