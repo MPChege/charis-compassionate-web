@@ -28,6 +28,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Sending contact form email:", { name, email, subject });
     console.log("RESEND_API_KEY exists:", !!Deno.env.get("RESEND_API_KEY"));
+    console.log("Using sender email: info@chariseaglesprings.org");
 
     if (!Deno.env.get("RESEND_API_KEY")) {
       console.error("RESEND_API_KEY is not set");
