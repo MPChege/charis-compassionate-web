@@ -8,7 +8,7 @@ import { useParallaxScroll } from "@/hooks/useScrollAnimation";
 const slides = [
   {
     id: 1,
-    image: "/lovable-uploads/4b610869-b25a-4fac-bbd5-a76fc765b517.png",
+    image: "/WhatsApp Image 2025-08-28 at 07.33.58.jpeg",
     title: "Charis Eagle Springs",
     subtitle: "Upholding Dignity Across Ageing",
     description: "A community-centred organisation founded in 2019 by Director Margaret Njagi, restoring dignity and nurturing mental wellbeing across Eastern Africa."

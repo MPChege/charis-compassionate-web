@@ -97,8 +97,8 @@ const About = () => {
               </div>
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img 
-                  src="/lovable-uploads/4b610869-b25a-4fac-bbd5-a76fc765b517.png" 
-                  alt="Community elder in traditional dress participating in cultural activities that promote mental wellness" 
+                  src="/WhatsApp Image 2025-08-28 at 07.33.58 (1).jpeg" 
+                  alt="Group of elders participating in community activities that promote mental wellness" 
                   className="w-full h-full object-cover"
                 />
               </div>

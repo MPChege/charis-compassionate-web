@@ -19,8 +19,8 @@ const StatsSection = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
-          src="/lovable-uploads/4b610869-b25a-4fac-bbd5-a76fc765b517.png" 
-          alt="Community elder participating in traditional cultural activities, representing dignity in aging" 
+          src="/WhatsApp Image 2025-08-28 at 07.35.02.jpeg" 
+          alt="Elders participating in theatre activities, representing dignity in aging" 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-charis-blue-light/80 via-charis-purple-light/70 to-charis-green-light/80"></div>
