@@ -6,12 +6,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
-import { Play, Image, Video, Calendar, MapPin, Users } from "lucide-react";
+import { Image, Calendar, MapPin, Users } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 
 interface MediaItem {
   id: string;
-  type: 'image' | 'video';
+  type: 'image';
   src: string;
   alt: string;
   title: string;
@@ -88,68 +88,7 @@ const Gallery = () => {
       location: "Nairobi Informal Settlements",
       participants: "Elders and caregivers"
     },
-    // New WhatsApp Videos
-    {
-      id: "whatsapp-video-1",
-      type: "video",
-      src: "/WhatsApp Video 2025-08-28 at 07.34.13.mp4",
-      alt: "Elders participating in dance and movement activities",
-      title: "Movement & Dance Therapy",
-      description: "Gentle movement and dance activities designed to improve mobility and bring joy to our elders.",
-      category: "arts-workshops",
-      date: "August 28, 2025",
-      location: "Nairobi, Kenya",
-      participants: "Elders and movement facilitators"
-    },
-    {
-      id: "whatsapp-video-2",
-      type: "video",
-      src: "/WhatsApp Video 2025-08-28 at 07.34.15.mp4",
-      alt: "Community elders sharing stories and experiences",
-      title: "Storytelling Circle",
-      description: "A storytelling session where elders share their life experiences and wisdom with the community.",
-      category: "community-events",
-      date: "August 28, 2025",
-      location: "Nairobi, Kenya",
-      participants: "Elders and community members"
-    },
-    {
-      id: "whatsapp-video-3",
-      type: "video",
-      src: "/WhatsApp Video 2025-08-28 at 07.34.16.mp4",
-      alt: "Arts and crafts workshop in progress",
-      title: "Creative Workshop",
-      description: "Elders working on various arts and crafts projects that stimulate creativity and fine motor skills.",
-      category: "arts-workshops",
-      date: "August 28, 2025",
-      location: "Nairobi, Kenya",
-      participants: "Elders and art facilitators"
-    },
-    {
-      id: "whatsapp-video-4",
-      type: "video",
-      src: "/WhatsApp Video 2025-08-28 at 07.34.19.mp4",
-      alt: "Community celebration and performance",
-      title: "Community Celebration",
-      description: "A joyful community celebration showcasing the talents and achievements of our elders.",
-      category: "community-events",
-      date: "August 28, 2025",
-      location: "Nairobi, Kenya",
-      participants: "Elders, families, and community"
-    },
-    {
-      id: "whatsapp-video-5",
-      type: "video",
-      src: "/WhatsApp Video 2025-08-28 at 07.34.23.mp4",
-      alt: "Training session for caregivers",
-      title: "Caregiver Training",
-      description: "Our Train-the-Trainer program equipping caregivers with skills to support older persons effectively.",
-      category: "capacity-building",
-      date: "August 28, 2025",
-      location: "Nairobi, Kenya",
-      participants: "Caregivers and trainers"
-    },
-    // Existing images (keeping some for context)
+    // Additional images from lovable-uploads to replace videos
     {
       id: "existing-1",
       type: "image",
@@ -173,11 +112,83 @@ const Gallery = () => {
       date: "Ongoing",
       location: "Eastern Africa",
       participants: "Elders, youth, and families"
+    },
+    {
+      id: "existing-3",
+      type: "image",
+      src: "/lovable-uploads/edbba8da-699b-4792-9129-417439bd312c.png",
+      alt: "Elders participating in community support activities",
+      title: "Community Support Network",
+      description: "Building a strong support network for elders through community engagement and mutual assistance programs.",
+      category: "community-support",
+      date: "Ongoing",
+      location: "Eastern Africa",
+      participants: "Elders and community volunteers"
+    },
+    {
+      id: "existing-4",
+      type: "image",
+      src: "/lovable-uploads/f38fe72c-5c15-4c17-9e2f-aeda7abdb70a.png",
+      alt: "Elders learning new skills and crafts",
+      title: "Skills Development Workshop",
+      description: "Empowering elders through skills development workshops that enhance their economic independence and self-esteem.",
+      category: "economic-empowerment",
+      date: "Ongoing",
+      location: "Eastern Africa",
+      participants: "Elders and skills trainers"
+    },
+    {
+      id: "existing-5",
+      type: "image",
+      src: "/lovable-uploads/9aec6cc2-0aef-435f-9b96-cad75227852f.png",
+      alt: "Caregiver training and capacity building session",
+      title: "Caregiver Training Program",
+      description: "Our Train-the-Trainer program equipping caregivers with essential skills to support older persons effectively.",
+      category: "capacity-building",
+      date: "Ongoing",
+      location: "Eastern Africa",
+      participants: "Caregivers and professional trainers"
+    },
+    {
+      id: "existing-6",
+      type: "image",
+      src: "/lovable-uploads/8e47fff9-02e0-457d-9bb2-03d32b763e2c.png",
+      alt: "Elders participating in arts and creative activities",
+      title: "Creative Arts Therapy",
+      description: "Using creative arts as therapeutic tools to improve mental health and emotional wellbeing of our elders.",
+      category: "arts-workshops",
+      date: "Ongoing",
+      location: "Eastern Africa",
+      participants: "Elders and art therapists"
+    },
+    {
+      id: "existing-7",
+      type: "image",
+      src: "/lovable-uploads/8549d152-f026-49a1-ba31-48a45e41b700.png",
+      alt: "Community elders sharing meals and fellowship",
+      title: "Community Fellowship",
+      description: "Creating spaces for elders to share meals, stories, and build meaningful relationships within the community.",
+      category: "community-support",
+      date: "Ongoing",
+      location: "Eastern Africa",
+      participants: "Elders and community members"
+    },
+    {
+      id: "existing-8",
+      type: "image",
+      src: "/lovable-uploads/36200382-f661-4b6d-a754-33f563aff22f.png",
+      alt: "Elders participating in physical activities and exercise",
+      title: "Physical Wellness Program",
+      description: "Promoting physical health and mobility through age-appropriate exercise and movement activities.",
+      category: "community-support",
+      date: "Ongoing",
+      location: "Eastern Africa",
+      participants: "Elders and fitness instructors"
     }
   ];
 
   const categories = [
-    { id: 'all', name: 'All Media', count: mediaItems.length },
+    { id: 'all', name: 'All Images', count: mediaItems.length },
     { id: 'arts-workshops', name: 'Arts & Workshops', count: mediaItems.filter(item => item.category === 'arts-workshops').length },
     { id: 'community-events', name: 'Community Events', count: mediaItems.filter(item => item.category === 'community-events').length },
     { id: 'community-support', name: 'Community Support', count: mediaItems.filter(item => item.category === 'community-support').length },
@@ -196,7 +207,7 @@ const Gallery = () => {
     <>
       <Helmet>
         <title>Gallery - Charis Eagle Springs | Visual Stories of Impact</title>
-        <meta name="description" content="Explore our gallery showcasing the transformative work of Charis Eagle Springs through images and videos of arts workshops, community events, and elder support programs across Eastern Africa." />
+        <meta name="description" content="Explore our image gallery showcasing the transformative work of Charis Eagle Springs through photos of arts workshops, community events, and elder support programs across Eastern Africa." />
         <meta name="keywords" content="Charis Eagle Springs gallery, elder care photos, community events Kenya, arts workshops for seniors, elder support programs, Eastern Africa elder care" />
         <link rel="canonical" href="https://chariseaglesprings.org/gallery" />
       </Helmet>
@@ -223,7 +234,7 @@ const Gallery = () => {
                   Visual Stories
                 </span>
                 <h1 className="font-heading text-white mb-6 leading-tight drop-shadow-lg">
-                  Our Impact in Pictures & Videos
+                  Our Impact in Pictures
                 </h1>
                 <div className="w-24 h-1 bg-gradient-to-r from-charis-blue-light to-charis-green-light mx-auto mb-8"></div>
               </div>
@@ -267,33 +278,18 @@ const Gallery = () => {
                   onClick={() => openMedia(item)}
                 >
                   <div className="relative aspect-square overflow-hidden">
-                    {item.type === 'video' ? (
-                      <video
-                        src={item.src}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        muted
-                        loop
-                        onMouseEnter={(e) => e.currentTarget.play()}
-                        onMouseLeave={(e) => e.currentTarget.pause()}
-                      />
-                    ) : (
-                      <img
-                        src={item.src}
-                        alt={item.alt}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    )}
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
                     
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                         <div className="flex items-center gap-2 mb-2">
-                          {item.type === 'video' ? (
-                            <Play className="h-4 w-4" />
-                          ) : (
-                            <Image className="h-4 w-4" />
-                          )}
-                          <span className="text-sm font-medium">{item.type === 'video' ? 'Video' : 'Image'}</span>
+                          <Image className="h-4 w-4" />
+                          <span className="text-sm font-medium">Image</span>
                         </div>
                         <h3 className="font-semibold text-sm">{item.title}</h3>
                       </div>
@@ -343,22 +339,11 @@ const Gallery = () => {
               </div>
               
               <div className="relative">
-                {selectedMedia.type === 'video' ? (
-                  <video
-                    src={selectedMedia.src}
-                    controls
-                    className="w-full rounded-lg"
-                    autoPlay
-                  >
-                    Your browser does not support the video tag.
-                  </video>
-                ) : (
-                  <img
-                    src={selectedMedia.src}
-                    alt={selectedMedia.alt}
-                    className="w-full rounded-lg"
-                  />
-                )}
+                <img
+                  src={selectedMedia.src}
+                  alt={selectedMedia.alt}
+                  className="w-full rounded-lg"
+                />
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
