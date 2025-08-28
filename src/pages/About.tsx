@@ -16,9 +16,9 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Us - Charis Eagle Springs | Mental Health for Older Persons</title>
-        <meta name="description" content="Learn about Charis Eagle Springs' mission to support mental health for older persons in Kenya through theatre and arts. Founded in 2018 to promote dignified aging and community support." />
-        <meta name="keywords" content="about Charis Eagle Springs, older persons mental health organization, Kenya elder care nonprofit, theatre therapy for seniors, aging support mission" />
+        <title>About Us - Charis Eagle Springs | Upholding Dignity Across Ageing</title>
+        <meta name="description" content="Learn about Charis Eagle Springs, a community-centred organisation founded in 2019 by Director Margaret Njagi. We restore dignity, nurture mental wellbeing, and strengthen the safety net around older persons across Eastern Africa through theatre & arts, training, and community support." />
+        <meta name="keywords" content="Charis Eagle Springs, Margaret Njagi, older persons mental health, Kenya elder care, theatre therapy for seniors, ageing with dignity, Eastern Africa elder support, community-centred eldercare" />
         <link rel="canonical" href="https://chariseaglesprings.org/about" />
       </Helmet>
 
@@ -65,7 +65,7 @@ const About = () => {
                 <div className="w-24 h-1 bg-gradient-to-r from-charis-blue-light to-charis-green-light mx-auto mb-8"></div>
               </div>
               <p className="text-xl md:text-2xl font-light text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
-                Discover our mission, vision, and the passionate story behind Charis Eagle Springs as we work to transform mental health care for older persons.
+                Discover our mission, vision, and the passionate story behind Charis Eagle Springs as we work to uphold dignity across ageing through theatre, arts, and community support.
               </p>
             </div>
           </div>
@@ -84,15 +84,15 @@ const About = () => {
               storyVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>
               <div>
-                <h2 className="text-3xl font-bold text-charis-blue-dark mb-6">Our Story: Supporting Older Persons Since 2018</h2>
+                <h2 className="text-3xl font-bold text-charis-blue-dark mb-6">Our Story: Supporting Older Persons Since 2019</h2>
                 <p className="mb-4">
-                  Charis Eagle Springs was founded in 2018 by a group of healthcare professionals and community leaders who recognized the growing need for specialized mental health support for older persons.
+                  Charis Eagle Springs is a community-centred organisation born from compassion and first-hand experience. Founded in 2019 by Director Margaret Njagi, a community advocate with lived experience of eldercare, Margaret leads Charis Eagle Springs with vision and compassion — blending theatrical practice, clinical care principles and grassroots organising to protect the dignity of older persons.
                 </p>
                 <p className="mb-4">
-                  Our founders witnessed firsthand the challenges faced by older persons dealing with dementia, depression, and anxiety, as well as the struggles of their caregivers and family members.
+                  We exist to restore dignity, nurture mental wellbeing, and strengthen the safety net around older persons across Eastern Africa. What began as a small, neighbourhood response to elders living with dementia, depression and isolation has grown into a multi-program organisation using arts, training, advocacy and practical support to transform lives.
                 </p>
                 <p>
-                  What began as a small community initiative has grown into a comprehensive organization dedicated to raising awareness, providing resources, and advocating for better mental health care for our older community members.
+                  We work where need is greatest — informal settlements, churches, community halls, care homes and public spaces — bringing culturally relevant, evidence-informed interventions that reconnect older persons to community, purpose and income.
                 </p>
               </div>
               <div className="rounded-lg overflow-hidden shadow-lg">
@@ -131,10 +131,7 @@ const About = () => {
                 </div>
                 <h2 className="text-2xl font-bold text-charis-blue-dark mb-4">Our Mission</h2>
                 <p className="mb-3">
-                  To raise awareness about mental health issues affecting older persons and promote compassionate, dignified care for senior citizens.
-                </p>
-                <p>
-                  We strive to educate communities, empower caregivers, and advocate for better policies and resources to support mental health for older persons.
+                  To promote mental wellbeing and holistic welfare for older persons through theatre & arts, caregiver capacity building, feeding and community support, and income-generating activities that return value to elders and their families.
                 </p>
               </div>
               
@@ -144,10 +141,7 @@ const About = () => {
                 </div>
                 <h2 className="text-2xl font-bold text-charis-blue-dark mb-4">Our Vision</h2>
                 <p className="mb-3">
-                  A society where older persons receive the mental health support they need, where caregivers are equipped with proper resources, and where communities understand and value the dignity of their senior members.
-                </p>
-                <p>
-                  We envision a world where aging with mental health challenges doesn't lead to isolation or diminished quality of life.
+                  A society where ageing is met with dignity, understanding and robust mental-health support.
                 </p>
               </div>
             </div>
@@ -173,22 +167,22 @@ const About = () => {
                 {
                   icon: Heart,
                   title: "Compassion",
-                  description: "We approach our work with empathy and genuine care for older persons and their families."
+                  description: "Care that listens first."
                 },
                 {
                   icon: Users,
                   title: "Respect",
-                  description: "We honor the dignity and worth of every older person regardless of their mental health status."
+                  description: "Every elder is entitled to dignity."
                 },
                 {
                   icon: Star,
                   title: "Excellence",
-                  description: "We strive for the highest standards in our programs, resources, and advocacy efforts."
+                  description: "High standards in training and service delivery."
                 },
                 {
                   icon: Zap,
                   title: "Empowerment",
-                  description: "We equip caregivers and communities with knowledge and tools to provide better support."
+                  description: "Strengthening caregivers, families and the elders themselves."
                 }
               ].map((value, index) => (
                 <div key={index} className="bg-charis-neutral-light p-6 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
@@ -199,6 +193,214 @@ const About = () => {
                   <p className="text-gray-700">{value.description}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Programs Section */}
+        <section className="py-16 bg-charis-neutral-light">
+          <div className="container-custom">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Our Programs</h2>
+              <p className="max-w-3xl mx-auto text-gray-700">
+                Comprehensive interventions that transform lives through arts, training, and community support.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Theatre & Arts for Healing */}
+              <div className="bg-white p-8 rounded-xl shadow-lg">
+                <div className="h-16 w-16 rounded-full bg-charis-blue-light flex items-center justify-center mb-6">
+                  <span className="text-2xl">🎭</span>
+                </div>
+                <h3 className="text-xl font-bold text-charis-blue-dark mb-4">1. Theatre & Arts for Healing</h3>
+                <p className="mb-4 text-gray-700">
+                  We use drama, music, dance, poetry and storytelling as therapeutic tools. Our events give older persons a creative stage to express life stories, process grief, fight stigma and rebuild self-worth.
+                </p>
+                <p className="text-sm text-charis-blue-dark font-semibold">
+                  Notable event: A music & arts festival for older persons themed at PCEA Riara Ridge Church, Githunguri, Kenya — a day of theatre, intergenerational performances and community celebration.
+                </p>
+              </div>
+
+              {/* Train-the-Trainer */}
+              <div className="bg-white p-8 rounded-xl shadow-lg">
+                <div className="h-16 w-16 rounded-full bg-charis-green-light flex items-center justify-center mb-6">
+                  <span className="text-2xl">👥</span>
+                </div>
+                <h3 className="text-xl font-bold text-charis-blue-dark mb-4">2. Train-the-Trainer: Building Local Capacity</h3>
+                <p className="mb-4 text-gray-700">
+                  After participating in the Fulbright Elder Care training in Durban, South Africa (June 2024), we designed and delivered Train-the-Trainer programs around Nairobi, focused on community caregiving and arts facilitation.
+                </p>
+                <p className="text-sm text-charis-blue-dark font-semibold">
+                  We train caregivers to detect early signs of dementia, use empathetic communication, implement safe practices, and lead arts activities as therapeutic interventions.
+                </p>
+              </div>
+
+              {/* Feeding & Community Support */}
+              <div className="bg-white p-8 rounded-xl shadow-lg">
+                <div className="h-16 w-16 rounded-full bg-charis-blue-light flex items-center justify-center mb-6">
+                  <span className="text-2xl">🍽️</span>
+                </div>
+                <h3 className="text-xl font-bold text-charis-blue-dark mb-4">3. Feeding & Community Support</h3>
+                <p className="mb-4 text-gray-700">
+                  We run targeted feeding interventions in informal settlements to support nutritionally vulnerable older persons. We engage in feeding programmes in various slums across Nairobi, combining hot meals with health checks, psychosocial support and community referrals.
+                </p>
+              </div>
+
+              {/* Economic Empowerment & Crafts */}
+              <div className="bg-white p-8 rounded-xl shadow-lg">
+                <div className="h-16 w-16 rounded-full bg-charis-green-light flex items-center justify-center mb-6">
+                  <span className="text-2xl">🛍️</span>
+                </div>
+                <h3 className="text-xl font-bold text-charis-blue-dark mb-4">4. Economic Empowerment & Crafts</h3>
+                <p className="mb-4 text-gray-700">
+                  To restore dignity and sustain livelihoods, we support elders to produce crafts and market them beyond local markets. Charis Eagle Springs participates annually in LeadingAge Expo exhibitions in the USA, where we display and sell crafts made by older persons.
+                </p>
+                <p className="text-sm text-charis-blue-dark font-semibold">
+                  Proceeds are returned to the crafters, creating income, pride and a visible global market for senior creativity.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Methodology Section */}
+        <section className="py-16 bg-white">
+          <div className="container-custom">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">How We Work</h2>
+              <p className="max-w-3xl mx-auto text-gray-700">
+                Our methodology combines intergenerational approaches with clinical safeguards and community partnerships.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Intergenerational & Community-Based",
+                  description: "We design activities that include families, youth and civic institutions so older persons are integrated, not isolated."
+                },
+                {
+                  title: "Arts as Therapy",
+                  description: "All creative activities are facilitated with therapeutic intent — memory stimulation, emotional release, socialisation, and gentle physical activity."
+                },
+                {
+                  title: "Capacity Building",
+                  description: "Our Train-the-Trainer model builds people who can continue programmes sustainably."
+                },
+                {
+                  title: "Clinical Safeguards",
+                  description: "We partner with medical professionals to screen for vital signs and health risks before high-energy activities. Safety and dignity are paramount."
+                },
+                {
+                  title: "Partnership-Driven",
+                  description: "We collaborate with churches, companies, NGOs and international partners to scale impact."
+                }
+              ].map((item, index) => (
+                <div key={index} className="bg-charis-neutral-light p-6 rounded-lg">
+                  <h3 className="text-lg font-semibold text-charis-blue-dark mb-3">{item.title}</h3>
+                  <p className="text-gray-700">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Impact & Achievements Section */}
+        <section className="py-16 bg-charis-neutral-light">
+          <div className="container-custom">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Impact & Achievements</h2>
+              <p className="max-w-3xl mx-auto text-gray-700">
+                Our journey of transformation and measurable impact across Eastern Africa.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="h-6 w-6 rounded-full bg-charis-green-light flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-charis-green-dark text-sm font-bold">✓</span>
+                  </div>
+                  <p className="text-gray-700">Registered and operating in Nairobi since 2019, serving communities across the region.</p>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="h-6 w-6 rounded-full bg-charis-green-light flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-charis-green-dark text-sm font-bold">✓</span>
+                  </div>
+                  <p className="text-gray-700">Trained caregivers through our Train-the-Trainer courses following Fulbright participation in Durban, June 2024.</p>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="h-6 w-6 rounded-full bg-charis-green-light flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-charis-green-dark text-sm font-bold">✓</span>
+                  </div>
+                  <p className="text-gray-700">Delivered feeding and outreach activities in various slums (Eg Kibagare Slum), Nairobi, pairing nutrition with psychosocial care.</p>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="h-6 w-6 rounded-full bg-charis-green-light flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-charis-green-dark text-sm font-bold">✓</span>
+                  </div>
+                  <p className="text-gray-700">Produced music and theatre festivals for older persons (e.g., PCEA Riara Ridge, Githunguri) that increased community engagement and mental wellbeing.</p>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="h-6 w-6 rounded-full bg-charis-green-light flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-charis-green-dark text-sm font-bold">✓</span>
+                  </div>
+                  <p className="text-gray-700">Showcased elder-made crafts at LeadingAge Expo exhibitions in the USA, generating income for elders and raising international awareness.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Get Involved Section */}
+        <section className="py-16 bg-white">
+          <div className="container-custom">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Get Involved</h2>
+              <p className="max-w-3xl mx-auto text-gray-700">
+                Charis Eagle Springs welcomes partners, volunteers, donors and advocates. Join us to ensure that every elder lives with dignity, purpose and a voice.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  title: "Donate",
+                  description: "Support feeding programmes and caregiver training.",
+                  icon: "💝"
+                },
+                {
+                  title: "Partner",
+                  description: "Partner with us on events, health screenings and capacity building.",
+                  icon: "🤝"
+                },
+                {
+                  title: "Volunteer",
+                  description: "Volunteer as a facilitator, fundraiser or logistics support.",
+                  icon: "👥"
+                },
+                {
+                  title: "Adopt a Grandparent",
+                  description: "Mentor, visit and support an elder in your community.",
+                  icon: "👴👵"
+                }
+              ].map((item, index) => (
+                <div key={index} className="bg-charis-neutral-light p-6 rounded-lg text-center hover:shadow-lg transition-all duration-300">
+                  <div className="text-4xl mb-4">{item.icon}</div>
+                  <h3 className="text-lg font-semibold text-charis-blue-dark mb-3">{item.title}</h3>
+                  <p className="text-gray-700">{item.description}</p>
+                </div>
+              ))}
+            </div>
+            
+            <div className="text-center mt-12">
+              <p className="text-lg text-charis-blue-dark font-semibold">
+                Charis Eagle Springs believes that ageing is not the end of contribution — it is a season that deserves respect, creativity and care.
+              </p>
             </div>
           </div>
         </section>

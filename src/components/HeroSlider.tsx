@@ -10,26 +10,26 @@ const slides = [
     id: 1,
     image: "/lovable-uploads/4b610869-b25a-4fac-bbd5-a76fc765b517.png",
     title: "Charis Eagle Springs",
-    subtitle: "Upholding Dignity Across Aging",
-    description: "Promoting mental well-being of the elderly through theatre and the arts."
+    subtitle: "Upholding Dignity Across Ageing",
+    description: "A community-centred organisation founded in 2019 by Director Margaret Njagi, restoring dignity and nurturing mental wellbeing across Eastern Africa."
   },
   {
     id: 2,
     image: "/lovable-uploads/a3eabbcc-f8ac-4805-a8a2-a318cd803e6e.png",
-    title: "Theatre Workshops",
-    description: "Encouraging drama and storytelling for self-expression and confidence-building among our elderly community."
+    title: "Theatre & Arts for Healing",
+    description: "Using drama, music, dance, poetry and storytelling as therapeutic tools to help older persons express life stories and rebuild self-worth."
   },
   {
     id: 3,
     image: "/lovable-uploads/f38fe72c-5c15-4c17-9e2f-aeda7abdb70a.png",
-    title: "Community Performances",
-    description: "Showcasing elderly talents, offering a platform for storytelling and recognition within our community."
+    title: "Train-the-Trainer Programs",
+    description: "Building local capacity through caregiver training and arts facilitation, following our Fulbright Elder Care training in Durban, June 2024."
   },
   {
     id: 4,
     image: "https://www.capitalfm.co.ke/lifestyle/files/2012/08/older-couple.jpg",
-    title: "Building Connections",
-    description: "Reducing social isolation through vibrant community engagement and fostering intergenerational relationships."
+    title: "Economic Empowerment & Crafts",
+    description: "Supporting elders to produce crafts and participate in LeadingAge Expo exhibitions in the USA, generating income and pride."
   }
 ];
 

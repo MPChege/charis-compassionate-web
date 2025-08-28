@@ -15,7 +15,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4 bg-gradient-to-r from-white to-charis-green-light bg-clip-text text-transparent">Charis Eagle Springs</h3>
             <p className="text-white/80 mb-4">
-              Promoting mental well-being of older persons through theatre and the arts. Upholding dignity across aging.
+              A community-centred organisation founded in 2019 by Director Margaret Njagi. We restore dignity, nurture mental wellbeing, and strengthen the safety net around older persons across Eastern Africa.
             </p>
             <div className="flex space-x-4 mt-6">
               <a 
@@ -58,8 +58,8 @@ const Footer = () => {
             <ul className="space-y-3">
               {[
                 { name: "About Us", path: "/about" },
-                { name: "Theatre Workshops", path: "/programs" },
-                { name: "Community Performances", path: "/programs" },
+                { name: "Theatre & Arts for Healing", path: "/programs" },
+                { name: "Train-the-Trainer Programs", path: "/programs" },
                 { name: "Get Involved", path: "/get-involved" },
                 { name: "Contact", path: "/contact" },
               ].map((link) => (
@@ -80,10 +80,10 @@ const Footer = () => {
             <h3 className="text-xl font-semibold mb-4 bg-gradient-to-r from-white to-charis-green-light bg-clip-text text-transparent">Our Programs</h3>
             <ul className="space-y-3">
               {[
-                { name: "Theatre Workshops", path: "/programs" },
-                { name: "Community Performances", path: "/programs" },
-                { name: "Peer Support Groups", path: "/programs" },
-                { name: "Awareness Campaigns", path: "/awareness-hub" },
+                { name: "Theatre & Arts for Healing", path: "/programs" },
+                { name: "Train-the-Trainer Programs", path: "/programs" },
+                { name: "Feeding & Community Support", path: "/programs" },
+                { name: "Economic Empowerment & Crafts", path: "/programs" },
               ].map((resource, index) => (
                 <li key={index}>
                   <Link 

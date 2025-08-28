@@ -32,7 +32,7 @@ const Mission = () => {
                   Mission
                 </h3>
                 <p className="text-lg font-light leading-relaxed text-gray-700">
-                  To promote the mental well-being of the elderly through theatre and arts.
+                  To promote mental wellbeing and holistic welfare for older persons through theatre & arts, caregiver capacity building, feeding and community support, and income-generating activities that return value to elders and their families.
                 </p>
               </div>
               <div className={`transition-all duration-700 delay-600 ${
@@ -43,14 +43,14 @@ const Mission = () => {
                   Vision
                 </h3>
                 <p className="text-lg font-light leading-relaxed text-gray-700">
-                  A society where elderly individuals are celebrated, empowered, and supported to thrive in their golden years.
+                  A society where ageing is met with dignity, understanding and robust mental-health support.
                 </p>
               </div>
               <div className={`transition-all duration-700 delay-800 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}>
                 <p className="text-lg font-light leading-relaxed text-gray-700">
-                  Charis Eagle Springs is a Nairobi-based non-profit organization dedicated to enhancing the mental well-being of the elderly through artistic engagement such as theatre and storytelling. We strive to support elderly Kenyans in maintaining their dignity and sharing their unique voices with the community.
+                  Charis Eagle Springs is a community-centred organisation founded in 2019 by Director Margaret Njagi. We exist to restore dignity, nurture mental wellbeing, and strengthen the safety net around older persons across Eastern Africa through arts, training, advocacy and practical support.
                 </p>
               </div>
             </div>

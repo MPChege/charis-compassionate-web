@@ -32,14 +32,14 @@ const StatsSection = () => {
             Our Impact
           </span>
           <h2 className="font-heading text-white drop-shadow-lg">
-            Making a Difference Through Arts
+            Our Impact Across Eastern Africa
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {[
-            { number: "200+", label: "Older Persons Participants", delay: "delay-200", color: "from-charis-green to-charis-green-dark" },
-            { number: "50+", label: "Theatre Workshops", delay: "delay-400", color: "from-charis-blue to-charis-blue-dark" },
-            { number: "25+", label: "Community Performances", delay: "delay-600", color: "from-charis-purple to-charis-purple-light" },
+            { number: "2019", label: "Founded in Nairobi, Kenya", delay: "delay-200", color: "from-charis-green to-charis-green-dark" },
+            { number: "2024", label: "Fulbright Training in Durban", delay: "delay-400", color: "from-charis-blue to-charis-blue-dark" },
+            { number: "USA", label: "LeadingAge Expo Participation", delay: "delay-600", color: "from-charis-purple to-charis-purple-light" },
           ].map((stat, index) => (
             <div 
               key={index}
@@ -69,29 +69,29 @@ const CoreValuesSection = () => {
   const values = [
     {
       icon: Heart,
-      title: "Respect",
-      description: "Honoring dignity and individuality of every older person",
+      title: "Compassion",
+      description: "Care that listens first",
       gradient: "from-red-400 to-pink-500",
       bgColor: "bg-gradient-to-br from-red-50 to-pink-50"
     },
     {
       icon: Users,
-      title: "Community",
-      description: "Encouraging connections and belonging through shared experiences",
+      title: "Respect",
+      description: "Every elder is entitled to dignity",
       gradient: "from-blue-400 to-indigo-500",
       bgColor: "bg-gradient-to-br from-blue-50 to-indigo-50"
     },
     {
       icon: Zap,
-      title: "Empowerment",
-      description: "Promoting self-expression and confidence through the arts",
+      title: "Excellence",
+      description: "High standards in training and service delivery",
       gradient: "from-yellow-400 to-orange-500",
       bgColor: "bg-gradient-to-br from-yellow-50 to-orange-50"
     },
     {
       icon: Star,
-      title: "Integrity",
-      description: "Ensuring transparency and ethical practices in all our work",
+      title: "Empowerment",
+      description: "Strengthening caregivers, families and the elders themselves",
       gradient: "from-purple-400 to-violet-500",
       bgColor: "bg-gradient-to-br from-purple-50 to-violet-50"
     }
@@ -101,9 +101,9 @@ const CoreValuesSection = () => {
     <section ref={elementRef} className="section-padding bg-gradient-to-br from-charis-neutral-light via-white to-charis-blue-light/30">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-charis-blue-dark to-charis-purple bg-clip-text text-transparent mb-4">Our Core Values for Older Persons Support</h2>
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-charis-blue-dark to-charis-purple bg-clip-text text-transparent mb-4">Our Core Values</h2>
           <p className="max-w-3xl mx-auto text-gray-700">
-            The principles that guide our work and define our commitment to older persons' mental wellness through the arts.
+            The principles that guide our work and define our commitment to upholding dignity across ageing.
           </p>
         </div>
         
@@ -154,10 +154,10 @@ const CallToAction = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
           <h2 className="font-heading text-white mb-8 drop-shadow-lg">
-            Join Us in Promoting Mental Wellness for Older Persons
+            Join Us in Upholding Dignity Across Ageing
           </h2>
           <p className="text-xl font-light text-white/90 mb-12 leading-relaxed drop-shadow-md">
-            Help us create a society where older persons are celebrated, empowered, and supported through the transformative power of theatre and arts.
+            Help us create a society where ageing is met with dignity, understanding and robust mental-health support through theatre, arts, and community care.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <Button asChild className="bg-gradient-to-r from-charis-green to-charis-green-dark text-white hover:from-charis-green-dark hover:to-charis-green px-8 py-4 text-sm font-medium transition-all duration-300 group shadow-xl border-2 border-white/20">
@@ -184,9 +184,9 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Charis Eagle Springs - Mental Health Support for Older Persons in Kenya</title>
-        <meta name="description" content="Promoting mental wellness for older persons through theatre and arts in Kenya. Supporting dignified aging with community programs, awareness campaigns, and caregiver resources since 2018." />
-        <meta name="keywords" content="older persons mental health Kenya, elder care programs, theatre therapy, aging support, dementia awareness, community outreach, mental wellness older adults" />
+        <title>Charis Eagle Springs — Upholding Dignity Across Ageing</title>
+        <meta name="description" content="Charis Eagle Springs is a community-centred organisation founded in 2019 by Director Margaret Njagi. We restore dignity, nurture mental wellbeing, and strengthen the safety net around older persons across Eastern Africa through theatre & arts, training, and community support." />
+        <meta name="keywords" content="Charis Eagle Springs, Margaret Njagi, older persons mental health, Kenya elder care, theatre therapy for seniors, ageing with dignity, Eastern Africa elder support, community-centred eldercare, upholding dignity across ageing" />
         <link rel="canonical" href="https://chariseaglesprings.org" />
       </Helmet>
       

@@ -72,3 +72,4 @@ node test-backend.js
 - Supabase: [docs.supabase.com](https://docs.supabase.com)
 - Resend: [resend.com/docs](https://resend.com/docs)
 - Project Issues: Check the project repository
+
