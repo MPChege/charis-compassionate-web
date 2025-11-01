@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charis Eagle Springs QR Code Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #6ba3d6 0%, #b4a8d6 50%, #7fb069 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #2c5aa0;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .qr-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px dashed #ddd;
+        }
+        #qrcode {
+            display: inline-block;
+            margin: 20px 0;
+        }
+        .download-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e8f4fd;
+            border-radius: 10px;
+        }
+        .download-btn {
+            background: #2c5aa0;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .download-btn:hover {
+            background: #1e3f73;
+        }
+        .size-options {
+            margin: 20px 0;
+        }
+        .size-option {
+            margin: 10px;
+            padding: 10px 20px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .size-option:hover, .size-option.active {
+            border-color: #2c5aa0;
+            background: #e8f4fd;
+        }
+        .business-card-preview {
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .card-text {
+            flex: 1;
+            text-align: left;
+        }
+        .card-qr {
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 5px;
+        }
+        .card-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .card-website {
+            color: #2c5aa0;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Charis Eagle Springs</h1>
+        <p class="subtitle">QR Code Generator for Business Cards</p>
+        
+        <div class="qr-container">
+            <h3>QR Code for: https://chariseaglesprings.org/</h3>
+            
+            <div class="size-options">
+                <div class="size-option active" data-size="200">Small (200px)</div>
+                <div class="size-option" data-size="300">Medium (300px)</div>
+                <div class="size-option" data-size="400">Large (400px)</div>
+            </div>
+            
+            <div id="qrcode"></div>
+        </div>
+        
+        <div class="download-section">
+            <h3>Download Options</h3>
+            <button class="download-btn" onclick="downloadQR('png')">Download as PNG</button>
+            <button class="download-btn" onclick="downloadQR('svg')">Download as SVG</button>
+            <button class="download-btn" onclick="downloadQR('pdf')">Download as PDF</button>
+        </div>
+        
+        <div class="business-card-preview">
+            <h3>Business Card Preview</h3>
+            <div class="card-content">
+                <div class="card-text">
+                    <div class="card-title">Charis Eagle Springs</div>
+                    <div class="card-subtitle">Mental Health Support for Older Persons</div>
+                    <div class="card-website">chariseaglesprings.org</div>
+                </div>
+                <div class="card-qr">
+                    <div id="card-qrcode"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #f0f8ff; border-radius: 10px;">
+            <h3>Usage Instructions</h3>
+            <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <li><strong>For Business Cards:</strong> Use the 200px version (small)</li>
+                <li><strong>For Posters/Flyers:</strong> Use the 300px or 400px version</li>
+                <li><strong>PNG:</strong> Best for digital use and printing</li>
+                <li><strong>SVG:</strong> Best for scalable graphics and web use</li>
+                <li><strong>PDF:</strong> Best for professional printing</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let currentSize = 200;
+        const websiteUrl = 'https://chariseaglesprings.org/';
+        
+        // Generate QR code
+        function generateQR(size) {
+            const canvas = document.getElementById('qrcode');
+            canvas.innerHTML = '';
+            
+            QRCode.toCanvas(canvas, websiteUrl, {
+                width: size,
+                height: size,
+                color: {
+                    dark: '#2c5aa0',  // Charis blue
+                    light: '#FFFFFF'
+                },
+                margin: 2,
+                errorCorrectionLevel: 'M'
+            }, function (error) {
+                if (error) console.error(error);
+            });
+        }
+        
+        // Generate small QR for business card preview
+        function generateCardQR() {
+            const canvas = document.getElementById('card-qrcode');
+            canvas.innerHTML = '';
+            
+            QRCode.toCanvas(canvas, websiteUrl, {
+                width: 80,
+                height: 80,
+                color: {
+                    dark: '#2c5aa0',
+                    light: '#FFFFFF'
+                },
+                margin: 1,
+                errorCorrectionLevel: 'M'
+            }, function (error) {
+                if (error) console.error(error);
+            });
+        }
+        
+        // Size option click handlers
+        document.querySelectorAll('.size-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                currentSize = parseInt(this.dataset.size);
+                generateQR(currentSize);
+            });
+        });
+        
+        // Download functions
+        function downloadQR(format) {
+            const canvas = document.querySelector('#qrcode canvas');
+            if (!canvas) return;
+            
+            if (format === 'png') {
+                const link = document.createElement('a');
+                link.download = 'charis-eagle-springs-qr.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            } else if (format === 'svg') {
+                // Convert canvas to SVG
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('width', currentSize);
+                svg.setAttribute('height', currentSize);
+                svg.setAttribute('viewBox', `0 0 ${currentSize} ${currentSize}`);
+                
+                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rect.setAttribute('width', '100%');
+                rect.setAttribute('height', '100%');
+                rect.setAttribute('fill', 'white');
+                svg.appendChild(rect);
+                
+                const img = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+                img.setAttribute('width', '100%');
+                img.setAttribute('height', '100%');
+                img.setAttribute('href', canvas.toDataURL());
+                svg.appendChild(img);
+                
+                const svgData = new XMLSerializer().serializeToString(svg);
+                const blob = new Blob([svgData], {type: 'image/svg+xml'});
+                const url = URL.createObjectURL(blob);
+                
+                const link = document.createElement('a');
+                link.download = 'charis-eagle-springs-qr.svg';
+                link.href = url;
+                link.click();
+                URL.revokeObjectURL(url);
+            } else if (format === 'pdf') {
+                // For PDF, we'll use a simple approach
+                const link = document.createElement('a');
+                link.download = 'charis-eagle-springs-qr.pdf';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }
+        }
+        
+        // Initialize
+        generateQR(currentSize);
+        generateCardQR();
+    </script>
+</body>
+</html>
+
+

@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -16,12 +17,14 @@ import {
   Search,
   BookOpen,
   Users,
-  Download
+  Download,
+  ArrowRight
 } from "lucide-react";
 import { supabase } from '@/integrations/supabase/client';
 import { useRealtimeTable } from '@/hooks/useRealtimeTable';
 
 const AwarenessHub = () => {
+  const navigate = useNavigate();
   const [articles, setArticles] = useState([]);
   const [events, setEvents] = useState([]);
   const [resources, setResources] = useState([]);
@@ -181,6 +184,15 @@ const AwarenessHub = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredArticles.map((article) => (
                   <Card key={article.id} className="hover:shadow-lg transition-shadow">
+                    {article.featured_image && (
+                      <div className="overflow-hidden rounded-t-lg">
+                        <img
+                          src={article.featured_image}
+                          alt={article.title}
+                          className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    )}
                     <CardHeader>
                       <div className="flex justify-between items-start mb-2">
                         <Badge variant="secondary">{article.category}</Badge>
@@ -195,11 +207,25 @@ const AwarenessHub = () => {
                           <Clock className="h-4 w-4 mr-1" />
                           {article.read_time}
                         </div>
-                        <Button asChild variant="outline" size="sm">
-                          <a href={article.url} target="_blank" rel="noopener noreferrer">
-                            Read More <ExternalLink className="h-4 w-4 ml-1" />
-                          </a>
-                        </Button>
+                        {article.content && article.slug ? (
+                          <Button 
+                            variant="outline" 
+                            size="sm"
+                            onClick={() => navigate(`/article/${article.slug}`)}
+                          >
+                            Read More <ArrowRight className="h-4 w-4 ml-1" />
+                          </Button>
+                        ) : article.url ? (
+                          <Button asChild variant="outline" size="sm">
+                            <a href={article.url} target="_blank" rel="noopener noreferrer">
+                              Read More <ExternalLink className="h-4 w-4 ml-1" />
+                            </a>
+                          </Button>
+                        ) : (
+                          <Button variant="outline" size="sm" disabled>
+                            Coming Soon
+                          </Button>
+                        )}
                       </div>
                     </CardContent>
                   </Card>

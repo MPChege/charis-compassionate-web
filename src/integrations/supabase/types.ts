@@ -62,40 +62,55 @@ export type Database = {
       }
       articles: {
         Row: {
+          author: string | null
           category: string
+          content: string | null
           created_at: string | null
           date: string
           excerpt: string | null
+          featured_image: string | null
           id: string
+          images: string[] | null
           read_time: string | null
+          slug: string | null
           source: string
           title: string
           updated_at: string | null
-          url: string
+          url: string | null
         }
         Insert: {
+          author?: string | null
           category: string
+          content?: string | null
           created_at?: string | null
           date: string
           excerpt?: string | null
+          featured_image?: string | null
           id?: string
+          images?: string[] | null
           read_time?: string | null
+          slug?: string | null
           source: string
           title: string
           updated_at?: string | null
-          url: string
+          url?: string | null
         }
         Update: {
+          author?: string | null
           category?: string
+          content?: string | null
           created_at?: string | null
           date?: string
           excerpt?: string | null
+          featured_image?: string | null
           id?: string
+          images?: string[] | null
           read_time?: string | null
+          slug?: string | null
           source?: string
           title?: string
           updated_at?: string | null
-          url?: string
+          url?: string | null
         }
         Relationships: []
       }

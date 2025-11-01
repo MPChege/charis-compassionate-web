@@ -10,6 +10,7 @@ import { AuthProvider } from "@/components/auth/AuthProvider";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import AwarenessHub from "./pages/AwarenessHub";
+import ArticleDetail from "./pages/ArticleDetail";
 import Programs from "./pages/Programs";
 import GetInvolved from "./pages/GetInvolved";
 import Contact from "./pages/Contact";
@@ -54,6 +55,7 @@ const App = () => {
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/awareness-hub" element={<AwarenessHub />} />
+                <Route path="/article/:slug" element={<ArticleDetail />} />
                 <Route path="/programs" element={<Programs />} />
                 <Route path="/get-involved" element={<GetInvolved />} />
                 <Route path="/contact" element={<Contact />} />
