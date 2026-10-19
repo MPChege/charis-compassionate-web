@@ -4,16 +4,12 @@ import { Facebook, Instagram, Mail, PhoneCall, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-charis-blue-dark via-charis-purple to-charis-blue-dark text-white pt-16 pb-8 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-charis-green/20 to-transparent rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-charis-purple/20 to-transparent rounded-full blur-3xl"></div>
-      
+    <footer className="bg-black text-white pt-16 pb-8 relative overflow-hidden">
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: About */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 bg-gradient-to-r from-white to-charis-green-light bg-clip-text text-transparent">Charis Eagle Springs</h3>
+            <h3 className="text-xl font-semibold mb-4 text-white">Charis Eagle Springs</h3>
             <p className="text-white/80 mb-4">
               A community-centred organisation founded in 2019 by Director Margaret Njagi. We restore dignity, nurture mental wellbeing, and strengthen the safety net around older persons across Eastern Africa.
             </p>
@@ -22,7 +18,7 @@ const Footer = () => {
                 href="https://www.facebook.com/share/1MdH7UoKBo/?mibextid=wwXIfr" 
                 target="_blank" 
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg"
+                className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center hover:bg-charis-blue hover:border-charis-blue transition-colors duration-300"
                 aria-label="Facebook"
               >
                 <Facebook size={20} />
@@ -31,7 +27,7 @@ const Footer = () => {
                 href="https://www.instagram.com/chariseaglesprings?igsh=dWpuaHUxcmhjMmx1" 
                 target="_blank" 
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg"
+                className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center hover:bg-charis-blue hover:border-charis-blue transition-colors duration-300"
                 aria-label="Instagram"
               >
                 <Instagram size={20} />
@@ -40,7 +36,7 @@ const Footer = () => {
                 href="https://x.com" 
                 target="_blank" 
                 rel="noreferrer"
-                className="w-10 h-10 rounded-full bg-gradient-to-r from-gray-700 to-gray-900 flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg"
+                className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center hover:bg-charis-blue hover:border-charis-blue transition-colors duration-300"
                 aria-label="X (formerly Twitter)"
               >
                 <img 
@@ -54,7 +50,7 @@ const Footer = () => {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 bg-gradient-to-r from-white to-charis-blue-light bg-clip-text text-transparent">Quick Links</h3>
+            <h3 className="text-xl font-semibold mb-4 text-white">Quick Links</h3>
             <ul className="space-y-3">
               {[
                 { name: "About Us", path: "/about" },
@@ -67,7 +63,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link 
                     to={link.path}
-                    className="text-white/80 hover:text-white hover:bg-gradient-to-r hover:from-charis-green-light hover:to-charis-blue-light hover:bg-clip-text hover:text-transparent transition-all duration-300 hover:translate-x-1 inline-block"
+                    className="text-white/70 hover:text-charis-blue transition-all duration-300 hover:translate-x-1 inline-block"
                   >
                     {link.name}
                   </Link>
@@ -78,7 +74,7 @@ const Footer = () => {
 
           {/* Column 3: Programs */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 bg-gradient-to-r from-white to-charis-green-light bg-clip-text text-transparent">Our Programs</h3>
+            <h3 className="text-xl font-semibold mb-4 text-white">Our Programs</h3>
             <ul className="space-y-3">
               {[
                 { name: "Theatre & Arts for Healing", path: "/programs" },
@@ -89,7 +85,7 @@ const Footer = () => {
                 <li key={index}>
                   <Link 
                     to={resource.path}
-                    className="text-white/80 hover:text-white hover:bg-gradient-to-r hover:from-charis-green-light hover:to-charis-purple-light hover:bg-clip-text hover:text-transparent transition-all duration-300 hover:translate-x-1 inline-block"
+                    className="text-white/70 hover:text-charis-blue transition-all duration-300 hover:translate-x-1 inline-block"
                   >
                     {resource.name}
                   </Link>
@@ -100,10 +96,10 @@ const Footer = () => {
 
           {/* Column 4: Contact */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 bg-gradient-to-r from-white to-charis-purple-light bg-clip-text text-transparent">Contact Us</h3>
+            <h3 className="text-xl font-semibold mb-4 text-white">Contact Us</h3>
             <ul className="space-y-3">
               <li className="flex items-start">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-r from-charis-green to-charis-green-light flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                <div className="w-6 h-6 rounded-full bg-charis-blue-dark flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                   <MapPin size={14} className="text-white" />
                 </div>
                 <span className="text-white/80">
@@ -111,23 +107,23 @@ const Footer = () => {
                 </span>
               </li>
               <li className="flex items-center">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-r from-charis-blue to-charis-blue-light flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-6 h-6 rounded-full bg-charis-blue-dark flex items-center justify-center mr-3 flex-shrink-0">
                   <PhoneCall size={14} className="text-white" />
                 </div>
                 <a 
                   href="tel:+254782679107" 
-                  className="text-white/80 hover:text-white hover:bg-gradient-to-r hover:from-charis-green-light hover:to-charis-blue-light hover:bg-clip-text hover:text-transparent transition-all duration-300"
+                  className="text-white/70 hover:text-charis-blue transition-all duration-300"
                 >
                   +254 782 679 107
                 </a>
               </li>
               <li className="flex items-center">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-r from-charis-purple to-charis-purple-light flex items-center justify-center mr-3 flex-shrink-0">
+                <div className="w-6 h-6 rounded-full bg-charis-blue-dark flex items-center justify-center mr-3 flex-shrink-0">
                   <Mail size={14} className="text-white" />
                 </div>
                 <a 
                   href="mailto:info@chariseaglesprings.org" 
-                  className="text-white/80 hover:text-white hover:bg-gradient-to-r hover:from-charis-green-light hover:to-charis-blue-light hover:bg-clip-text hover:text-transparent transition-all duration-300"
+                  className="text-white/70 hover:text-charis-blue transition-all duration-300"
                 >
                   info@chariseaglesprings.org
                 </a>

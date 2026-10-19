@@ -21,7 +21,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         // Adding a new highlighted variant for improved visibility
         highlighted: 
-          "bg-charis-green-light text-charis-blue-dark font-semibold hover:bg-charis-green shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300",
+          "bg-black text-white font-semibold hover:bg-charis-blue-dark shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",

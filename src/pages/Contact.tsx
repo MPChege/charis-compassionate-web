@@ -127,7 +127,7 @@ const Contact = () => {
               transform: `translateY(${scrollY * 0.5}px)`
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-charis-blue-dark via-charis-purple to-charis-green-dark"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-black via-black/90 to-charis-blue-dark"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
           

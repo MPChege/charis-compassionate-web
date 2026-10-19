@@ -1,15 +1,14 @@
 
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { useScrollAnimation, useParallaxScroll } from "@/hooks/useScrollAnimation";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ArrowRight, Heart, Users, Star } from "lucide-react";
 
 const Mission = () => {
   const { elementRef, isVisible } = useScrollAnimation(0.3);
-  const scrollY = useParallaxScroll();
 
   return (
-    <section ref={elementRef} className="section-padding bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+    <section ref={elementRef} className="section-padding bg-gray-50 overflow-hidden">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div className={`transition-all duration-1000 delay-200 ${
@@ -39,7 +38,7 @@ const Mission = () => {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}>
                 <h3 className="text-xl font-semibold text-black mb-4 flex items-center">
-                  <Star className="mr-2 h-5 w-5 text-charis-green-dark" />
+                  <Star className="mr-2 h-5 w-5 text-charis-blue-dark" />
                   Vision
                 </h3>
                 <p className="text-lg font-light leading-relaxed text-gray-700">
@@ -78,16 +77,12 @@ const Mission = () => {
             className={`transition-all duration-1000 delay-500 ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
             }`}
-            style={{
-              transform: `translateY(${scrollY * 0.1}px)`
-            }}
           >
-            <div className="relative group elegant-hover">
-              <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent rounded-lg"></div>
+            <div className="relative group overflow-hidden rounded-2xl shadow-2xl">
               <img 
                 src="/WhatsApp Image 2025-08-28 at 07.33.59.jpeg" 
                 alt="Elder showing handmade craft work and dignity" 
-                className="w-full h-[600px] object-cover rounded-lg shadow-2xl transition-all duration-500 group-hover:shadow-3xl group-hover:scale-105"
+                className="w-full h-[420px] md:h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
           </div>

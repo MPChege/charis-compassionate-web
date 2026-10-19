@@ -99,7 +99,7 @@ const Programs = () => {
               transform: `translateY(${scrollY * 0.5}px)`,
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-charis-green-dark/80 via-charis-blue-dark/70 to-black/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-charis-blue-dark/60"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         </div>
         
@@ -138,9 +138,9 @@ const Programs = () => {
               </h1>
               <div className="flex justify-center items-center mb-8 space-x-4">
                 <div className="w-8 h-8 border-2 border-white/40 rotate-45"></div>
-                <div className="w-20 h-1 bg-gradient-to-r from-charis-green-light to-charis-blue-light"></div>
+                <div className="w-20 h-1 bg-gradient-to-r from-charis-blue-light to-charis-blue-light"></div>
                 <div className="w-4 h-4 bg-white/40 rounded-full"></div>
-                <div className="w-20 h-1 bg-gradient-to-r from-charis-blue-light to-charis-green-light"></div>
+                <div className="w-20 h-1 bg-gradient-to-r from-charis-blue-light to-charis-blue-light"></div>
                 <div className="w-8 h-8 border-2 border-white/40 rotate-45"></div>
               </div>
             </div>
@@ -196,7 +196,7 @@ const Programs = () => {
                     <ul className="space-y-2">
                       {program.goals.map((goal, goalIndex) => (
                         <li key={goalIndex} className="flex items-start">
-                          <ChevronRight className="h-5 w-5 text-charis-green-dark flex-shrink-0 mt-0.5 mr-2" />
+                          <ChevronRight className="h-5 w-5 text-charis-blue-dark flex-shrink-0 mt-0.5 mr-2" />
                           <span>{goal}</span>
                         </li>
                       ))}
@@ -206,6 +206,61 @@ const Programs = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Past Events Section */}
+      <section className="py-16 bg-white">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-bold text-charis-blue-dark mb-4">Past Events</h2>
+            <p className="text-gray-700">
+              Highlights from gatherings where we stood with partners to advance dignity, rights and inclusion for older persons.
+            </p>
+          </div>
+
+          <article className="bg-charis-neutral-light rounded-2xl overflow-hidden shadow-lg">
+            <div className="grid md:grid-cols-2 gap-4 p-4 md:p-6 pb-0 md:pb-0">
+              <img
+                src="/IDOP-2026-National-Conference/conference-delegates.jpg"
+                alt="CommonAge Kenya Chapter members with partners at Kenya's first National IDOP Conference"
+                className="w-full h-64 md:h-80 object-cover object-top rounded-xl"
+              />
+              <img
+                src="/IDOP-2026-National-Conference/booklet-launch.jpg"
+                alt="Launch of the Sensitization Booklet on Older Persons and Ageing in Kenya"
+                className="w-full h-64 md:h-80 object-cover object-top rounded-xl"
+              />
+            </div>
+            <div className="p-8 md:p-10">
+              <p className="text-charis-blue font-medium mb-2">30 September – 2 October 2026 · Kenya Institute of Special Education, Nairobi</p>
+              <h3 className="text-2xl md:text-3xl font-bold text-charis-blue-dark mb-4">
+                Kenya's First National IDOP Conference
+              </h3>
+              <div className="space-y-4 text-gray-700 leading-relaxed">
+                <p>
+                  A proud moment for ageing advocacy in Kenya. Kenya hosted its first-ever National International Day of Older Persons Conference from 30 September to 2 October 2026 at the Kenya Institute of Special Education in Nairobi.
+                </p>
+                <p>
+                  One of the biggest highlights was the launch of the Sensitization Booklet on Older Persons and Ageing, officially launched by Principal Secretary Joseph M. Motari. The booklet aims to raise awareness about ageing and the rights of older persons.
+                </p>
+                <p>
+                  The conference also brought encouraging news for advocacy, with an assurance that the Older Persons Bill, 2024 is intended to be enacted before 2027. The event is also set to become an annual national gathering.
+                </p>
+                <p>
+                  Members of the CommonAge Kenya Chapter joined government representatives, organisations and partners in this important milestone. The Intergenerational Village offered free medical, legal and wellness services, bringing support directly to the community.
+                </p>
+                <p>
+                  We celebrate everyone working to ensure that older persons are not alone, not forgotten, and valued. Every step towards dignity, rights and inclusion matters.
+                </p>
+              </div>
+              <div className="mt-6">
+                <Button asChild variant="outline" className="border-charis-blue text-charis-blue hover:bg-charis-blue/10">
+                  <Link to="/gallery">View photos in the gallery</Link>
+                </Button>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -226,8 +281,8 @@ const Programs = () => {
           }`}>
             {upcomingEvents.map((event, index) => (
               <div key={index} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                <div className="h-12 w-12 rounded-full bg-charis-green-light flex items-center justify-center mb-4">
-                  <Calendar className="h-6 w-6 text-charis-green-dark" />
+                <div className="h-12 w-12 rounded-full bg-charis-blue-light flex items-center justify-center mb-4">
+                  <Calendar className="h-6 w-6 text-charis-blue-dark" />
                 </div>
                 <h3 className="text-xl font-semibold text-charis-blue-dark mb-2">{event.title}</h3>
                 <p className="text-charis-blue font-medium mb-1">{event.date}</p>
@@ -266,11 +321,11 @@ const Programs = () => {
               <h3 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-2">50+</h3>
               <p className="text-gray-700">Community Workshops Conducted</p>
             </div>
-            <div className="text-center p-6 rounded-xl bg-charis-green-light/50">
+            <div className="text-center p-6 rounded-xl bg-charis-blue-light/50">
               <h3 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-2">1,000+</h3>
               <p className="text-gray-700">Caregivers Trained</p>
             </div>
-            <div className="text-center p-6 rounded-xl bg-charis-purple-light/50">
+            <div className="text-center p-6 rounded-xl bg-charis-blue-light/50">
               <h3 className="text-4xl md:text-5xl font-bold text-charis-blue-dark mb-2">5,000+</h3>
               <p className="text-gray-700">Lives of Older Persons Impacted</p>
             </div>
@@ -285,7 +340,7 @@ const Programs = () => {
           <p className="text-xl mb-8 max-w-3xl mx-auto">
             Whether as a volunteer, participant, or supporter, there are many ways to contribute to our mission and make a difference.
           </p>
-          <Button asChild size="lg" className="bg-white text-charis-blue-dark hover:bg-charis-green-light hover:text-charis-blue-dark">
+          <Button asChild size="lg" className="bg-white text-charis-blue-dark hover:bg-charis-blue-light hover:text-charis-blue-dark">
             <Link to="/get-involved">Get Involved Today</Link>
           </Button>
         </div>

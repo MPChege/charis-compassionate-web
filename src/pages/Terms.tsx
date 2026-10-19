@@ -20,7 +20,7 @@ const Terms = () => {
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-charis-blue-dark to-charis-purple bg-clip-text text-transparent mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
                 Terms and Conditions
               </h1>
               <p className="text-xl text-gray-700">
@@ -152,7 +152,7 @@ const Terms = () => {
                   <p className="text-gray-700 leading-relaxed mb-4">
                     If you have any questions about these Terms and Conditions, please contact us:
                   </p>
-                  <div className="bg-charis-green-light/10 p-4 rounded-lg">
+                  <div className="bg-charis-blue-light/10 p-4 rounded-lg">
                     <p className="text-gray-700">
                       <strong>Charis Eagle Springs</strong><br />
                       P.O. Box 62362-00200, Nairobi, Kenya<br />

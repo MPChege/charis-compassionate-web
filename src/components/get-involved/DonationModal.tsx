@@ -157,7 +157,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-2xl text-charis-blue-dark">
-            <Gift className="h-6 w-6 text-charis-green" />
+            <Gift className="h-6 w-6 text-charis-blue-dark" />
             Donation Request
             {selectedType && (
               <Badge className="bg-charis-blue-light text-charis-blue-dark">
@@ -169,8 +169,8 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
 
         {step === 1 && (
           <div className="space-y-6 animate-fade-in">
-            <div className="text-center p-6 bg-gradient-to-br from-charis-green-light to-charis-blue-light rounded-lg">
-              <Heart className="h-12 w-12 mx-auto text-charis-green-dark mb-4 animate-pulse" />
+            <div className="text-center p-6 bg-gradient-to-br from-charis-blue-light to-charis-blue-light rounded-lg">
+              <Heart className="h-12 w-12 mx-auto text-charis-blue-dark mb-4 animate-pulse" />
               <h3 className="text-xl font-semibold text-charis-blue-dark mb-2">
                 Your Support Matters
               </h3>
@@ -191,8 +191,8 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
                     onClick={() => handleAmountSelect(amount)}
                     className={`h-12 transition-all duration-200 hover:scale-105 ${
                       donationData.amount === amount 
-                        ? 'bg-charis-green hover:bg-charis-green-dark' 
-                        : 'hover:border-charis-green'
+                        ? 'bg-black hover:bg-charis-blue-dark' 
+                        : 'hover:border-charis-blue-dark'
                     }`}
                   >
                     KSH {Number(amount).toLocaleString()}
@@ -244,7 +244,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
             <Button
               onClick={() => setStep(2)}
               disabled={!donationData.amount}
-              className="w-full bg-charis-green hover:bg-charis-green-dark transform hover:scale-105 transition-all duration-200"
+              className="w-full bg-black hover:bg-charis-blue-dark transform hover:scale-105 transition-all duration-200"
             >
               Continue to Details
             </Button>
@@ -265,7 +265,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
                   }
                 </p>
               </div>
-              <Sparkles className="h-8 w-8 text-charis-green animate-pulse" />
+              <Sparkles className="h-8 w-8 text-charis-blue-dark animate-pulse" />
             </div>
 
             <div>
@@ -279,7 +279,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
                     onClick={() => setDonationData(prev => ({ ...prev, paymentMethod: method.id }))}
                     className={`p-4 border-2 rounded-lg cursor-pointer transition-all duration-300 hover:scale-105 ${
                       donationData.paymentMethod === method.id
-                        ? 'border-charis-green bg-charis-green-light'
+                        ? 'border-charis-blue-dark bg-charis-blue-light'
                         : 'border-gray-200 hover:border-charis-blue-light'
                     }`}
                   >
@@ -378,7 +378,7 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
               <Button
                 onClick={handleDonate}
                 disabled={!donationData.paymentMethod || !donationData.name || !donationData.email || !donationData.consentToStoreDetails || isSubmitting}
-                className="flex-1 bg-charis-green hover:bg-charis-green-dark transform hover:scale-105 transition-all duration-200"
+                className="flex-1 bg-black hover:bg-charis-blue-dark transform hover:scale-105 transition-all duration-200"
               >
                 <CreditCard className="mr-2 h-4 w-4" />
                 {isSubmitting ? "Sending..." : "Send Request"}

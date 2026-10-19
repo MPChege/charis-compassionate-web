@@ -27,6 +27,31 @@ const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
 
   const mediaItems: MediaItem[] = [
+    // Kenya National IDOP Conference 2026
+    {
+      id: "idop-2026-1",
+      type: "image",
+      src: "/IDOP-2026-National-Conference/conference-delegates.jpg",
+      alt: "CommonAge Kenya Chapter members with partners at Kenya's first National IDOP Conference",
+      title: "National IDOP Conference 2026",
+      description: "Members of the CommonAge Kenya Chapter joined government representatives, organisations and partners at Kenya's first-ever National International Day of Older Persons Conference.",
+      category: "international-conferences",
+      date: "September 30 – October 2, 2026",
+      location: "Kenya Institute of Special Education, Nairobi",
+      participants: "CommonAge Kenya Chapter, government representatives, and partners"
+    },
+    {
+      id: "idop-2026-2",
+      type: "image",
+      src: "/IDOP-2026-National-Conference/booklet-launch.jpg",
+      alt: "Launch of the Sensitization Booklet on Older Persons and Ageing in Kenya at IDOP 2026",
+      title: "Sensitization Booklet Launch",
+      description: "A highlight of the conference was the launch of the Sensitization Booklet on Older Persons and Ageing, aimed at raising awareness about ageing and the rights of older persons.",
+      category: "international-conferences",
+      date: "October 1, 2026",
+      location: "Kenya Institute of Special Education, Nairobi",
+      participants: "Ministry of Labour and Social Protection, Ministry of Health, and partners"
+    },
     // IFA Conference Cape Town Images
     {
       id: "ifa-1",
@@ -431,7 +456,7 @@ const Gallery = () => {
                 <h1 className="font-heading text-white mb-6 leading-tight drop-shadow-lg">
                   Our Impact in Pictures
                 </h1>
-                <div className="w-24 h-1 bg-gradient-to-r from-charis-blue-light to-charis-green-light mx-auto mb-8"></div>
+                <div className="w-24 h-1 bg-gradient-to-r from-charis-blue-light to-charis-blue-light mx-auto mb-8"></div>
               </div>
               <p className="text-xl md:text-2xl font-light text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
                 Witness the transformative power of our programs through the eyes of our community elders and the dedicated team at Charis Eagle Springs.
@@ -452,8 +477,8 @@ const Gallery = () => {
                   onClick={() => setActiveFilter(category.id)}
                   className={`transition-all duration-300 ${
                     activeFilter === category.id 
-                      ? 'bg-charis-green hover:bg-charis-green-dark' 
-                      : 'hover:border-charis-green'
+                      ? 'bg-black hover:bg-charis-blue-dark' 
+                      : 'hover:border-charis-blue-dark'
                   }`}
                 >
                   {category.name}
@@ -476,7 +501,7 @@ const Gallery = () => {
                     <img
                       src={item.src}
                       alt={item.alt}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
                     />
                     
                     {/* Overlay */}

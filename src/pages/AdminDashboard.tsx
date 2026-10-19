@@ -191,7 +191,7 @@ const AdminDashboard = () => {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Donations</CardTitle>
-              <Heart className="h-4 w-4 text-charis-green" />
+              <Heart className="h-4 w-4 text-charis-blue-dark" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">KSH {stats.donations.amount.toLocaleString()}</div>
@@ -204,7 +204,7 @@ const AdminDashboard = () => {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Partnerships</CardTitle>
-              <Handshake className="h-4 w-4 text-charis-purple" />
+              <Handshake className="h-4 w-4 text-black" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{stats.partnerships.total}</div>

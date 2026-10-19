@@ -133,14 +133,14 @@ const VolunteerModal = ({ isOpen, onClose }: VolunteerModalProps) => {
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-2xl text-charis-blue-dark">
-            <Heart className="h-6 w-6 text-charis-green" />
+            <Heart className="h-6 w-6 text-charis-blue-dark" />
             Join Our Volunteer Family
           </DialogTitle>
         </DialogHeader>
 
         {step === 1 && (
           <div className="space-y-6 animate-fade-in">
-            <div className="text-center p-6 bg-gradient-to-br from-charis-blue-light to-charis-green-light rounded-lg">
+            <div className="text-center p-6 bg-gradient-to-br from-charis-blue-light to-charis-blue-light rounded-lg">
               <Sparkles className="h-12 w-12 mx-auto text-charis-blue-dark mb-4" />
               <h3 className="text-xl font-semibold text-charis-blue-dark mb-2">
                 Ready to Make a Difference?
@@ -157,14 +157,14 @@ const VolunteerModal = ({ isOpen, onClose }: VolunteerModalProps) => {
                   onClick={() => handleAreaToggle(area.id)}
                   className={`p-4 border-2 rounded-lg cursor-pointer transition-all duration-300 hover:scale-105 ${
                     selectedAreas.includes(area.id)
-                      ? 'border-charis-green bg-charis-green-light shadow-lg'
+                      ? 'border-charis-blue-dark bg-charis-blue-light shadow-lg'
                       : 'border-gray-200 hover:border-charis-blue-light'
                   }`}
                 >
                   <div className="text-2xl mb-2">{area.icon}</div>
                   <div className="font-medium text-charis-blue-dark">{area.label}</div>
                   {selectedAreas.includes(area.id) && (
-                    <CheckCircle className="h-5 w-5 text-charis-green-dark mt-2" />
+                    <CheckCircle className="h-5 w-5 text-charis-blue-dark mt-2" />
                   )}
                 </div>
               ))}
@@ -183,13 +183,13 @@ const VolunteerModal = ({ isOpen, onClose }: VolunteerModalProps) => {
         {step === 2 && (
           <div className="space-y-6 animate-fade-in">
             <div className="flex items-center gap-2 mb-4">
-              <Users className="h-5 w-5 text-charis-green" />
+              <Users className="h-5 w-5 text-charis-blue-dark" />
               <span className="text-sm text-gray-600">Selected Areas:</span>
               <div className="flex flex-wrap gap-1">
                 {selectedAreas.map(areaId => {
                   const area = volunteerAreas.find(a => a.id === areaId);
                   return (
-                    <Badge key={areaId} variant="secondary" className="bg-charis-green-light text-charis-green-dark">
+                    <Badge key={areaId} variant="secondary" className="bg-charis-blue-light text-charis-blue-dark">
                       {area?.label}
                     </Badge>
                   );
@@ -280,7 +280,7 @@ const VolunteerModal = ({ isOpen, onClose }: VolunteerModalProps) => {
               <Button
                 onClick={handleSubmit}
                 disabled={!formData.name || !formData.email || isSubmitting}
-                className="flex-1 bg-charis-green hover:bg-charis-green-dark transform hover:scale-105 transition-all duration-200"
+                className="flex-1 bg-black hover:bg-charis-blue-dark transform hover:scale-105 transition-all duration-200"
               >
                 {isSubmitting ? "Submitting..." : "Submit Application"}
               </Button>

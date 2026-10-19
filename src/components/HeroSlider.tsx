@@ -7,6 +7,18 @@ import { useParallaxScroll } from "@/hooks/useScrollAnimation";
 
 const slides = [
   {
+    id: 5,
+    image: "/IDOP-2026-National-Conference/conference-delegates.jpg",
+    title: "IDOP 2026 National Conference",
+    description: "Joining partners and delegates at the International Day of Older Persons 2026 to advance healthy ageing and dignity for older persons in Kenya."
+  },
+  {
+    id: 6,
+    image: "/IDOP-2026-National-Conference/booklet-launch.jpg",
+    title: "Sensitization Booklet Launch",
+    description: "Celebrating the launch of the Sensitization Booklet on Older Persons and Ageing in Kenya with the Ministry of Labour and Social Protection, 1st October 2026."
+  },
+  {
     id: 1,
     image: "/WhatsApp Image 2025-08-28 at 07.33.58.jpeg",
     title: "Charis Eagle Springs",

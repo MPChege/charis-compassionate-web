@@ -14,8 +14,14 @@ import { Helmet } from "react-helmet-async";
 const StatsSection = () => {
   const { elementRef, isVisible } = useScrollAnimation(0.3);
 
+  const stats = [
+    { number: "2019", label: "Founded in Nairobi, Kenya" },
+    { number: "2024", label: "Fulbright Training in Durban" },
+    { number: "USA", label: "LeadingAge Expo Participation" },
+  ];
+
   return (
-    <section ref={elementRef} className="relative section-padding overflow-hidden">
+    <section ref={elementRef} className="relative section-padding overflow-hidden bg-black">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
@@ -23,38 +29,34 @@ const StatsSection = () => {
           alt="Elders participating in theatre activities, representing dignity in aging" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-charis-blue-light/80 via-charis-purple-light/70 to-charis-green-light/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90"></div>
       </div>
       
       <div className="container-custom relative z-10">
-        <div className="text-center mb-20">
-          <span className="text-sm font-light tracking-widest text-white/90 uppercase mb-4 block">
+        <div className="text-center mb-16 md:mb-20">
+          <span className="text-sm font-medium tracking-widest text-charis-blue uppercase mb-4 block">
             Our Impact
           </span>
-          <h2 className="font-heading text-white drop-shadow-lg">
+          <h2 className="font-heading text-white">
             Our Impact Across Eastern Africa
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {[
-            { number: "2019", label: "Founded in Nairobi, Kenya", delay: "delay-200", color: "from-charis-green to-charis-green-dark" },
-            { number: "2024", label: "Fulbright Training in Durban", delay: "delay-400", color: "from-charis-blue to-charis-blue-dark" },
-            { number: "USA", label: "LeadingAge Expo Participation", delay: "delay-600", color: "from-charis-purple to-charis-purple-light" },
-          ].map((stat, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {stats.map((stat, index) => (
             <div 
-              key={index}
-              className={`text-center transition-all duration-1000 ${stat.delay} ${
+              key={stat.number}
+              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+              className={`group relative text-center p-10 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-charis-blue/60 hover:bg-white/10 transition-all duration-700 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
-              <div className={`bg-gradient-to-br ${stat.color} p-8 rounded-xl shadow-xl border-2 border-white/30 backdrop-blur-sm transform hover:scale-105 transition-all duration-300`}>
-                <h3 className="text-5xl md:text-6xl font-light text-white mb-4 drop-shadow-md">
-                  {stat.number}
-                </h3>
-                <p className="text-lg font-light text-white/90">
-                  {stat.label}
-                </p>
-              </div>
+              <span className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-16 bg-charis-blue transition-all duration-500 group-hover:w-32"></span>
+              <h3 className="text-5xl md:text-6xl font-light text-white mb-4">
+                {stat.number}
+              </h3>
+              <p className="text-base md:text-lg font-light text-white/70">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>
@@ -67,60 +69,47 @@ const CoreValuesSection = () => {
   const { elementRef, isVisible } = useScrollAnimation(0.3);
 
   const values = [
-    {
-      icon: Heart,
-      title: "Compassion",
-      description: "Care that listens first",
-      gradient: "from-red-400 to-pink-500",
-      bgColor: "bg-gradient-to-br from-red-50 to-pink-50"
-    },
-    {
-      icon: Users,
-      title: "Respect",
-      description: "Every elder is entitled to dignity",
-      gradient: "from-blue-400 to-indigo-500",
-      bgColor: "bg-gradient-to-br from-blue-50 to-indigo-50"
-    },
-    {
-      icon: Zap,
-      title: "Excellence",
-      description: "High standards in training and service delivery",
-      gradient: "from-yellow-400 to-orange-500",
-      bgColor: "bg-gradient-to-br from-yellow-50 to-orange-50"
-    },
-    {
-      icon: Star,
-      title: "Empowerment",
-      description: "Strengthening caregivers, families and the elders themselves",
-      gradient: "from-purple-400 to-violet-500",
-      bgColor: "bg-gradient-to-br from-purple-50 to-violet-50"
-    }
+    { icon: Heart, title: "Compassion", description: "Care that listens first" },
+    { icon: Users, title: "Respect", description: "Every elder is entitled to dignity" },
+    { icon: Zap, title: "Excellence", description: "High standards in training and service delivery" },
+    { icon: Star, title: "Empowerment", description: "Strengthening caregivers, families and the elders themselves" },
   ];
 
   return (
-    <section ref={elementRef} className="section-padding bg-gradient-to-br from-charis-neutral-light via-white to-charis-blue-light/30">
+    <section ref={elementRef} className="section-padding bg-gray-50">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-charis-blue-dark to-charis-purple bg-clip-text text-transparent mb-4">Our Core Values</h2>
-          <p className="max-w-3xl mx-auto text-gray-700">
+          <span className="text-sm font-medium tracking-widest text-charis-blue-dark uppercase mb-4 block">
+            What Guides Us
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">Our Core Values</h2>
+          <p className="max-w-3xl mx-auto text-gray-600">
             The principles that guide our work and define our commitment to upholding dignity across ageing.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {values.map((value, index) => (
             <div 
-              key={index} 
-              className={`text-center transition-all duration-1000 delay-${(index + 1) * 200} ${
+              key={value.title} 
+              style={{ transitionDelay: `${(index + 1) * 100}ms` }}
+              className={`group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-500 hover:-translate-y-1 hover:border-black hover:shadow-xl ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
-              <div className={`${value.bgColor} p-8 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-3 border-2 border-transparent hover:border-white/50`}>
-                <div className={`h-16 w-16 rounded-full bg-gradient-to-r ${value.gradient} flex items-center justify-center mb-6 mx-auto shadow-lg`}>
-                  <value.icon className="h-8 w-8 text-white" />
+              {/* Black fill that sweeps up on hover */}
+              <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
+              <div className="relative">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="h-12 w-12 rounded-xl bg-charis-blue-light flex items-center justify-center transition-colors duration-500 group-hover:bg-charis-blue">
+                    <value.icon className="h-6 w-6 text-charis-blue-dark transition-colors duration-500 group-hover:text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-gray-300 transition-colors duration-500 group-hover:text-white/40">
+                    0{index + 1}
+                  </span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">{value.title}</h3>
-                <p className="text-gray-700 leading-relaxed">{value.description}</p>
+                <h3 className="text-xl font-semibold text-black mb-3 transition-colors duration-500 group-hover:text-white">{value.title}</h3>
+                <p className="text-base text-gray-600 leading-relaxed transition-colors duration-500 group-hover:text-white/70">{value.description}</p>
               </div>
             </div>
           ))}
@@ -134,7 +123,7 @@ const CallToAction = () => {
   const { elementRef, isVisible } = useScrollAnimation(0.3);
 
   return (
-    <section ref={elementRef} className="relative section-padding overflow-hidden">
+    <section ref={elementRef} className="relative section-padding overflow-hidden bg-black">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
@@ -142,32 +131,28 @@ const CallToAction = () => {
           alt="Diverse community gathering supporting older persons mental health initiatives" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-charis-blue-dark/90 via-charis-purple/80 to-charis-green-dark/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/80 to-charis-blue-dark/70"></div>
       </div>
-      
-      {/* Floating elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-charis-green to-charis-blue rounded-full blur-xl animate-pulse opacity-60"></div>
-      <div className="absolute bottom-20 right-10 w-32 h-32 bg-gradient-to-r from-charis-purple to-charis-green-light rounded-full blur-2xl animate-pulse delay-1000 opacity-60"></div>
       
       <div className="container-custom text-center relative z-10">
         <div className={`max-w-4xl mx-auto transition-all duration-1000 delay-200 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
-          <h2 className="font-heading text-white mb-8 drop-shadow-lg">
+          <h2 className="font-heading text-white mb-8">
             Join Us in Upholding Dignity Across Ageing
           </h2>
-          <p className="text-xl font-light text-white/90 mb-12 leading-relaxed drop-shadow-md">
+          <p className="text-xl font-light text-white/80 mb-12 leading-relaxed">
             Help us create a society where ageing is met with dignity, understanding and robust mental-health support through theatre, arts, and community care.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Button asChild className="bg-gradient-to-r from-charis-green to-charis-green-dark text-white hover:from-charis-green-dark hover:to-charis-green px-8 py-4 text-sm font-medium transition-all duration-300 group shadow-xl border-2 border-white/20">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button asChild className="bg-white text-black hover:bg-charis-blue hover:text-white px-8 py-6 text-sm font-medium transition-all duration-300 group">
               <Link to="/get-involved" className="flex items-center">
                 <Heart className="mr-2 h-4 w-4" />
                 Support Our Mission
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
-            <Button asChild className="border-2 border-white text-white hover:bg-gradient-to-r hover:from-white hover:to-charis-blue-light hover:text-charis-blue-dark px-8 py-4 text-sm font-medium transition-all duration-300 group bg-transparent shadow-xl backdrop-blur-sm">
+            <Button asChild className="border border-white/40 text-white hover:bg-white hover:text-black px-8 py-6 text-sm font-medium transition-all duration-300 bg-transparent">
               <Link to="/programs" className="flex items-center">
                 <Calendar className="mr-2 h-4 w-4" />
                 Explore Programs

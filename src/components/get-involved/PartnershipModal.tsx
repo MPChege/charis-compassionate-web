@@ -156,14 +156,14 @@ const PartnershipModal = ({ isOpen, onClose }: PartnershipModalProps) => {
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-2xl text-charis-blue-dark">
-            <Handshake className="h-6 w-6 text-charis-green" />
+            <Handshake className="h-6 w-6 text-charis-blue-dark" />
             Partnership Application
           </DialogTitle>
         </DialogHeader>
 
         {step === 1 && (
           <div className="space-y-6 animate-fade-in">
-            <div className="text-center p-6 bg-gradient-to-br from-charis-purple-light to-charis-blue-light rounded-lg">
+            <div className="text-center p-6 bg-gradient-to-br from-charis-blue-light to-charis-blue-light rounded-lg">
               <Star className="h-12 w-12 mx-auto text-charis-blue-dark mb-4 animate-pulse" />
               <h3 className="text-xl font-semibold text-charis-blue-dark mb-2">
                 Let's Create Impact Together
@@ -180,7 +180,7 @@ const PartnershipModal = ({ isOpen, onClose }: PartnershipModalProps) => {
                   onClick={() => handleTypeToggle(type.id)}
                   className={`p-4 border-2 rounded-lg cursor-pointer transition-all duration-300 hover:scale-105 ${
                     selectedTypes.includes(type.id)
-                      ? 'border-charis-green bg-charis-green-light shadow-lg'
+                      ? 'border-charis-blue-dark bg-charis-blue-light shadow-lg'
                       : 'border-gray-200 hover:border-charis-blue-light'
                   }`}
                 >
@@ -204,13 +204,13 @@ const PartnershipModal = ({ isOpen, onClose }: PartnershipModalProps) => {
         {step === 2 && (
           <div className="space-y-6 animate-fade-in">
             <div className="flex items-center gap-2 mb-4">
-              <Target className="h-5 w-5 text-charis-green" />
+              <Target className="h-5 w-5 text-charis-blue-dark" />
               <span className="text-sm text-gray-600">Partnership Types:</span>
               <div className="flex flex-wrap gap-1">
                 {selectedTypes.map(typeId => {
                   const type = partnershipTypes.find(t => t.id === typeId);
                   return (
-                    <Badge key={typeId} variant="secondary" className="bg-charis-green-light text-charis-green-dark">
+                    <Badge key={typeId} variant="secondary" className="bg-charis-blue-light text-charis-blue-dark">
                       {type?.label}
                     </Badge>
                   );
@@ -354,7 +354,7 @@ const PartnershipModal = ({ isOpen, onClose }: PartnershipModalProps) => {
               <Button
                 onClick={handleSubmit}
                 disabled={!partnershipData.organizationName || !partnershipData.contactName || !partnershipData.email || isSubmitting}
-                className="flex-1 bg-charis-green hover:bg-charis-green-dark transform hover:scale-105 transition-all duration-200"
+                className="flex-1 bg-black hover:bg-charis-blue-dark transform hover:scale-105 transition-all duration-200"
               >
                 <Zap className="mr-2 h-4 w-4" />
                 {isSubmitting ? "Submitting..." : "Submit Application"}

@@ -132,7 +132,7 @@ const ArticleDetail = () => {
 
       <article className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-charis-blue-dark to-charis-green-dark text-white py-12">
+        <section className="bg-gradient-to-br from-black to-charis-blue-dark text-white py-12">
           <div className="container-custom">
             <Button
               variant="ghost"
@@ -267,7 +267,7 @@ const ArticleDetail = () => {
               )}
 
               {/* Call to Action */}
-              <Card className="mt-12 bg-gradient-to-br from-charis-blue-light to-charis-green-light border-none">
+              <Card className="mt-12 bg-gradient-to-br from-charis-blue-light to-charis-blue-light border-none">
                 <CardContent className="p-8 text-center">
                   <h3 className="text-2xl font-bold text-charis-blue-dark mb-4">
                     Get Involved

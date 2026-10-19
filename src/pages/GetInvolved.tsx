@@ -143,7 +143,7 @@ const GetInvolved = () => {
       <Navbar />
       
       {/* Hero Section with Parallax */}
-      <section className="relative bg-gradient-to-br from-charis-purple-light via-charis-blue-light to-charis-green-light pt-20 pb-16 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-white to-charis-blue-light pt-20 pb-16 overflow-hidden">
         {/* Floating elements with parallax */}
         <div 
           className="absolute top-20 right-10 opacity-20"
@@ -155,7 +155,7 @@ const GetInvolved = () => {
           className="absolute bottom-20 left-10 opacity-20"
           style={{ transform: `translateY(${scrollY * -0.2}px)` }}
         >
-          <HandHelping className="w-16 h-16 text-charis-green-dark animate-pulse delay-700" />
+          <HandHelping className="w-16 h-16 text-charis-blue-dark animate-pulse delay-700" />
         </div>
         
         <div className="container-custom">
@@ -197,15 +197,15 @@ const GetInvolved = () => {
                 </CardDescription>
                 <ul className="text-left space-y-2 mb-6">
                   <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-charis-green-dark flex-shrink-0 mt-0.5 mr-2" />
+                    <CheckCircle className="h-5 w-5 text-charis-blue-dark flex-shrink-0 mt-0.5 mr-2" />
                     <span>Assist with workshops and events</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-charis-green-dark flex-shrink-0 mt-0.5 mr-2" />
+                    <CheckCircle className="h-5 w-5 text-charis-blue-dark flex-shrink-0 mt-0.5 mr-2" />
                     <span>Provide administrative support</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-charis-green-dark flex-shrink-0 mt-0.5 mr-2" />
+                    <CheckCircle className="h-5 w-5 text-charis-blue-dark flex-shrink-0 mt-0.5 mr-2" />
                     <span>Help with community outreach</span>
                   </li>
                 </ul>
@@ -221,10 +221,10 @@ const GetInvolved = () => {
             </Card>
 
             {/* Donate */}
-            <Card className="text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-charis-green">
+            <Card className="text-center hover:shadow-lg transition-all duration-300 hover:scale-105 border-charis-blue-dark">
               <CardHeader className="pb-0">
-                <div className="mx-auto h-16 w-16 rounded-full bg-charis-green-light flex items-center justify-center mb-4">
-                  <Heart className="h-8 w-8 text-charis-green-dark" />
+                <div className="mx-auto h-16 w-16 rounded-full bg-charis-blue-light flex items-center justify-center mb-4">
+                  <Heart className="h-8 w-8 text-charis-blue-dark" />
                 </div>
                 <CardTitle className="text-2xl text-charis-blue-dark">Donate</CardTitle>
               </CardHeader>
@@ -234,15 +234,15 @@ const GetInvolved = () => {
                 </CardDescription>
                 <ul className="text-left space-y-2 mb-6">
                   <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-charis-green-dark flex-shrink-0 mt-0.5 mr-2" />
+                    <CheckCircle className="h-5 w-5 text-charis-blue-dark flex-shrink-0 mt-0.5 mr-2" />
                     <span>One-time or recurring donations</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-charis-green-dark flex-shrink-0 mt-0.5 mr-2" />
+                    <CheckCircle className="h-5 w-5 text-charis-blue-dark flex-shrink-0 mt-0.5 mr-2" />
                     <span>In-kind goods and services</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-charis-green-dark flex-shrink-0 mt-0.5 mr-2" />
+                    <CheckCircle className="h-5 w-5 text-charis-blue-dark flex-shrink-0 mt-0.5 mr-2" />
                     <span>Corporate matching gifts</span>
                   </li>
                 </ul>
@@ -250,7 +250,7 @@ const GetInvolved = () => {
               <CardFooter className="flex justify-center pt-0">
                 <Button 
                   onClick={() => setDonationModalOpen(true)}
-                  className="bg-charis-green hover:bg-charis-green-dark w-full transform hover:scale-105 transition-all duration-200"
+                  className="bg-black hover:bg-charis-blue-dark w-full transform hover:scale-105 transition-all duration-200"
                 >
                   Donate Now
                 </Button>
@@ -260,7 +260,7 @@ const GetInvolved = () => {
             {/* Partner */}
             <Card className="text-center hover:shadow-lg transition-all duration-300 hover:scale-105">
               <CardHeader>
-                <div className="mx-auto h-16 w-16 rounded-full bg-charis-purple-light flex items-center justify-center mb-4">
+                <div className="mx-auto h-16 w-16 rounded-full bg-charis-blue-light flex items-center justify-center mb-4">
                   <LinkIcon className="h-8 w-8 text-charis-blue-dark" />
                 </div>
                 <CardTitle className="text-2xl text-charis-blue-dark">Partner With Us</CardTitle>
@@ -271,15 +271,15 @@ const GetInvolved = () => {
                 </CardDescription>
                 <ul className="text-left space-y-2 mb-6">
                   <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-charis-green-dark flex-shrink-0 mt-0.5 mr-2" />
+                    <CheckCircle className="h-5 w-5 text-charis-blue-dark flex-shrink-0 mt-0.5 mr-2" />
                     <span>Strategic partnerships</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-charis-green-dark flex-shrink-0 mt-0.5 mr-2" />
+                    <CheckCircle className="h-5 w-5 text-charis-blue-dark flex-shrink-0 mt-0.5 mr-2" />
                     <span>Co-sponsored events</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-charis-green-dark flex-shrink-0 mt-0.5 mr-2" />
+                    <CheckCircle className="h-5 w-5 text-charis-blue-dark flex-shrink-0 mt-0.5 mr-2" />
                     <span>Resource sharing</span>
                   </li>
                 </ul>
@@ -329,7 +329,7 @@ const GetInvolved = () => {
                     <ul className="space-y-2">
                       {donation.benefits.map((benefit, benefitIndex) => (
                         <li key={benefitIndex} className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-charis-green-dark flex-shrink-0 mt-0.5 mr-2" />
+                          <CheckCircle className="h-5 w-5 text-charis-blue-dark flex-shrink-0 mt-0.5 mr-2" />
                           <span className="text-gray-700">{benefit}</span>
                         </li>
                       ))}
@@ -339,7 +339,7 @@ const GetInvolved = () => {
                 <CardFooter className="flex justify-center">
                   <Button 
                     onClick={() => handleDonationSelect(donation.title)}
-                    className="bg-charis-green hover:bg-charis-green-dark w-full transform hover:scale-105 transition-all duration-200"
+                    className="bg-black hover:bg-charis-blue-dark w-full transform hover:scale-105 transition-all duration-200"
                   >
                     Select
                   </Button>

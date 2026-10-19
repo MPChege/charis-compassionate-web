@@ -69,15 +69,6 @@ export default {
                         DEFAULT: '#93B7E0',
                         dark: '#5A86B8',
                     },
-                    green: {
-                        light: '#F2FCE2',
-                        DEFAULT: '#B8D8A0',
-                        dark: '#7EA767',
-                    },
-                    purple: {
-                        light: '#E5DEFF',
-                        DEFAULT: '#BEB4E0',
-                    },
                     neutral: {
                         DEFAULT: '#8E9196',
                         light: '#F5F7F9',

@@ -138,7 +138,7 @@ const AwarenessHub = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-charis-blue-dark to-charis-green-dark text-white py-20">
+      <section className="bg-gradient-to-br from-black to-charis-blue-dark text-white py-20">
         <div className="container-custom text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Awareness Hub</h1>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
