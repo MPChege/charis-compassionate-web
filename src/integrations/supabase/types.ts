@@ -243,6 +243,30 @@ export type Database = {
         }
         Relationships: []
       }
+      facebook_posts: {
+        Row: {
+          caption: string | null
+          created_at: string
+          created_by: string | null
+          id: string
+          post_url: string
+        }
+        Insert: {
+          caption?: string | null
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          post_url: string
+        }
+        Update: {
+          caption?: string | null
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          post_url?: string
+        }
+        Relationships: []
+      }
       general_inquiries: {
         Row: {
           created_at: string | null
@@ -366,6 +390,57 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      payment_settings: {
+        Row: {
+          bank_account_name: string | null
+          bank_account_number: string | null
+          bank_branch_code: string | null
+          bank_code: string | null
+          bank_name: string | null
+          bank_swift_code: string | null
+          id: number
+          mpesa_account_name: string | null
+          mpesa_account_reference: string | null
+          mpesa_number: string | null
+          mpesa_type: string
+          show_bank: boolean
+          show_mpesa: boolean
+          updated_at: string
+        }
+        Insert: {
+          bank_account_name?: string | null
+          bank_account_number?: string | null
+          bank_branch_code?: string | null
+          bank_code?: string | null
+          bank_name?: string | null
+          bank_swift_code?: string | null
+          id?: number
+          mpesa_account_name?: string | null
+          mpesa_account_reference?: string | null
+          mpesa_number?: string | null
+          mpesa_type?: string
+          show_bank?: boolean
+          show_mpesa?: boolean
+          updated_at?: string
+        }
+        Update: {
+          bank_account_name?: string | null
+          bank_account_number?: string | null
+          bank_branch_code?: string | null
+          bank_code?: string | null
+          bank_name?: string | null
+          bank_swift_code?: string | null
+          id?: number
+          mpesa_account_name?: string | null
+          mpesa_account_reference?: string | null
+          mpesa_number?: string | null
+          mpesa_type?: string
+          show_bank?: boolean
+          show_mpesa?: boolean
+          updated_at?: string
+        }
+        Relationships: []
       }
       profiles: {
         Row: {

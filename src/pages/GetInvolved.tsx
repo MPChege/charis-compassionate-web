@@ -14,6 +14,7 @@ import { useScrollAnimation, useParallaxScroll } from "@/hooks/useScrollAnimatio
 import VolunteerModal from "@/components/get-involved/VolunteerModal";
 import DonationModal from "@/components/get-involved/DonationModal";
 import PartnershipModal from "@/components/get-involved/PartnershipModal";
+import PaymentDetails from "@/components/get-involved/PaymentDetails";
 import { supabase } from "@/integrations/supabase/client";
 
 const GetInvolved = () => {
@@ -70,6 +71,25 @@ const GetInvolved = () => {
           variant: "destructive",
         });
         return;
+      }
+
+      // Notify info@ by email; the inquiry is already saved, so a failure here is only logged
+      const { error: emailError } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          subject: `Get Involved Inquiry${formData.interest ? ` - ${formData.interest}` : ""}`,
+          message: [
+            formData.phone ? `Phone: ${formData.phone}` : null,
+            formData.interest ? `Area of interest: ${formData.interest}` : null,
+            "",
+            formData.message || "(No message provided)"
+          ].filter((line) => line !== null).join("\n")
+        }
+      });
+
+      if (emailError) {
+        console.error('Error sending inquiry email:', emailError);
       }
 
       setFormData({
@@ -346,6 +366,10 @@ const GetInvolved = () => {
                 </CardFooter>
               </Card>
             ))}
+          </div>
+
+          <div className="max-w-4xl mx-auto mt-12">
+            <PaymentDetails />
           </div>
         </div>
       </section>

@@ -14,7 +14,8 @@ import {
   TrendingUp,
   Clock,
   CheckCircle,
-  Mail
+  Mail,
+  Facebook,
 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import VolunteerApplicationsTab from '@/components/admin/VolunteerApplicationsTab';
@@ -22,6 +23,7 @@ import DonationsTab from '@/components/admin/DonationsTab';
 import PartnershipsTab from '@/components/admin/PartnershipsTab';
 import InquiriesTab from '@/components/admin/InquiriesTab';
 import ContactSubmissionsTab from '@/components/admin/ContactSubmissionsTab';
+import FacebookPostsTab from '@/components/admin/FacebookPostsTab';
 
 const AdminDashboard = () => {
   const { user, isAdmin, signOut, loading } = useAuth();
@@ -243,7 +245,7 @@ const AdminDashboard = () => {
 
         {/* Main Content Tabs */}
         <Tabs defaultValue="volunteers" className="space-y-4">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="grid w-full grid-cols-3 md:grid-cols-6 h-auto">
             <TabsTrigger value="volunteers" className="flex items-center gap-2">
               <Users className="h-4 w-4" />
               Volunteers
@@ -263,6 +265,10 @@ const AdminDashboard = () => {
             <TabsTrigger value="contacts" className="flex items-center gap-2">
               <Mail className="h-4 w-4" />
               Contact
+            </TabsTrigger>
+            <TabsTrigger value="facebook" className="flex items-center gap-2">
+              <Facebook className="h-4 w-4" />
+              Facebook
             </TabsTrigger>
           </TabsList>
 
@@ -284,6 +290,10 @@ const AdminDashboard = () => {
 
           <TabsContent value="contacts">
             <ContactSubmissionsTab />
+          </TabsContent>
+
+          <TabsContent value="facebook">
+            <FacebookPostsTab />
           </TabsContent>
         </Tabs>
       </div>

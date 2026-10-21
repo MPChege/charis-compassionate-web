@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Heart, DollarSign, CreditCard, Sparkles, Gift } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import PaymentDetails from "./PaymentDetails";
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -290,6 +291,11 @@ const DonationModal = ({ isOpen, onClose, selectedType }: DonationModalProps) =>
                   </div>
                 ))}
               </div>
+              {(donationData.paymentMethod === "bank" || donationData.paymentMethod === "mpesa") && (
+                <div className="mt-4 animate-fade-in">
+                  <PaymentDetails compact show={donationData.paymentMethod} />
+                </div>
+              )}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
