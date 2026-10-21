@@ -24,7 +24,9 @@ CREATE TABLE IF NOT EXISTS public.admin_sessions (
 ALTER TABLE public.admin_sessions ENABLE ROW LEVEL SECURITY;
 
 -- 2. Start a session: verifies the admin's password, returns a random token
-CREATE OR REPLACE FUNCTION public.admin_start_session(p_email text, p_password text)
+-- (replaced by a richer version in 20261022040000_lock_admin_auth.sql)
+DROP FUNCTION IF EXISTS public.admin_start_session(text, text);
+CREATE FUNCTION public.admin_start_session(p_email text, p_password text)
 RETURNS text
 LANGUAGE plpgsql
 SECURITY DEFINER
