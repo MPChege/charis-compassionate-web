@@ -1,29 +1,4 @@
-import { useEffect, useRef } from "react";
-
-declare global {
-  interface Window {
-    FB?: { XFBML: { parse: (element?: HTMLElement) => void } };
-    fbAsyncInit?: () => void;
-  }
-}
-
-let sdkPromise: Promise<void> | null = null;
-
-// Load Facebook's SDK once; it turns .fb-post elements into embedded posts
-const loadFacebookSdk = () => {
-  if (sdkPromise) return sdkPromise;
-  sdkPromise = new Promise<void>((resolve) => {
-    if (window.FB) return resolve();
-    window.fbAsyncInit = () => resolve();
-    const script = document.createElement("script");
-    script.src = "https://connect.facebook.net/en_GB/sdk.js#xfbml=0&version=v21.0";
-    script.async = true;
-    script.defer = true;
-    script.crossOrigin = "anonymous";
-    document.body.appendChild(script);
-  });
-  return sdkPromise;
-};
+import { useEffect, useRef, useState } from "react";
 
 // Normalise links so the embed plugin recognises them (mobile and tracking variants)
 export const normaliseFacebookUrl = (url: string) => {
@@ -50,30 +25,49 @@ interface FacebookPostProps {
   url: string;
 }
 
+// Facebook's post plugin as an iframe: shows the post's photo, text and reactions
+// without the Facebook SDK. The plugin renders at a fixed width, so it is sized
+// to the card it sits in.
 const FacebookPost = ({ url }: FacebookPostProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(500);
 
   useEffect(() => {
-    let cancelled = false;
-    loadFacebookSdk().then(() => {
-      if (!cancelled && containerRef.current) window.FB?.XFBML.parse(containerRef.current);
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [url]);
+    const el = containerRef.current;
+    if (!el) return;
+    const measure = () => setWidth(Math.max(320, Math.min(500, Math.floor(el.clientWidth))));
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const href = normaliseFacebookUrl(url);
+  const src = `https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(href)}&show_text=true&width=${width}`;
 
   return (
-    <div ref={containerRef} className="w-full overflow-hidden flex justify-center">
-      <div className="fb-post" data-href={href} data-width="auto" data-show-text="true">
-        <blockquote cite={href} className="p-6 text-center">
-          <a href={href} target="_blank" rel="noopener noreferrer" className="text-charis-blue-dark font-medium hover:underline">
-            View this post on Facebook
-          </a>
-        </blockquote>
-      </div>
+    <div ref={containerRef} className="w-full flex flex-col items-center">
+      <iframe
+        key={width}
+        src={src}
+        title="Facebook post"
+        width={width}
+        height={Math.round(width * 1.5)}
+        style={{ border: "none", overflow: "hidden", maxWidth: "100%" }}
+        scrolling="no"
+        frameBorder={0}
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        allowFullScreen
+      />
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-2 text-sm font-medium text-charis-blue-dark hover:underline"
+      >
+        View on Facebook
+      </a>
     </div>
   );
 };
